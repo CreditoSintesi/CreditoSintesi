@@ -199,7 +199,7 @@ CREATE TABLE `tbl_usuario` (
   `fecha_registro` date NOT NULL,
   `altura_usuario` int(11) DEFAULT NULL,
   `fecha_nacimiento` text,
-  `estado_usuario` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0 : inactivo - 1:activo',
+  `estado_usuario` enum('Activo','Inactivo','Dado de baja') NOT NULL DEFAULT 'Inactivo',
   `id_objetivo` int(11) DEFAULT NULL,
   `id_tipo_cuerpo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
