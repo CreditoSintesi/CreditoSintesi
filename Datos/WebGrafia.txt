@@ -1,0 +1,9 @@
+
+Sitio					  || Descripcion
+------------------------------------------------
+www.htmlcsscolor.com      || Gamas cromaticas
+www.html-color-codes.info || Selector de colores
+www.nubepalabras.es       || Generador de imagenes apartir de palabras
+www.pexels.com            || Imagenes sin copy right para publicar en nuestras redes sociales etc.
+https://pixabay.com       || Imagenes sin copy right para publicar en nuestras redes sociales etc.
+
