@@ -1,10 +1,10 @@
 Color             | RGB    | Anotacion 
 ---------------------------------------------
-Azul medio        | 2561B4 | Principal del logo azul. ------> http://www.htmlcsscolor.com/hex/2561B4
+Azul medio        | 2561B4 | Principal del logo azul. -------> http://www.htmlcsscolor.com/hex/2561B4
 Azul claroo       | 90AED9 | Fondo del logo.
 Rojo medio		  | F00808 | Principal del logo rojo. -------> http://www.htmlcsscolor.com/hex/F00808
 Rojo claro        | F78181 | Fondo del logo.
-Marron fondo claro| d7bdbd | utilizar para fondo claro
-Verde fuerte      | 218221 | Marcos 
+Verde medio 	  | 048334 | Principal del logo verde. ------> http://www.htmlcsscolor.com/hex/048334
+Verde claro       | 7EC097 | Fondo del logo.
 Marron fuere      | 420000 | Marcos
 Negro             | 000000 | Ps eso negro
