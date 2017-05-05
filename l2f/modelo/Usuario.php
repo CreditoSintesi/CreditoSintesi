@@ -1,16 +1,12 @@
 <?php
 
-	/**
-	* 
-	*/
 	class Usuario
 	{
 		//atributos
 		private $nombre_usuario;
 		private $email_usuario;
 		private $pass_usuario;
-		private $fecha_registro;
-		private $edad_usuario;
+		
 		
 		//constructor
 		public function __construct($nombre_usuario, $email_usuario, $pass_usuario)
@@ -23,7 +19,7 @@
 		}
 		//getters
 		public function getNombreUsuario(){
-			return $this->$nombre_usuario;
+			return $this->nombre_usuario;
 		}            
                 public function getEmailUsuario() {
                     return $this->email_usuario;

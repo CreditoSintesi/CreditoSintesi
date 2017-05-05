@@ -1,9 +1,19 @@
 <?php
+require_once("config.php");
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-//require_once ("controlador/controladorUsuario.php");
-require_once ("vista/registro.php");
+if(!empty($_GET["accion"]))
+{
+	$accion=$_GET["accion"];
+}else
+{
+	$accion="principal";
+}
+
+if(is_file("controlador/".$accion."Controller.php"))
+{
+	require_once("controlador/".$accion."Controller.php");
+}else
+{
+	require_once("controlador/errorController.php");
+}
+?>
