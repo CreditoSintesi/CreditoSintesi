@@ -12,14 +12,15 @@
     <title>Jumbotron Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrapAzul.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!--<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/bootstrapAzul.css" rel="stylesheet">
-    <link href="css/bostrap-theme.Azul.css" rel="stylesheet">
+    <!--<link href="css/bootstrap-theme.Azul.css" rel="stylesheet">-->
+      <link href="css/modern-business.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -44,7 +45,7 @@
             <span class="icon-bar"></span>
           </button>
 
-          <a class="navbar-brand-left" href="#" ><img src="media/logo/logoAzul.png" width="42px" height="42px" style="margin: 5px 5px 5px 5px;" ></a>
+          <a class="navbar-brand-left" href="#" ><img src="media/logo/logoAzul.png" width="42px" height="42px"' style="margin: 5px 5px 5px 5px;" ></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right">
@@ -60,6 +61,8 @@
       </div>
     </nav>
 
+   
+
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
@@ -68,6 +71,46 @@
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
       </div>
     </div>
+
+ <!-- Header Carousel -->
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
+                <div class="carousel-caption">
+                    <h2>Caption 1</h2>
+                </div>
+            </div>
+            <div class="item">
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
+                <div class="carousel-caption">
+                    <h2>Caption 2</h2>
+                </div>
+            </div>
+            <div class="item">
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
+                <div class="carousel-caption">
+                    <h2>Caption 3</h2>
+                </div>
+            </div>
+        </div>
+
+     <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+    </header>
 
     <div class="container">
       <!-- Example row of columns -->
@@ -88,6 +131,73 @@
           <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div>
       </div>
+
+          <!-- Team Section -->
+    <section id="team" >
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-18 col-lg-12 text-center">
+                    <h2 class="section-heading">Nuestro equipo</h2>
+                    <h3 class="section-subheading text-muted">Los hermanos Petit</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-18 col-sm-4">
+                    <div class="team-member">
+                        <img src="http://placehold.it/700x450" class="img-responsive img-circle" alt="" width="225px" align="225px" >
+                        <h4>Marc Petit</h4>
+                        <p class="text-muted">Progamador</p>
+                        <ul class="list-inline social-buttons">
+                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-18 col-sm-4">
+                    <div class="team-member">
+                        <img src="http://placehold.it/700x450" class="img-responsive img-circle" alt="">
+                        <h4>Eric Petit</h4>
+                        <p class="text-muted">Diseñador</p>
+                        <ul class="list-inline social-buttons">
+                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                <div class="col-xs-18 col-sm-4">
+                    <div class="team-member">
+                        <img src="http://placehold.it/700x450" class="img-responsive img-circle" alt="">
+                        <h4>Marc Petit</h4>
+                        <p class="text-muted">Progamador</p>
+                        <ul class="list-inline social-buttons">
+                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <p class="large text-muted">Nuestro equipo esta lleno de ganas de seguir creciendo y mejorando. Somos un grupo joven que intenta hacerse un hueco en la programación.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
       <hr>
 
