@@ -124,7 +124,7 @@
                 <div class="media">
                     <div class="pull-left">
                         <span class="fa-stack fa-2x">
-                             <img src="media/img/icon/001-dumbbell.png" class="img-responsive img-circle" alt="" width="56px" height="56px">
+                             <img src="media/img/icon/mancuerna.png" class="img-responsive img-circle" alt="" width="56px" height="56px">
                         </span> 
                     </div>
                     <div class="media-body">
@@ -273,7 +273,7 @@
                 </div>
                 <div class="col-xs-18 col-sm-4">
                     <div class="team-member">
-                        <img src="media/team/eric.jpg" class="img-responsive img-circle" alt="">
+                        <img src="media/team/miguel.jpg" class="img-responsive img-circle" alt="">
                         <h4>Miguel López</h4>
                         <p class="text-muted">Progamador</p>
                         <ul class="list-inline social-buttons">
