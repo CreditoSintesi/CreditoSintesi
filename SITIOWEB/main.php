@@ -70,10 +70,11 @@
             <div class="col-lg-12">
                 <h2 class="page-header">Services Panels</h2>
             </div>
+            <a href="#">
             <div class="col-md-3 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
-                        <img src="media/img/icon/001-dumbbell.png" class="img-responsive img-circle" style="margin: auto;">
+                        <img src="media/img/icon/perfilboy.png" class="img-responsive img-circle" style="margin: auto;">
                     </div>
                     <div class="panel-body">
                         <h4>Service One</h4>
@@ -82,12 +83,13 @@
                     </div>
                 </div>
             </div>
+            </a>
+            <a href="#">
             <div class="col-md-3 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
                         <span class="fa-stack fa-5x">
-                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-car fa-stack-1x fa-inverse"></i>
+                        <img src="media/img/icon/mancuerna.png" class="img-responsive img-circle" style="margin: auto;">
                         </span>
                     </div>
                     <div class="panel-body">
@@ -97,12 +99,13 @@
                     </div>
                 </div>
             </div>
+            </a>
+            <a href="#">
             <div class="col-md-3 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
                         <span class="fa-stack fa-5x">
-                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-support fa-stack-1x fa-inverse"></i>
+                        <img src="media/img/icon/dieta.png" class="img-responsive img-circle" style="margin: auto;">
                         </span>
                     </div>
                     <div class="panel-body">
@@ -112,12 +115,13 @@
                     </div>
                 </div>
             </div>
+            </a>
+            <a href="#">
             <div class="col-md-3 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
                         <span class="fa-stack fa-5x">
-                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-database fa-stack-1x fa-inverse"></i>
+                        <img src="media/img/icon/Servicio.png" class="img-responsive img-circle" style="margin: auto;">
                         </span>
                     </div>
                     <div class="panel-body">
@@ -128,7 +132,7 @@
                 </div>
             </div>
         </div>
-
+        </a>
 </div>
 
    <footer>
