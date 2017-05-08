@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Modelo-vista-controlador</title>
+</head>
+<body>
+    <h1>Usuarios disponibles</h1>
+    
+        <?php
+        // include("modelo/Usuario.php");
+        echo "</br> hola usuario : "; 
+        echo $usuario->getNombreUsuario();
+        echo "<br> porfavor rellena el siguiente formulario"; 
+        ?>
+    
+    <form action="usuario">
+        <input type="text" name="apellido_usuario" placeholder="Apellido Usuario">
+        <input type="date" name="fecha_nacimiento" min="2001-05-01" />
+        <select name="sexo_usuario">
+                <option value="Mujer">Mujer</option>
+                <option value="Hombre">Hombre</option>
+                <option value="otro">otro</option>                
+        </select>
+        <input type="text" name="altura_usuario" placeholder="Altura en cm"/>
+        <input type="text" name="peso_usuario" placeholder="Peso en Kg" />
+        <input type="hidden" name="funcion" value="update_cuestionario" />
+        <label> - - - - - Si sabes tus medidas - - - - - </label>
+        <input type="submit" value="Enviar" </form>
+            
+    </form>
+        
+    
+</body>
+</html>

@@ -64,37 +64,67 @@ class Usuario {
 
     public function alta(Usuario $usuario) {
         try {
+            //hacemos los getters del objeto usuario
             $nombre_usuario = $usuario->getNombreUsuario();
             $email_usuario = $usuario->getEmailUsuario();
             $pass_usuario = $usuario->getPassUsuario();     
-            //$fecha_actual=date("Y/m/d");
-
+            $fecha_registro=date("Y/m/d");
+            
+            //iniciamos una nueva conexion PDO a nuestra bd
             $conexion = new PDO('mysql:host=localhost; dbname=bd_l2f', 'root', '');
             $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            //generamos nuestra sentencia sql con los valores del insert y las variables
+            
             //$sql = "INSERT INTO `tbl_usuario` (`nombre_usuario`, `email_usuario`, `pass_usuario`) VALUES (:nombre_usuario, :email_usuario, :pass_usuario)";
-            $sql = "INSERT INTO tbl_usuario (nombre_usuario, email_usuario, pass_usuario) VALUES (:nombre_usuario, :email_usuario, :pass_usuario)";
-
+            $sql = "INSERT INTO tbl_usuario (nombre_usuario, email_usuario, pass_usuario, fecha_registro) VALUES (:nombre_usuario, :email_usuario, :pass_usuario, :fecha_registro)";
+            
+            //se prepara el sql
             $ejecutar=$conexion->prepare($sql);
+            //relacionamos las variables con los registros del sql
             $ejecutar->bindParam(":nombre_usuario", $nombre_usuario);
             $ejecutar->bindParam(":email_usuario", $email_usuario);
             $ejecutar->bindParam(":pass_usuario", $pass_usuario);
+            $ejecutar->bindParam(":fecha_registro", $fecha_registro);
             //$ejecutar->execute(array('nombre_usuario'=> $usuario->getNombreUsuario(),'pass_usuario'=> $usuario->getPassUsuario(),'email_usuario'=> $usuario->getEmailUsuario() ));
+            //ejecutamos la sentencia sql
             $ejecutar->execute();
             //$resultado = $ejecutar->fetchAll();
             
         } catch (Exception $ex) {
             echo $ex->getMessage();
         }
-       //require_once (Conectar.php); 
-      
-       
-        //$conexion->
-       
-       
-       
-       
-       
-       
+    }
+        public function updateActualizar(Usuario $usuario) {
+        try {
+            //hacemos los getters del objeto usuario
+            $nombre_usuario = $usuario->getNombreUsuario();
+            $email_usuario = $usuario->getEmailUsuario();
+            $pass_usuario = $usuario->getPassUsuario();     
+            $fecha_registro=date("Y/m/d");
+            
+            //iniciamos una nueva conexion PDO a nuestra bd
+            $conexion = new PDO('mysql:host=localhost; dbname=bd_l2f', 'root', '');
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            //generamos nuestra sentencia sql con los valores del insert y las variables
+            
+            //$sql = "INSERT INTO `tbl_usuario` (`nombre_usuario`, `email_usuario`, `pass_usuario`) VALUES (:nombre_usuario, :email_usuario, :pass_usuario)";
+            $sql = "INSERT INTO tbl_usuario (nombre_usuario, email_usuario, pass_usuario, fecha_registro) VALUES (:nombre_usuario, :email_usuario, :pass_usuario, :fecha_registro)";
+            
+            //se prepara el sql
+            $ejecutar=$conexion->prepare($sql);
+            //relacionamos las variables con los registros del sql
+            $ejecutar->bindParam(":nombre_usuario", $nombre_usuario);
+            $ejecutar->bindParam(":email_usuario", $email_usuario);
+            $ejecutar->bindParam(":pass_usuario", $pass_usuario);
+            $ejecutar->bindParam(":fecha_registro", $fecha_registro);
+            //$ejecutar->execute(array('nombre_usuario'=> $usuario->getNombreUsuario(),'pass_usuario'=> $usuario->getPassUsuario(),'email_usuario'=> $usuario->getEmailUsuario() ));
+            //ejecutamos la sentencia sql
+            $ejecutar->execute();
+            //$resultado = $ejecutar->fetchAll();
+            
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
 
     }
 
