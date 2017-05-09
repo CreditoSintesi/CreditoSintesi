@@ -33,10 +33,8 @@
     <![endif]-->
   </head>
 
-  <body>
- <div class="container">
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+   <body>
+    <nav class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -45,11 +43,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-
           <a class="navbar-brand-left" href="#" ><img src="media/logo/logoRojo.png" width="42px" height="42px"' style="margin: 5px 5px 5px 5px;" ></a>
-        </div>       
-        <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+                          <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="#">About</a>
                     </li>
@@ -60,55 +57,58 @@
                         <a href="#">Contact</a>
                     </li>
                     <li>
-                        <a href="#" onmouseover="this.a.src='media/img/icon/logout3.png';" onmouseout="this.a.src='media/img/icon/logout.png';">Cerrar Sesion  <img src="media/img/icon/logout.png" width="20px" height="20px" onmouseover="this.src='media/img/icon/logout3.png';" onmouseout="this.src='media/img/icon/logout.png';"></a>
+                        <a href="#" >Cerrar Sesion  <img src="media/img/icon/logout.png" width="20px" height="20px" onmouseover="this.src='media/img/icon/logout3.png';" onmouseout="this.src='media/img/icon/logout.png';"></a>
                     </li>
                    </ul> 
-        </div>
-      </div>
-    </nav>
-<!--/.navbar-collapse -->
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </nav><!-- /.navbar -->
 
-<div class="container">
-<div class="row">
-<div class="col-xs-12 col-sm-9">
-          <p class="pull-right visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+    <!--/.navbar-collapse -->
+ <div class="container">
+<br>
+      <div class="row row-offcanvas row-offcanvas-right">
+ <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Filtrar</button>
           </p>
-                   <div class="row">
+        <div class="col-xs-12 col-sm-9">
+         
+          
+          <div class="row">
             <div class="col-xs-6 col-lg-4">
               <h2>Heading</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div><!--/.col-xs-6.col-lg-4-->
             <div class="col-xs-6 col-lg-4">
               <h2>Heading</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div><!--/.col-xs-6.col-lg-4-->
             <div class="col-xs-6 col-lg-4">
               <h2>Heading</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div><!--/.col-xs-6.col-lg-4-->
             <div class="col-xs-6 col-lg-4">
               <h2>Heading</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div><!--/.col-xs-6.col-lg-4-->
             <div class="col-xs-6 col-lg-4">
               <h2>Heading</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div><!--/.col-xs-6.col-lg-4-->
             <div class="col-xs-6 col-lg-4">
               <h2>Heading</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div><!--/.col-xs-6.col-lg-4-->
           </div><!--/row-->
-        </div>
+        </div><!--/.col-xs-12.col-sm-9-->
 
-<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
           <div class="list-group">
             <a href="#" class="list-group-item active">Link</a>
             <a href="#" class="list-group-item">Link</a>
@@ -121,9 +121,12 @@
             <a href="#" class="list-group-item">Link</a>
             <a href="#" class="list-group-item">Link</a>
           </div>
-        </div>
-        </div>
-        </div>
+        </div><!--/.sidebar-offcanvas-->
+      </div><!--/row-->
+
+      <hr>
+    </div>
+
    <footer>
     <div class="container text-center">
       <div class="row row-offcanvas row-offcanvas-right">        
@@ -156,5 +159,6 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/offcanvas.js"></script>
   </body>
 </html>
