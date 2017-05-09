@@ -59,6 +59,9 @@
                     <li>
                         <a href="#">Contact</a>
                     </li>
+                    <li>
+                        <a href="#">Cerrar Sesion  <img src="media/img/icon/logout.png" width="20px" height="20px" onmouseover="this.src='media/img/icon/logout2.png';" onmouseout="this.src='media/img/icon/logout.png';"></a>
+                    </li>
                    </ul> 
         </div>
       </div>
