@@ -11,7 +11,7 @@ switch ($funcion) {
         $usuario = new Usuario($_POST['nombre_usuario'],$_POST['email_usuario'],$_POST['pass_usuario']);
         //print_r($usuario);
         $usuario->alta($usuario);
-        require_once("vista/usuario.phtml");
+        require_once("cuestionario/");
         break;
     case "modificar":
         
