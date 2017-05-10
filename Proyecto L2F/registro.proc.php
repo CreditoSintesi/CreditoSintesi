@@ -14,8 +14,8 @@
 		$pass_usuario=  hash('sha512',$pass_usuario);
 		$fecha_registro = date('Y-m-d');
 
-		$sql = "INSERT INTO `tbl_usuario` (`nombre_usuario`, `email_usuario`, `pass_usuario`, `fecha_registro`) VALUES ($nombre_usuario, $email_usuario, $pass_usuario, $fecha_registro)";
-		echo $sql;
+		$sql = "INSERT INTO `tbl_usuario` (`nombre_usuario`, `email_usuario`, `pass_usuario`, `fecha_registro`) VALUES ('$nombre_usuario', '$email_usuario', '$pass_usuario', '$fecha_registro')";
+		echo $sql;die;
 		$resultado=mysqli_query($conexion, $sql);
 
 		$id = mysqli_insert_id($conexion);
