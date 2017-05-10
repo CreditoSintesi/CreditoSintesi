@@ -29,19 +29,17 @@ $resultado=mysqli_query($conexion, $sql);
 						$id_usuario = $_SESSION['id_usuario'];
 
 			$sql = "SELECT * FROM tbl_usuario WHERE id_usuario = ".$id_usuario;
-			
 			$resultado=mysqli_query($conexion, $sql);
 
 				if (mysqli_num_rows($resultado) != 0 ) {
 					while ($usuario = mysqli_fetch_array($resultado)) {
-							if ($usuario['estado_usuario'] == "Inactivo") {
+							if ($usuario['estado_usuario'] == "inactivo") {
 								echo "el usuario esta inactivo";
-								//die;
-								header("location: cuestionario.php?err=2");
+
+								header("location : cuestionario.php?err=2");
 							}else{
 								header('location: main.php');
 							}
-
 						}
 				}
 				

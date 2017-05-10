@@ -15,12 +15,13 @@
 		$fecha_registro = date('Y-m-d');
 
 		$sql = "INSERT INTO `tbl_usuario` (`nombre_usuario`, `email_usuario`, `pass_usuario`, `fecha_registro`) VALUES ('$nombre_usuario', '$email_usuario', '$pass_usuario', '$fecha_registro')";
-		//echo $sql;die;
+		echo $sql;
 		$resultado=mysqli_query($conexion, $sql);
 
 		$id = mysqli_insert_id($conexion);
 
 		$_SESSION['id_usuario'] = $id;
+		$_SESSION['nombre_usuario'] = $nombre_usuario;
 
 		header('location: cuestionario.php');
 	}
