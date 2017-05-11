@@ -87,7 +87,7 @@
             <div class="col-lg-12">
                 <h2 class="page-header">Services Panels</h2>
             </div>
-            <?php echo "<a href='user_perfil?id=".$_SESSION['id_usuario']."'>"; ?>
+            <?php echo "<a href='perfilusuario.php?id=".$_SESSION['id_usuario']."'>"; ?>
             <div class="col-md-3 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
@@ -192,7 +192,8 @@
   </body>
 </html>
 <!-- Conflicto HERE-->
-<?php/*
+<?php
+/*
 session_start();
 include_once('conexio.php');
 $id_usuario = $_SESSION['id_usuario'];
@@ -219,4 +220,3 @@ $resultado=mysqli_query($conexion, $sql);
 
 </body>
 </html>*/
-
