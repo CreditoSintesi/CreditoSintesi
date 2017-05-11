@@ -7,7 +7,7 @@
     $data_user=mysqli_query($conexion,$sql);
         while($data = mysqli_fetch_array($data_user))
              {
-                $user_name = $data['nombre_usuario'] . $data['apellidos_usuario'];
+                $user_name = $data['nombre_usuario'] ." ". $data['apellidos_usuario'];
              }
 
  ?>
@@ -86,21 +86,21 @@
             <div class="col-lg-12">
                 <h2 class="page-header">Services Panels</h2>
             </div>
-            <a href="#">
+            <?php echo "<a href='user_perfil?id=".$_SESSION['id_usuario']."'>"; ?>
             <div class="col-md-3 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
                         <img src="media/img/icon/perfilboy.png" class="img-responsive img-circle" style="margin: auto;">
                     </div>
                     <div class="panel-body">
-                        <h4>Service One</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <h4>Perfil</h4>
+                        <p>Accede a tu historial de pesos y medidas o modifica tus datos de registro.</p>
                         <a href="#" class="btn btn-primary">Learn More</a>
                     </div>
                 </div>
             </div>
             </a>
-            <a href="#">
+            <?php echo "<a href='user_rutina?id=".$_SESSION['id_usuario']."'>"; ?>
             <div class="col-md-3 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
@@ -109,14 +109,16 @@
                         </span>
                     </div>
                     <div class="panel-body">
-                        <h4>Service Two</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <h4>Rutina</h4>
+                        <p>¡Accede a tu rutina, selecciona una nueva rutina, rellena días o cambia la rutina!.
+                        <br/>
+                        ¡Tú puedes!</p>
                         <a href="#" class="btn btn-primary">Learn More</a>
                     </div>
                 </div>
             </div>
             </a>
-            <a href="#">
+            <?php echo "<a href='user_dieta?id=".$_SESSION['id_usuario']."'>"; ?>
             <div class="col-md-3 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
@@ -125,14 +127,16 @@
                         </span>
                     </div>
                     <div class="panel-body">
-                        <h4>Service Three</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <h4>Dieta</h4>
+                        <p>!Observa tu dieta actual, cambiala, revisa los nuevos platos¡.
+                        <br/>
+                        ¡La dieta también es importante!</p>
                         <a href="#" class="btn btn-primary">Learn More</a>
                     </div>
                 </div>
             </div>
             </a>
-            <a href="#">
+            <?php echo "<a href='user_add_service?id=".$_SESSION['id_usuario']."'>"; ?>
             <div class="col-md-3 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
@@ -141,8 +145,9 @@
                         </span>
                     </div>
                     <div class="panel-body">
-                        <h4>Service Four</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <h4>Servicios</h4>
+                        <p>La personalización acelera los resultados<br/>
+                        ¡Contrata a nuestros especialistas!</p>
                         <a href="#" class="btn btn-primary">Learn More</a>
                     </div>
                 </div>
