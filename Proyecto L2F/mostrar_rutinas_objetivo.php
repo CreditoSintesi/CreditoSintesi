@@ -8,9 +8,6 @@
 
 	include("conexio.php");
 
-
-
-
 	$consulta = "SELECT *
       FROM `tbl_rutina`
 INNER JOIN `tbl_objetivo`
@@ -27,7 +24,7 @@ INNER JOIN `tbl_usuario`
 			echo "<br><br>";
 
 			?>
-	<form action='asignar_rutina.proc.php.' method="POST" >
+	<form action='asignar_rutina.proc.php' method="POST" >
 
 	<?php
 
@@ -37,11 +34,11 @@ INNER JOIN `tbl_usuario`
 			echo "<input type='hidden' name='duracion_rutina' value='".$fila['duracion_rutina']."'>";
 			echo "<input type='hidden' name='id_rutina' value='".$fila['id_rutina']."'>";
 			echo "Objetivo Rutina: : ".$fila['nombre_objetivo']."<br>";
-
+			?>
 			
-			echo "<button  >Asignarme esta rútina </button>";
-			echo "</form>";
-
+			<input type='submit' value= 'Asignarme esta rútina'> 
+			</form>
+			<?php
 		}
 
 	}
