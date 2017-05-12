@@ -240,6 +240,18 @@ CREATE TABLE `tbl_tipo_especialista` (
 --
 -- Estructura de tabla para la tabla `tbl_usuario`
 --
+CREATE TABLE IF NOT EXISTS `tbl_dieta` (
+  `id_dieta` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre_dieta` varchar(25) NOT NULL,
+  `fecha_inicio_dieta` date DEFAULT NULL,
+  `fecha_final_dieta` date DEFAULT NULL,
+  `id_especialista` int(11) NOT NULL,
+  `v_energetico_dieta` varchar(6) NOT NULL,
+  PRIMARY KEY (`id_dieta`),
+  KEY `FK_diet_espec` (`id_especialista`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
 
 CREATE TABLE `tbl_usuario` (
   `id_usuario` int(11) NOT NULL,
