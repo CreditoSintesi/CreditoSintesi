@@ -7,7 +7,7 @@
 	if($pass_usuario !=  $pass_usuario2 ){
 		//lo mandamos a la mierda
 		$_POST['error'] = "las contraseñas no coinciden";
-		header('location: principal.php');
+		header('location: index.php');
 
 	}else{
 		

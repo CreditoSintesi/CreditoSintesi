@@ -36,7 +36,9 @@ $resultado=mysqli_query($conexion, $sql);
 							if ($usuario['estado_usuario'] == "Inactivo") {
 								echo "el usuario esta inactivo";
 
-								header("location : cuestionario.php?err=2");
+								
+								header('location: cuestionario.php');
+
 							}else{
 								header('location: main_2.php');
 							}
@@ -48,6 +50,6 @@ $resultado=mysqli_query($conexion, $sql);
 			}
 		}
 	} else {
-		header('location: principal.php?err=1');
+		header('location: index.php?err=1');
 	}                      
 ?>
