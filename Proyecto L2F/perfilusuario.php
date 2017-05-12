@@ -4,8 +4,8 @@
   //Revisar consulta integridad datos
   $sql = "SELECT * 
           FROM `tbl_usuario` 
-            RIGHT JOIN `tbl_tipo_cuerpo` ON `tbl_tipo_cuerpo`.`id_tipo_cuerpo`= `tbl_usuario`.`id_tipo_cuerpo`
-            RIGHT JOIN `tbl_objetivo` ON `tbl_objetivo`.`id_objetivo` = `tbl_usuario`.`id_objetivo`
+            LEFT JOIN `tbl_tipo_cuerpo` ON `tbl_tipo_cuerpo`.`id_tipo_cuerpo`= `tbl_usuario`.`id_tipo_cuerpo`
+            LEFT JOIN `tbl_objetivo` ON `tbl_objetivo`.`id_objetivo` = `tbl_usuario`.`id_objetivo`
           WHERE `id_usuario` =". $_SESSION['id_usuario'];
     //echo $sql;die;
     $data_user=mysqli_query($conexion,$sql);
@@ -25,6 +25,35 @@
              $date = date_create($actual_date); //traducimos la fecha actual
              $user_edad = date_diff($user_old,$date); //Comparamos las fechas
              $years = $user_edad->format('%y%'); //Cogemos la diferencia en años
+      //End edad
+      //Para calcular el peso
+             $cpeso = 0;
+            $sql_height = "SELECT * FROM `tbl_historial_peso` WHERE `id_usuario` = ". $_SESSION['id_usuario']." ORDER BY `fecha_his_pes` LIMIT 0,3";
+            //Lanzamos la consulta a la BBDD
+            $height_query = mysqli_query($conexion,$sql_height);
+            while($data_height = mysqli_fetch_array($height_query))
+            {
+              switch ($cpeso) {
+                case '0':
+                   $hdata1 = $data_height['fecha_his_pes'];
+                   $height1 = $data_height['peso'];
+                  break;
+                case '1':
+                   $hdata2 = $data_height['fecha_his_pes'];
+                   $height2 = $data_height['peso'];
+                  break;
+                case '2':
+                 $hdata3 = $data_height['fecha_his_pes'];
+                 $height3 = $data_height['peso'];
+                break;
+                default:
+
+                break;
+
+              }
+               $cpeso++;
+            }
+            
  ?>
 
 
@@ -148,7 +177,7 @@
                <div class="col-sm-2">
                   <div class="panel panel-primary">
                       <div class="panel-heading">
-                        <h3 class="panel-title">Panel title</h3>
+                        <h3 class="panel-title">Historial peso</h3>
                       </div>
                      
                   </div>
@@ -156,7 +185,7 @@
                <div class="col-sm-2">
                   <div class="panel panel-primary">
                       <div class="panel-heading">
-                        <h3 class="panel-title">Panel title</h3>
+                        <h3 class="panel-title">Historial medidas</h3>
                       </div>
                       
                   </div>
@@ -176,34 +205,127 @@
                       </div>
                   </div>
                 </div>
-                <div class="col-sm-9">  
+                <div class="col-sm-8">  
                 <table class="table table-striped">
             <thead>
               <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
+                <th>Dia</th>
+                <th>Peso</th>
+                <th>Diferencia peso</th>
+                
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td>
+                  <?php 
+                      if(isset($hdata1))
+                        {
+                         echo $hdata1;
+                        }
+                        else 
+                        {
+                          echo "N/A";
+                        }
+                  ?>
+                </td>
+                <td>
+                   <?php 
+                      if(isset($height1))
+                        {
+                         echo $height1;
+                        }
+                        else 
+                        {
+                          echo "N/A";
+                        }
+                  ?>
+                  
+                </td>
+                 <td>
+                   <?php 
+                      if(isset($height2))
+                        {
+                          $dif = $height2-$height1;
+                          echo $dif;
+                        }
+                        else 
+                        {
+                          echo "N/A";
+                        }
+                  ?>
+                  
+                </td>
               </tr>
               <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
+                <td>
+                  <?php 
+                      if(isset($hdata2))
+                        {
+                         echo $hdata2;
+                        }
+                        else 
+                        {
+                          echo "N/A";
+                        }
+                  ?>
+                </td>
+                <td>
+                   <?php 
+                      if(isset($height2))
+                        {
+                         echo $height2;
+                        }
+                        else 
+                        {
+                          echo "N/A";
+                        }
+                  ?>
+                  
+                </td>
+                 <td>
+                   <?php 
+                      if(isset($height3))
+                        {
+                          $dif = $height3-$height2;
+                          echo $dif;
+                        }
+                        else 
+                        {
+                          echo "N/A";
+                        }
+                  ?>
+                  
+                </td>
               </tr>
               <tr>
-                <td>3</td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
+                <td>
+                  <?php 
+                      if(isset($hdata3))
+                        {
+                         echo $hdata3;
+                        }
+                        else 
+                        {
+                          echo "N/A";
+                        }
+                  ?>
+                </td>
+                <td>
+                   <?php 
+                      if(isset($height3))
+                        {
+                         echo $height3;
+                        }
+                        else 
+                        {
+                          echo "N/A";
+                        }
+                  ?>
+                  
+                </td>
+                <td>--</td>
+  
               </tr>
             </tbody>
           </table>
