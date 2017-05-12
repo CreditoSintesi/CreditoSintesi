@@ -19,7 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bd_l2f`
 --
-
+CREATE DATABASE IF NOT EXISTS `bd_l2f` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `bd_l2f`;
 -- --------------------------------------------------------
 
 --
@@ -428,3 +429,106 @@ ALTER TABLE `tbl_usuario`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+CREATE TABLE IF NOT EXISTS `tbl_plato` (
+  `id_plato` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre_plato` varchar(35) NOT NULL,
+  `preparacion_plato` text NOT NULL,
+  `descripcion_plato` text NOT NULL,
+  `tipo_plato` varchar(15) NOT NULL,
+  PRIMARY KEY (`id_plato`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE IF NOT EXISTS `tbl_dieta_usuario` (
+  `id_dieta_usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `id_dieta` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  PRIMARY KEY (`id_dieta_usuario`),
+  KEY `FK_diet_us` (`id_dieta`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `tbl_comida_dieta` (
+  `id_comidieta` int(11) NOT NULL AUTO_INCREMENT,
+  `id_dieta` int(11) NOT NULL,
+  `momento_comida_comidieta` varchar(30) NOT NULL,
+  `id_plato` int(11) NOT NULL,
+  PRIMARY KEY (`id_comidieta`),
+  KEY `FK_com_diet` (`id_dieta`),
+  KEY `FK_com_plat` (`id_plato`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+ALTER TABLE `tbl_comida_dieta`
+  ADD CONSTRAINT `FK_com_diet` FOREIGN KEY (`id_dieta`) REFERENCES `tbl_dieta` (`id_dieta`),
+  ADD CONSTRAINT `FK_com_plat` FOREIGN KEY (`id_plato`) REFERENCES `tbl_plato` (`id_plato`);
+
+--
+-- Filtros para la tabla `tbl_dieta`
+--
+ALTER TABLE `tbl_dieta`
+  ADD CONSTRAINT `FK_diet_espec` FOREIGN KEY (`id_especialista`) REFERENCES `tbl_especialista` (`id_especialista`);
+
+--
+-- Filtros para la tabla `tbl_dieta_usuario`
+--
+ALTER TABLE `tbl_dieta_usuario`
+  ADD CONSTRAINT `FK_diet_us` FOREIGN KEY (`id_dieta`) REFERENCES `tbl_dieta` (`id_dieta`);
+
+--
+-- Filtros para la tabla `tbl_ejercicio`
+--
+ALTER TABLE `tbl_ejercicio`
+  ADD CONSTRAINT `FK_ejer-tip_ejerc` FOREIGN KEY (`id_tipo_ejercicio`) REFERENCES `tbl_tipo_ejercicio` (`id_tipo_ejercicio`);
+
+--
+-- Filtros para la tabla `tbl_especialista`
+--
+ALTER TABLE `tbl_especialista`
+  ADD CONSTRAINT `FK_especialista_tipo` FOREIGN KEY (`id_tipo_Especialista`) REFERENCES `tbl_tipo_especialista` (`id_tipo_especialista`);
+
+--
+-- Filtros para la tabla `tbl_historial_medidas`
+--
+ALTER TABLE `tbl_historial_medidas`
+  ADD CONSTRAINT `FK_hmedidas_usu` FOREIGN KEY (`id_usuario`) REFERENCES `tbl_usuario` (`id_usuario`);
+
+--
+-- Filtros para la tabla `tbl_historial_peso`
+--
+ALTER TABLE `tbl_historial_peso`
+  ADD CONSTRAINT `FK_hpeso_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `tbl_usuario` (`id_usuario`);
+
+--
+-- Filtros para la tabla `tbl_parte_cuerpo_ejerc`
+--
+ALTER TABLE `tbl_parte_cuerpo_ejerc`
+  ADD CONSTRAINT `FK_pc_ejer_pcuerpo` FOREIGN KEY (`id_parte_cuerpo`) REFERENCES `tbl_parte_cuerpo` (`id_parte_cuerpo`),
+  ADD CONSTRAINT `FK_pcejercicio_ej` FOREIGN KEY (`id_ejercicio`) REFERENCES `tbl_ejercicio` (`id_ejercicio`);
+
+--
+-- Filtros para la tabla `tbl_rutina`
+--
+ALTER TABLE `tbl_rutina`
+  ADD CONSTRAINT `FK_rutina_especialista` FOREIGN KEY (`id_especialista`) REFERENCES `tbl_especialista` (`id_especialista`),
+  ADD CONSTRAINT `FK_rutina_objetivo` FOREIGN KEY (`id_objetivo`) REFERENCES `tbl_objetivo` (`id_objetivo`);
+
+--
+-- Filtros para la tabla `tbl_rutina_ejer`
+--
+ALTER TABLE `tbl_rutina_ejer`
+  ADD CONSTRAINT `FK_rejercicio_ej` FOREIGN KEY (`id_ejercicio`) REFERENCES `tbl_ejercicio` (`id_ejercicio`),
+  ADD CONSTRAINT `FK_rejercicio_ejercicio` FOREIGN KEY (`id_rutina`) REFERENCES `tbl_rutina` (`id_rutina`);
+
+--
+-- Filtros para la tabla `tbl_rutina_usuario`
+--
+ALTER TABLE `tbl_rutina_usuario`
+  ADD CONSTRAINT `FK_rusu_rutina` FOREIGN KEY (`id_rutina`) REFERENCES `tbl_rutina` (`id_rutina`),
+  ADD CONSTRAINT `FK_rusu_usu` FOREIGN KEY (`id_usuario`) REFERENCES `tbl_usuario` (`id_usuario`);
+
+--
+-- Filtros para la tabla `tbl_usuario`
+--
+ALTER TABLE `tbl_usuario`
+  ADD CONSTRAINT `FK_us_obj` FOREIGN KEY (`id_objetivo`) REFERENCES `tbl_objetivo` (`id_objetivo`),
+  ADD CONSTRAINT `FK_usu_cue` FOREIGN KEY (`id_tipo_cuerpo`) REFERENCES `tbl_tipo_cuerpo` (`id_tipo_cuerpo`);-- Filtros para la tabla `tbl_comida_dieta`
