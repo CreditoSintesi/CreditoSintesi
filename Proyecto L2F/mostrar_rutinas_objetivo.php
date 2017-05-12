@@ -10,6 +10,7 @@
 
 
 
+
 	$consulta = "SELECT *
       FROM `tbl_rutina`
 INNER JOIN `tbl_objetivo`
@@ -44,6 +45,8 @@ INNER JOIN `tbl_usuario`
 		}
 
 	}
+
+	
 
 	
 ?>
