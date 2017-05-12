@@ -8,7 +8,7 @@ $resultado=mysqli_query($conexion, $sql);
 
 	if (mysqli_num_rows($resultado) != 0 ) {
 		while ($usuario = mysqli_fetch_array($resultado)) {
-				if ($usuario['id_objetivo'] == null) {
+				if ($usuario['estado_usuario'] == 'Inactivo') {
 					header("location : cuestionario.php?err=2");
 				}
 			}
@@ -22,6 +22,9 @@ $resultado=mysqli_query($conexion, $sql);
 </head>
 <body>	
 <h1>Bienvenido a tu Main pag <?php echo $_SESSION['nombre_usuario']?> </h1>
+
+<a href="user_rutinas.php">Ir a mis rutinas</a>
+
 
 </body>
 </html>

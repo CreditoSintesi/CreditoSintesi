@@ -33,12 +33,12 @@ $resultado=mysqli_query($conexion, $sql);
 
 				if (mysqli_num_rows($resultado) != 0 ) {
 					while ($usuario = mysqli_fetch_array($resultado)) {
-							if ($usuario['estado_usuario'] == "inactivo") {
+							if ($usuario['estado_usuario'] == "Inactivo") {
 								echo "el usuario esta inactivo";
 
 								header("location : cuestionario.php?err=2");
 							}else{
-								header('location: main.php');
+								header('location: main_2.php');
 							}
 						}
 				}
