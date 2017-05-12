@@ -24,21 +24,21 @@ include 'includes/header_index.php';
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
+                <div class="fill" style="background-image:url('media/slider/1.jpg');"></div>
                 <div class="carousel-caption">
-                    <h2>Caption 1</h2>
+                    <h2>Haz ejercicio</h2>
                 </div>
             </div>
             <div class="item">
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
+                <div class="fill" style="background-image:url('media/slider/2.jpg');"></div>
                 <div class="carousel-caption">
-                    <h2>Caption 2</h2>
+                    <h2>Come sano</h2>
                 </div>
             </div>
             <div class="item">
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
+                <div class="fill" style="background-image:url('media/slider/3.jpg');"></div>
                 <div class="carousel-caption">
-                    <h2>Caption 3</h2>
+                    <h2>Obten resultados</h2>
                 </div>
             </div>
         </div>
@@ -76,8 +76,7 @@ include 'includes/header_index.php';
                 <div class="media">
                     <div class="pull-left">
                         <span class="fa-stack fa-2x">
-                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-car fa-stack-1x fa-inverse"></i>
+                               <img src="media/img/icon/peso.png" class="img-responsive img-circle" alt="" width="56px" height="56px">
                         </span> 
                     </div>
                     <div class="media-body">
@@ -88,8 +87,7 @@ include 'includes/header_index.php';
                 <div class="media">
                     <div class="pull-left">
                         <span class="fa-stack fa-2x">
-                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-support fa-stack-1x fa-inverse"></i>
+                               <img src="media/img/icon/dieta.png" class="img-responsive img-circle" alt="" width="56px" height="56px">
                         </span> 
                     </div>
                     <div class="media-body">
@@ -102,8 +100,7 @@ include 'includes/header_index.php';
                 <div class="media">
                     <div class="pull-left">
                         <span class="fa-stack fa-2x">
-                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-database fa-stack-1x fa-inverse"></i>
+                               <img src="media/img/icon/metas.png" class="img-responsive img-circle" alt="" width="56px" height="56px"></i>
                         </span> 
                     </div>
                     <div class="media-body">
@@ -114,8 +111,7 @@ include 'includes/header_index.php';
                 <div class="media">
                     <div class="pull-left">
                         <span class="fa-stack fa-2x">
-                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-bomb fa-stack-1x fa-inverse"></i>
+                              <img src="media/img/icon/servicio.png" class="img-responsive img-circle" alt="" width="56px" height="56px">
                         </span> 
                     </div>
                     <div class="media-body">
@@ -126,8 +122,7 @@ include 'includes/header_index.php';
                 <div class="media">
                     <div class="pull-left">
                         <span class="fa-stack fa-2x">
-                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-bank fa-stack-1x fa-inverse"></i>
+                              <img src="media/img/icon/resultados.png" class="img-responsive img-circle" alt="" width="56px" height="56px">
                         </span> 
                     </div>
                     <div class="media-body">
@@ -140,8 +135,7 @@ include 'includes/header_index.php';
                 <div class="media">
                     <div class="pull-left">
                         <span class="fa-stack fa-2x">
-                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-paper-plane fa-stack-1x fa-inverse"></i>
+                              <img src="media/img/icon/mesura.png" class="img-responsive img-circle" alt="" width="56px" height="56px">
                         </span> 
                     </div>
                     <div class="media-body">
@@ -152,8 +146,7 @@ include 'includes/header_index.php';
                 <div class="media">
                     <div class="pull-left">
                         <span class="fa-stack fa-2x">
-                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-space-shuttle fa-stack-1x fa-inverse"></i>
+                              <img src="media/img/icon/progreso.png" class="img-responsive img-circle" alt="" width="56px" height="56px">
                         </span> 
                     </div>
                     <div class="media-body">
@@ -164,8 +157,7 @@ include 'includes/header_index.php';
                 <div class="media">
                     <div class="pull-left">
                         <span class="fa-stack fa-2x">
-                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-recycle fa-stack-1x fa-inverse"></i>
+                              <img src="media/img/icon/free.png" class="img-responsive img-circle" alt="" width="56px" height="56px">
                         </span> 
                     </div>
                     <div class="media-body">
@@ -281,9 +273,6 @@ include 'includes/header_index.php';
 
 
 		
-		<a href="login.php">Logueate</a>
-		<a href="registro.php">Registrate</a>
-		<br><br>
 		
 
 

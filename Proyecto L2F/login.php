@@ -1,9 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>login usuarios</title>
-</head>
-<body>	<h1>login de usuario</h1>
+<?php 
+extract($_REQUEST);
+include 'includes/header_login.php';
+
+		if($err = null || ""){
+
+			$err=0;
+		}else{
+
+		}
+
+?>
+
 		<form action="login.proc.php" method="POST">
 
 				<input type="text" name="email_usuario" placeholder="Email usuario"><br>
@@ -13,5 +20,17 @@
 		</form>
 		
 
-</body>
-</html>
+<?php 
+
+		
+		if(isset($_POST['error'])){
+
+			//echo $_POST['error'];
+		}else if ($err == 1) {
+			echo "login incorrecto";
+		}
+		
+
+		include 'includes/footer_azul.php'
+
+		?>
