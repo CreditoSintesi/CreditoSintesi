@@ -10,27 +10,34 @@ include 'includes/header_login.php';
 		}
 
 ?>
+      
+	
+	<div class="container">
 
-		<form action="login.proc.php" method="POST">
+      <form class="form-signin" action="login.proc.php" method="POST" action="login.proc.php" method="POST">
+        <h2 class="form-signin-heading">Inicia sesión porfavor</h2>
+        <label for="inputEmail" class="sr-only">Email</label>
+        <input type="email" id="inputEmail" class="form-control"  name="email_usuario" placeholder="Email" required autofocus> 
+        <label for="inputPassword" class="sr-only">Contraseña</label>
+        <input type="password" id="inputPassword" class="form-control email" name="pass_usuario" placeholder="Contraseña" required> <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
+        Si no tienes cuenta <a href="registro.php">registrate</a><br>
+      </form>
 
-				<input type="text" name="email_usuario" placeholder="Email usuario"><br>
-				<input type="password" name="pass_usuario" placeholder="Contraseña"><br>
+    </div> <!-- /container -->
+	
 
-				<input type="submit" value="Login">
-		</form>
-		
+
 
 <?php 
 
 		
-		if(isset($_POST['error'])){
-
-			//echo $_POST['error'];
-		}else if ($err == 1) {
+		
+		if ($err == 1) {
 			echo "login incorrecto";
 		}
 		
 
-		include 'includes/footer_azul.php'
+		include 'includes/footer_azul.php';
 
 		?>
