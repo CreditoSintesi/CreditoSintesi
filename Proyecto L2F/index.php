@@ -278,15 +278,6 @@ include 'includes/header_index.php';
 
 		<?php 
 
-		
-		if(isset($_POST['error'])){
-
-			echo $_POST['error'];
-		}else if ($err == 1) {
-			echo "login incorrecto";
-		}
-		
-
 		include 'includes/footer_azul.php'
 
 		?>

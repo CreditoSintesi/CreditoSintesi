@@ -14,7 +14,7 @@ if($err = null || ""){
 <div class="container">
 
       <form class="form-signin" action="registro.proc.php" method="POST" action="registro.proc.php" method="POST">
-        <h2 class="form-signin-heading">Inicia sesión porfavor</h2>
+        <h2 class="form-signin-heading">Registrate </h2>
 
         <label for="inputUser" class="sr-only">Nombre usuario</label>
         <input type="user" id="inputUser" class="form-control"  name="nombre_usuario" placeholder="Nombre" required autofocus>
