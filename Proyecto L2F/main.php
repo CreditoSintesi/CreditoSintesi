@@ -2,6 +2,7 @@
 <?php 
     session_start(); //Iniciamos la sessión
      //Incluimos la conexion con la BBDD
+   
      require_once("conexio.php");
      //Consulta para obtener los datos del usuario
     $sql = "SELECT * FROM `tbl_usuario` WHERE `id_usuario` = ". $_SESSION['id_usuario'];

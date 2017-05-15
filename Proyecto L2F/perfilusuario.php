@@ -26,6 +26,19 @@
              $user_edad = date_diff($user_old,$date); //Comparamos las fechas
              $years = $user_edad->format('%y%'); //Cogemos la diferencia en años
       //End edad
+      //Para calcular el tiempo que el usuario lleva registrado
+             $user_init_date = date_create($user_init_date);//Cogemos la fecha en la que el usuario se registró
+             $actual_date = date('Y/m/d'); //Cogemos la fecha actual
+             $actual_date = date_create($actual_date);
+             $init_date = date_diff($user_init_date,$actual_date);
+
+            $total_month =  $init_date->format('%y%')*12+$init_date->format('%m%')." Meses";
+            
+            if($total_month == "0 Meses")
+            {
+              $total_month = $init_date->format('%d%')." Días";
+            }
+
       //Para calcular el peso
             $control = 0;
             $sql_height = "SELECT * FROM `tbl_historial_peso` WHERE `id_usuario` = ". $_SESSION['id_usuario']." ORDER BY `fecha_his_pes` LIMIT 0,3";
@@ -90,6 +103,9 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script type="text/javascript">
+      
+    </script>
   </head>
 
   <body>
@@ -150,8 +166,8 @@
                             <td><?php echo $user_mail; ?></td>
                           </tr>
                           <tr>
-                            <td>Días fitness</td>
-                            <td><?php echo $user_init_date; ?></td>
+                            <td>Tiempo</td>
+                            <td><?php echo $total_month; ?></td>
                           </tr>
                           <tr>
                             <td>Altura</td>
@@ -182,7 +198,7 @@
                <div class="col-sm-2">
                   <div class="panel panel-primary">
                       <div class="panel-heading">
-                        <h3 class="panel-title">Historial peso</h3>
+                        <h3 class="panel-title" onclick="display_element('pr_peso')">Historial peso</h3>
                       </div>
                      
                   </div>
@@ -190,7 +206,7 @@
                <div class="col-sm-2">
                   <div class="panel panel-primary">
                       <div class="panel-heading">
-                        <h3 class="panel-title">Historial medidas</h3>
+                        <h3 class="panel-title" onclick="display_element('pr_cuerpo')">Historial medidas</h3>
                       </div>
                       
                   </div>
@@ -211,7 +227,7 @@
                   </div>
                 </div>
                 <div class="col-sm-8">  
-                <table class="table table-striped">
+                <table class="table table-striped" id="pr_peso" name="pr_peso">
             <thead>
               <tr>
                 <th>Dia</th>
@@ -338,36 +354,43 @@
 
           <!-- PARTE CUERPO -->
             <div class="col-sm-8" id ="pr_cuerpo">  
-                  <table class="table table-striped">
+             <table class="table table-striped">
               <thead>
                 <tr>
                   <th>Día</th>
+                  <th>Brazo</th>
+                  <th>Antebrazo</th>
+                  <th>Pectoral</th>
+                  <th>Cintura</th>
+                  <th>Cadera</th>
+                  <th>Cuadricep</th>
+                  <th>Gemelo</th>
+                </tr>
+                <tr>
                   <?php 
+                  $control = 0;
+                  $fecha = 0;
                     $his_medidas_sql = "SELECT * FROM `tbl_parte_cuerpo` RIGHT JOIN `tbl_historial_medidas` ON `tbl_parte_cuerpo`.`id_parte_cuerpo` = `tbl_historial_medidas`.`id_parte_cuerpo` WHERE `id_usuario`= ".$_SESSION['id_usuario'];
                     $his_medidas_query = mysqli_query($conexion,$his_medidas_sql);
 
                     while($data_his_medidas = mysqli_fetch_array($his_medidas_query))
                     {
-                      echo "<th>".$data_his_medidas['nombre_parte_cuerpo']."</th>";
-                     //echo "<td>".$data_his_medidas['cm']."</td>";
+                      if($fecha !=$data_his_medidas['fecha_his_med'])
+                      {
+                        if($fecha!=0)
+                        {
+                          echo "</tr><tr>";
+                        }
+                        echo "<td>".$data_his_medidas['fecha_his_med']."</td>";
+                        $fecha = $data_his_medidas['fecha_his_med'];
+                      }
+                      echo "<td>".$data_his_medidas['cm']."</td>";
                     }
-                   
+
                   ?>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <?php /*
-                  echo "<td>"."Hola"."</td>";
-                  //echo $his_medidas_sql;
-                    while($data_his_medidas = mysqli_fetch_array($his_medidas_query))
-                    {
-                      echo "hola";
-                      echo "<td>".$data_his_medidas['cm']."</td>";
-                    }*/
-                  ?>    
-                </tr>
-              </tbody>
+
             </table>
             </div>
           <!-- END PARTE CUERPO -->
@@ -425,6 +448,24 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript">
+    function hidden_elements(){
+      document.getElementById('pr_cuerpo').style.display='none';
+      document.getElementById('pr_peso').style.display='none';
+      }
+    function display_element(table_id){
+      if(document.getElementById(table_id).style.display=='none')
+         {
+          document.getElementById(table_id).style.display='inline-table';
+         }
+      else
+      {
+         document.getElementById(table_id).style.display='none';
+      }
+      
+    }
+    window.onload(hidden_elements());
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="js/bootstrap.min.js"></script>
