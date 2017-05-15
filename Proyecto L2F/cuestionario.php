@@ -1,13 +1,9 @@
 <?php
 	session_start();
 	print_r($_SESSION);
+	include 'includes/header_login.php';
 
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>registro usuarios</title>
-</head>
 <script type="text/javascript">
 	function seleccionado (){
             var imagen = document.getElementsByName('id_tipo_cuerpo');
@@ -79,5 +75,9 @@
 		</form>
 		
 
-</body>
-</html>
+	<?php 
+		
+
+		include 'includes/footer_azul.php'
+
+		?>
