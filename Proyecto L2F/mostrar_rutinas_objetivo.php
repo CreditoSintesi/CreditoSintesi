@@ -8,9 +8,6 @@
 
 	include("conexio.php");
 
-
-
-
 	$consulta = "SELECT *
       FROM `tbl_rutina`
 INNER JOIN `tbl_objetivo`
@@ -27,21 +24,28 @@ INNER JOIN `tbl_usuario`
 			echo "<br><br>";
 
 			?>
-	<form action='asignar_rutina.proc.php.' method="POST" >
+	 <form name='form' action='./asignar_rutina.proc.php' method="POST" >
 
 	<?php
 
 
 			echo "Nombre Rutina : ".$fila['nombre_rutina']."<br>";
 			echo "Duración Rutina : ".$fila['duracion_rutina']." meses<br>";
-			echo "<input type='hidden' name='duracion_rutina' value='".$fila['duracion_rutina']."'>";
-			echo "<input type='hidden' name='id_rutina' value='".$fila['id_rutina']."'>";
+	?>
+
+			<input type='hidden' name='duracion_rutina' value='<?php echo $fila['duracion_rutina']; ?>'>
+			<input type='hidden' name='id_rutina' value=' <?php echo $fila['id_rutina'];?>'>
+	<?php
 			echo "Objetivo Rutina: : ".$fila['nombre_objetivo']."<br>";
-
+			// $id_rutina = $fila['id_rutina'];
+			// $duracion_rutina = $fila['duracion_rutina'];
+			// echo "<a href='asignar_rutina.proc.php?id_rutina=".$id_rutina."'>enviar</a>";
 			
-			echo "<button  >Asignarme esta rútina </button>";
-			echo "</form>";
-
+			?>
+			<!-- <button onclick="alerta()"> <?php //echo $fila['nombre_rutina']; ?> </button> -->
+			<input type="submit" name="enviar" value="enviar">
+			 </form> 
+			<?php
 		}
 
 	}

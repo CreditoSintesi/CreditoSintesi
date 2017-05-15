@@ -14,7 +14,7 @@ include 'includes/header_login.php';
 	
 	<div class="container">
 
-      <form class="form-signin" action="login.proc.php" method="POST" action="login.proc.php" method="POST">
+      <form class="form-signin" action="login.proc.php" method="POST" action="login.proc.php">
         <h2 class="form-signin-heading">Inicia sesión porfavor</h2>
         <label for="inputEmail" class="sr-only">Email</label>
         <input type="email" id="inputEmail" class="form-control"  name="email_usuario" placeholder="Email" required autofocus> 
