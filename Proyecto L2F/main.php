@@ -15,7 +15,7 @@
 					location.href='cuestionario.php?err=2';</script>";
              		
              	}
-             	if($data['estado_usuario']=="Dado de baja")
+             	else if($data['estado_usuario']=="Dado de baja")
              	{echo "<script type='text/javascript'>alert('¡Ep!¡Nos habías abandonado anteriormente!');
 					location.href='index.php?err=2';</script>";
              	}

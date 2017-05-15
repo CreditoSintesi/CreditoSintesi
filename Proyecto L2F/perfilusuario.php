@@ -27,13 +27,13 @@
              $years = $user_edad->format('%y%'); //Cogemos la diferencia en años
       //End edad
       //Para calcular el peso
-             $cpeso = 0;
+            $control = 0;
             $sql_height = "SELECT * FROM `tbl_historial_peso` WHERE `id_usuario` = ". $_SESSION['id_usuario']." ORDER BY `fecha_his_pes` LIMIT 0,3";
             //Lanzamos la consulta a la BBDD
             $height_query = mysqli_query($conexion,$sql_height);
             while($data_height = mysqli_fetch_array($height_query))
             {
-              switch ($cpeso) {
+              switch ($control) {
                 case '0':
                    $hdata1 = $data_height['fecha_his_pes'];
                    $height1 = $data_height['peso'];
@@ -51,7 +51,7 @@
                 break;
 
               }
-               $cpeso++;
+               $control++;
             }
             
  ?>
@@ -168,6 +168,11 @@
                           <tr>
                             <td>Edad</td>
                             <td><?php echo $years; ?></td>
+                          </tr>
+                          <tr>
+                            <td colspan="2">
+                                <button class = "btn btn-primary" data-toggle="modal" data-target="#dataUser">Editar información</button>
+                            </td>
                           </tr>
                         </table>
                     </div>
@@ -330,10 +335,67 @@
             </tbody>
           </table>
           </div>
+
+          <!-- PARTE CUERPO -->
+            <div class="col-sm-8" id ="pr_cuerpo">  
+                  <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Día</th>
+                  <?php 
+                    $his_medidas_sql = "SELECT * FROM `tbl_parte_cuerpo` RIGHT JOIN `tbl_historial_medidas` ON `tbl_parte_cuerpo`.`id_parte_cuerpo` = `tbl_historial_medidas`.`id_parte_cuerpo` WHERE `id_usuario`= ".$_SESSION['id_usuario'];
+                    $his_medidas_query = mysqli_query($conexion,$his_medidas_sql);
+
+                    while($data_his_medidas = mysqli_fetch_array($his_medidas_query))
+                    {
+                      echo "<th>".$data_his_medidas['nombre_parte_cuerpo']."</th>";
+                     //echo "<td>".$data_his_medidas['cm']."</td>";
+                    }
+                   
+                  ?>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <?php /*
+                  echo "<td>"."Hola"."</td>";
+                  //echo $his_medidas_sql;
+                    while($data_his_medidas = mysqli_fetch_array($his_medidas_query))
+                    {
+                      echo "hola";
+                      echo "<td>".$data_his_medidas['cm']."</td>";
+                    }*/
+                  ?>    
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          <!-- END PARTE CUERPO -->
                    <!--- row --> 
 
 
-                </div> 
+                </div>
+                <!-- Ventana Modal -->
+                    <div id="dataUser" class="modal fade" role="dialog">
+                      <div class="modal-dialog">
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Cambiar datos</h4>
+                        </div>
+                        <div class="modal-body">
+                          <?php 
+                            require_once("include/ch_user_data.php");
+                           ?>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
              
 
    <footer>
