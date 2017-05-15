@@ -270,12 +270,6 @@ include 'includes/header_index.php';
 
       <hr>
 
-
-
-		
-		
-
-
 <?php 
 		include 'includes/footer_azul.php'
 ?>
