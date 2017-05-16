@@ -2,13 +2,12 @@
 extract($_REQUEST);
 include 'includes/header_login.php';
 
-		if($err = null || ""){
+		if($err = null){
 
 			$err=0;
-		}else{
-
 		}
 
+		
 ?>
       
 	
@@ -24,7 +23,7 @@ include 'includes/header_login.php';
         Si no tienes cuenta <a href="registro.php">registrate</a><br>
       </form>
 
-    </div> <!-- /container -->
+   
 	
 
 
@@ -34,10 +33,13 @@ include 'includes/header_login.php';
 		
 		
 		if ($err == 1) {
+			
+			
 			echo "login incorrecto";
+			echo "</div> <!-- /container -->";
 		}
 		
-
+		 echo " </div> <!-- /container --> ";
 		include 'includes/footer_azul.php';
 
 		?>
