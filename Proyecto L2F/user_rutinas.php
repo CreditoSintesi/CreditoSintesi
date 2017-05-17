@@ -98,7 +98,9 @@ if(mysqli_num_rows($resultado)>0){
 
 			echo " <div id=boton onclick='mostrarInfo(".$fila['id_rutina'].")'> Detalle rutina </div> <div id='flecha' onclick='esconder()'>↑</div>";
 			echo "<p id='datos'></p>";
-			echo "<div  id='empezar' > Empezar rutina </div>";
+
+			//aqui vendrá la consulta en la cual se mirará que en la tbl_historial_rutina no esté el id_usuario, id_rutina y la fecha actual para evitar que vuelva a hacer ejercicio hoy. se le mandará un alert o algo... 
+			echo "<div  id='empezar' ><a href='rutina_diaria.php?id_rutina=".$fila['id_rutina']."'> Empezar rutina </a></div>";
 		}
 	}
 }else{
