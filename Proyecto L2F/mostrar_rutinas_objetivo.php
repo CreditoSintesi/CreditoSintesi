@@ -24,7 +24,7 @@ INNER JOIN `tbl_usuario`
 			echo "<br><br>";
 
 			?>
-	 <form name='form' action='./asignar_rutina.proc.php' method="POST" >
+	 <form name='form' action='asignar_rutina.proc.php' method="POST" >
 
 	<?php
 
@@ -34,7 +34,7 @@ INNER JOIN `tbl_usuario`
 	?>
 
 			<input type='hidden' name='duracion_rutina' value='<?php echo $fila['duracion_rutina']; ?>'>
-			<input type='hidden' name='id_rutina' value=' <?php echo $fila['id_rutina'];?>'>
+			<input type='hidden' name='id_rutina' value='<?php echo $fila['id_rutina'];?>'>
 	<?php
 			echo "Objetivo Rutina: : ".$fila['nombre_objetivo']."<br>";
 			// $id_rutina = $fila['id_rutina'];
