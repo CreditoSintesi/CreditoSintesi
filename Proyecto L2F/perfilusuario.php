@@ -41,7 +41,7 @@
 
       //Para calcular el peso
             $control = 0;
-            $sql_height = "SELECT * FROM `tbl_historial_peso` WHERE `id_usuario` = ". $_SESSION['id_usuario']." ORDER BY `fecha_his_pes` LIMIT 0,3";
+            $sql_height = "SELECT * FROM `tbl_historial_peso` WHERE `id_usuario` = ". $_SESSION['id_usuario']." ORDER BY `fecha_his_pes` DESC LIMIT 0,3";
             //Lanzamos la consulta a la BBDD
             $height_query = mysqli_query($conexion,$sql_height);
             while($data_height = mysqli_fetch_array($height_query))
@@ -214,7 +214,7 @@
                   <div class="col-sm-2">
                   <div class="panel panel-primary">
                       <div class="panel-heading">
-                        <h3 class="panel-title">Panel title</h3>
+                        <h3 class="panel-title" onclick="display_element('sh_peso')">¡Pésate!</h3>
                       </div>
                   </div>
                </div>
@@ -393,6 +393,32 @@
 
             </table>
             </div>
+
+            <div class="col-sm-8" id ="sh_peso" name="sh_peso">
+            <form action="proc/add_peso.proc.php" method="POST">
+               <table class="table table-striped" border>
+                <thead>
+                  <tr>
+                    <th colspan="4">Añadir peso</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td >Ingrese su peso</td>
+                    <td colspan="2"><input type="number" id="height" name="height" value="<?php echo $height1; ?>"></td>
+                    <td>KG</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><p class="btn btn-info" onclick="add_height()">+</p></td>
+                    <td colspan="2"><p class="btn btn-info" onclick="rest_height()">-</p></td>
+                  </tr>
+                  <tr>
+                    <td><input type="submit" value="Enviar"/></td>
+                  </tr>
+                </tbody>
+              </table>
+            </form>
+          </div>
           <!-- END PARTE CUERPO -->
                    <!--- row --> 
 
@@ -409,7 +435,7 @@
                         </div>
                         <div class="modal-body">
                           <?php 
-                            require_once("include/ch_user_data.php");
+                            require_once("includes/ch_user_data.php");
                            ?>
                         </div>
                         <div class="modal-footer">
@@ -461,6 +487,27 @@
       else
       {
          document.getElementById(table_id).style.display='none';
+      }
+      
+    }
+    function add_height()
+    {
+      var height = document.getElementById('height').value;
+      height++;
+      document.getElementById('height').value=height;
+      
+    }
+     function rest_height()
+    {
+      var height = document.getElementById('height').value;
+      height--;
+      if(height>0)
+      {
+        document.getElementById('height').value=height;
+      }
+      else
+      {
+        document.getElementById('height').value=0;
       }
       
     }
