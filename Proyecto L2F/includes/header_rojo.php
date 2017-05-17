@@ -1,3 +1,6 @@
+<?
+include('includes/comprobar_usuario.php');
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -18,7 +21,7 @@
     <!--<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/bootstrapAzul.css" rel="stylesheet">
+    <link href="css/bootstrapRojo.css" rel="stylesheet">
     <!--<link href="css/bootstrap-theme.Azul.css" rel="stylesheet">-->
       <link href="css/modern-business.css" rel="stylesheet">
 
@@ -46,7 +49,7 @@
             <span class="icon-bar"></span>
           </button>
 
-          <a class="navbar-brand-left" href="#" ><img src="media/logo/logoAzul.png" width="42px" height="42px"' style="margin: 5px 5px 5px 5px;" ></a>
+          <a class="navbar-brand-left" href="#" ><img src="media/logo/logoRojo.png" width="42px" height="42px"' style="margin: 5px 5px 5px 5px;" ></a>
         </div>       
         <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -54,8 +57,7 @@
                         <a href="main.php">Bienvenido, <?php echo $user_name; ?></a>
                     </li>
                     <li>
-                      
-                         <?php echo "<a href='perfilusuario.php?id=".$_SESSION['id_usuario']."'> Perfil </a>"; ?>
+                        <a href="#">Perfil</a>
                     </li>
                     <li>
                         <a href="#">Rutinas</a>
@@ -64,7 +66,7 @@
                         <a href="#">Dietas</a>
                     </li>
                     <li>
-                        <a href="logout.proc.php">Cerrar Sesion  <img src="media/img/icon/logout.png" width="20px" height="20px" onmouseover="this.src='media/img/icon/logout2.png';" onmouseout="this.src='media/img/icon/logout.png';"></a>
+                        <a href="logout.proc.php">Cerrar Sesion  <img src="media/img/icon/logout.png" width="20px" height="20px" onmouseover="this.src='media/img/icon/logout3.png';" onmouseout="this.src='media/img/icon/logout.png';"></a>
                     </li>
                    </ul> 
         </div>

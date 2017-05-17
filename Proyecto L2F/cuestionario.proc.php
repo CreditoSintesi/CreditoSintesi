@@ -21,6 +21,6 @@
 
 	mysqli_close($conexion);
 
-	header("location: main.php);
+	header("location: main.php");
 
 ?>

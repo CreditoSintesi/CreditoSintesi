@@ -1,14 +1,30 @@
 <?php
 session_start();
 include_once('conexio.php');
+
 $id_usuario = $_SESSION['id_usuario'];
+ $sql = "SELECT * FROM `tbl_usuario` WHERE `id_usuario` = ". $_SESSION['id_usuario'];
+
+    $data_user=mysqli_query($conexion,$sql);
+        while($data = mysqli_fetch_array($data_user))
+             {
+             	if($data['estado_usuario']=="Inactivo")
+             	{
+             		echo "<script type='text/javascript'>alert('¡Ep!¡No has rellenado el cuestionario, nos hacen falta los datos para poder ayudarte a conseguir tus objetivos!');
+					location.href='cuestionario.php?err=2';</script>";
+             		
+             	}
+             	else if($data['estado_usuario']=="Dado de baja")
+             	{echo "<script type='text/javascript'>alert('¡Ep!¡Nos habías abandonado anteriormente!');
+					location.href='index.php?err=2';</script>";
+             	}
+             	 
+                $user_name = $data['nombre_usuario'] ." ". $data['apellidos_usuario'];
+             }
+      require_once("includes/header_rojo.php");
+
 extract($_REQUEST);
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>registro usuarios</title>
-</head>
 <style type="text/css">
 	#boton{
   font-size: 1.5em;
@@ -78,6 +94,7 @@ function esconder(){
 
 
 <body>
+<div class="container">
 <h1>MIS RUTINAS</h1>
 <?php
 $fecha_actual = date('Y-m-d');
@@ -98,7 +115,9 @@ if(mysqli_num_rows($resultado)>0){
 
 			echo " <div id=boton onclick='mostrarInfo(".$fila['id_rutina'].")'> Detalle rutina </div> <div id='flecha' onclick='esconder()'>↑</div>";
 			echo "<p id='datos'></p>";
-			echo "<div  id='empezar' > Empezar rutina </div>";
+
+			//aqui vendrá la consulta en la cual se mirará que en la tbl_historial_rutina no esté el id_usuario, id_rutina y la fecha actual para evitar que vuelva a hacer ejercicio hoy. se le mandará un alert o algo... 
+			echo "<div  id='empezar' ><a href='rutina_diaria.php?id_rutina=".$fila['id_rutina']."'> Empezar rutina </a></div>";
 		}
 	}
 }else{
@@ -109,11 +128,13 @@ if(mysqli_num_rows($resultado)>0){
 
 <h1>Rutinas disponibles para: <?php echo $_SESSION['nombre_usuario']?> </h1>
 <?php
+
 include('mostrar_rutinas_objetivo.php');
-echo $aux;
+//echo $aux;
+echo '</div>';
 }
+
+include('includes/footer_rojo.php');
 ?>
 
 
-</body>
-</html>
