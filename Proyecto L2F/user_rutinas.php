@@ -3,12 +3,8 @@ session_start();
 include_once('conexio.php');
 $id_usuario = $_SESSION['id_usuario'];
 extract($_REQUEST);
+include('includes/header_rojo.php');
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>registro usuarios</title>
-</head>
 <style type="text/css">
 	#boton{
   font-size: 1.5em;
@@ -112,10 +108,10 @@ if(mysqli_num_rows($resultado)>0){
 <h1>Rutinas disponibles para: <?php echo $_SESSION['nombre_usuario']?> </h1>
 <?php
 include('mostrar_rutinas_objetivo.php');
-echo $aux;
+//echo $aux;
 }
+
+include('includes/footer_rojo.php');
 ?>
 
 
-</body>
-</html>

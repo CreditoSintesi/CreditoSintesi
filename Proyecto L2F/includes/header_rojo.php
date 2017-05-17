@@ -1,3 +1,6 @@
+<?
+include('includes/comprobar_usuario.php');
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
