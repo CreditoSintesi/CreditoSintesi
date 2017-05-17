@@ -9,6 +9,73 @@ extract($_REQUEST);
 <head>
 	<title>registro usuarios</title>
 </head>
+<style type="text/css">
+	#boton{
+  font-size: 1.5em;
+  padding: 20px;
+  border-width: thin medium thick 30px;
+  border-color: blue;
+  border-style: solid;
+  color: black;
+  width: 15%;
+  }
+  #flecha{
+  font-size: 1.5em;
+  padding: 1px;
+  border-color: blue;
+   border-style: solid;
+  color: black;
+  width: 5%;
+  }
+  #empezar{
+  	 font-size: 1.5em;
+	  padding: 20px;
+	  border-width: thin medium thick 30px;
+	  border-color: blue;
+	  border-style: solid;
+	  color: black;
+	  width: 15%;
+  }
+
+
+</style>
+
+<script type="text/javascript">
+	
+function mostrarInfo(id_rutina){
+
+if (window.XMLHttpRequest)
+{// code for IE7+, Firefox, Chrome, Opera, Safari
+xmlhttp=new XMLHttpRequest();
+}
+else
+{// code for IE6, IE5
+xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+}
+xmlhttp.onreadystatechange=function()
+{
+if (xmlhttp.readyState==4 && xmlhttp.status==200)
+{
+document.getElementById("datos").style.display='block';
+document.getElementById("datos").innerHTML=xmlhttp.responseText;
+
+}else{ 
+//document.getElementById("datos").innerHTML='Cargando...';
+}
+}
+xmlhttp.open("POST","ajax_ejer_rutinas.php",true);
+xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+xmlhttp.send("$id_rutina="+id_rutina);
+
+}
+
+function esconder(){
+	document.getElementById("datos").style.display='none';
+}
+
+</script>
+
+
 
 <body>
 <h1>MIS RUTINAS</h1>
@@ -27,9 +94,11 @@ if(mysqli_num_rows($resultado)>0){
 
 		while($fila = mysqli_fetch_array($resultado)){
 			echo "Esta es tu rutina: ";
-			echo $fila['nombre_rutina'];	
+			echo $fila['nombre_rutina']."<br><br>";	
 
-
+			echo " <div id=boton onclick='mostrarInfo(".$fila['id_rutina'].")'> Detalle rutina </div> <div id='flecha' onclick='esconder()'>↑</div>";
+			echo "<p id='datos'></p>";
+			echo "<div  id='empezar' > Empezar rutina </div>";
 		}
 	}
 }else{
@@ -37,11 +106,7 @@ if(mysqli_num_rows($resultado)>0){
 
 
 ?>
-<script type="text/javascript">
-	function alerta(nombre_rutina) {
-		alert(nombre_rutina);
-	}
-</script>
+
 <h1>Rutinas disponibles para: <?php echo $_SESSION['nombre_usuario']?> </h1>
 <?php
 include('mostrar_rutinas_objetivo.php');

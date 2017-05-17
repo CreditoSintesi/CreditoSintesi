@@ -49,7 +49,7 @@
         <input type="user" id="inputApellidos" class="form-control"  name="apellidos_usuario" placeholder="Apellidos" required autofocus>
 
         <input type="date" id="inputFecha" class="form-control"  name="fecha_nacimiento" placeholder="Fecha de nacimiento" required max="2003-12-31" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" title="Fecha de nacimiento">           
-		<input type="user" id="inputAltura" class="form-control"  name="altura_usuario" placeholder="Altura (Cm)" required>
+		
 
 		<input type="user" id="inputPeso" class="form-control"  name="peso_usuario" placeholder="Peso (Kg)" required>
 			
@@ -70,7 +70,7 @@
 				<option value="">Cual es tu objetivo ?</option>
 				<?php include('select_dinamico_bd.php') ?>	
 				</select>
-				<input type="user" id="inputAltura" class="form-control"  name="altura_usuario" placeholder="Con que tipo de cuerpo te identificas?" readonly>
+				<input type="user" id="inputAltura" class="form-control" placeholder="Con que tipo de cuerpo te identificas?" readonly>
 			
 				<div class="row">
 					<div class="col-xs-4">
