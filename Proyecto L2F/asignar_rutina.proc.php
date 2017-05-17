@@ -15,6 +15,6 @@
 
 	$resultado=mysqli_query($conexion, $sql);
 
-	// header('location: user_rutinas.php');
+	header('location: user_rutinas.php');
 	
 ?>

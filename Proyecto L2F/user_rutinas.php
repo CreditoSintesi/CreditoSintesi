@@ -94,6 +94,7 @@ function esconder(){
 
 
 <body>
+<div class="container">
 <h1>MIS RUTINAS</h1>
 <?php
 $fecha_actual = date('Y-m-d');
@@ -127,8 +128,10 @@ if(mysqli_num_rows($resultado)>0){
 
 <h1>Rutinas disponibles para: <?php echo $_SESSION['nombre_usuario']?> </h1>
 <?php
+
 include('mostrar_rutinas_objetivo.php');
 //echo $aux;
+echo '</div>';
 }
 
 include('includes/footer_rojo.php');
