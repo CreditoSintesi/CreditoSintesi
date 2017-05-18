@@ -40,7 +40,7 @@ $resultado=mysqli_query($conexion, $sql);
 								header('location: cuestionario.php');
 
 							}else{
-								header('location: main_2.php');
+								header('location: main.php');
 							}
 						}
 				}
@@ -50,6 +50,6 @@ $resultado=mysqli_query($conexion, $sql);
 			}
 		}
 	} else {
-		header('location: index.php?err=1');
+		header('location: login.php?err=1');
 	}                      
 ?>

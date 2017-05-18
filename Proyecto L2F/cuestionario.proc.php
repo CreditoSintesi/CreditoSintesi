@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	extract($_REQUEST);
-
+	echo $altura_usuario;
 	include("conexio.php");
 	$id_usuario = $_SESSION['id_usuario']; 
 	//primero hay que actualizar la tbl_usuario where id_usuario = $id_usuario;
@@ -21,6 +21,6 @@
 
 	mysqli_close($conexion);
 
-	//header("location main.php?usuario=activo");
+	header("location: main.php");
 
 ?>
