@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	//print_r($_SESSION);
-	include 'includes/header_login.php';
+	include 'includes/header_cuestionario.php';
 
 ?>
 <script type="text/javascript">
@@ -74,13 +74,13 @@
 			
 				<div class="row">
 					<div class="col-xs-4">
-						<img src="media/img/tipocuerpo/mesomorfo.png" height="100px" width="100px"name="cuerpo">
+						<img src="media/img/tipocuerpo/mesomorfo.png" height="150px" width="100px"name="cuerpo">
 					</div>
 					<div class="col-xs-4">
-						<img src="media/img/tipocuerpo/ectomorfo.png" height="100px" width="100px" name="cuerpo">
+						<img src="media/img/tipocuerpo/ectomorfo.png" height="150px" width="100px" name="cuerpo">
 					</div>
 					<div class="col-xs-4">			
-						<img src="media/img/tipocuerpo/endomorfo.png" height="100px" width="100px" name="cuerpo">
+						<img src="media/img/tipocuerpo/endomorfo.png" height="150px" width="100px" name="cuerpo">
 					</div>
 				</div>
 					<div class="col-xs-4 text-center">

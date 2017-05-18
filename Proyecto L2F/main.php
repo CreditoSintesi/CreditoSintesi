@@ -43,7 +43,7 @@
                 </div>
             </div>
             </a>
-            <?php echo "<a href='user_rutina?id=".$_SESSION['id_usuario']."'>"; ?>
+            <?php echo "<a href='user_rutinas.php?id=".$_SESSION['id_usuario']."'>"; ?>
             <div class="col-md-3 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
@@ -90,7 +90,7 @@
                     <div class="panel-body">
                         <h4>Servicios</h4>
                         <p>La personalización acelera los resultados<br/>
-                        ¡Contrata a nuestros especialistas!</p><br>
+                        ¡Contrata a nuestros especialistas!</p>
                         <a href="#" class="btn btn-primary">Learn More</a>
                     </div>
                 </div>

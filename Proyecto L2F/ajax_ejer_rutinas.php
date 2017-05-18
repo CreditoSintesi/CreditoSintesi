@@ -9,26 +9,38 @@ $consulta = "SELECT DISTINCT * FROM tbl_rutina, tbl_objetivo WHERE tbl_rutina.id
 	if(mysqli_num_rows($resultado)>0){
 
 		while($fila = mysqli_fetch_array($resultado)){
-			echo "Duracion rutina   : ".$fila['duracion_rutina']."  --   Objetivo:   ".$fila['nombre_objetivo']."<br><br><br>";
 		
 
-			
+		?>	
+		<div class='container'>
+		<div class='col-md-10'><br>
+		<?php
+			//echo "Duracion rutina   : ".$fila['duracion_rutina']."  --   Objetivo:   ".$fila['nombre_objetivo']."<br><br><br>";
+				
 		}
 	}
 
 
-$sql = "SELECT DISTINCT * FROM tbl_rutina, tbl_objetivo, tbl_rutina_ejer, tbl_ejercicio WHERE tbl_rutina.id_rutina= $id_rutina AND tbl_rutina.id_rutina = tbl_rutina_ejer.id_rutina AND tbl_rutina_ejer.id_ejercicio = tbl_ejercicio.id_ejercicio AND tbl_rutina.id_objetivo = tbl_objetivo.id_objetivo";
+$sql = "SELECT DISTINCT * FROM tbl_rutina, tbl_objetivo, tbl_rutina_ejer, tbl_ejercicio WHERE tbl_rutina.id_rutina= $id_rutina AND tbl_rutina.id_rutina = tbl_rutina_ejer.id_rutina AND tbl_rutina_ejer.id_ejercicio = tbl_ejercicio.id_ejercicio AND tbl_rutina.id_objetivo = tbl_objetivo.id_objetivo order by tbl_rutina_ejer.num_dia ";
 
 	//echo $sql ."<br><br><br><br>";
 	$resultado = mysqli_query($conexion, $sql) or die (mysqli_error());	
 	if(mysqli_num_rows($resultado)>0){
 
 		while($fila = mysqli_fetch_array($resultado)){
-			echo "Nombre ejercicio : ".$fila['nombre_ejercicio']."<br>";
+			?>
+	      <div class="col-md-3">
+          <div class="panel panel-danger">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+			<?php
+			echo $fila['nombre_ejercicio']."</h3> </div>
+            <div class='panel-body'>";
 			echo "Series : ".$fila['series']."<br>";
 			echo "repeticiones: ".$fila['repeticiones']."<br>";
-			echo "Dia de la rutina: ".$fila['num_dia']."<br><br><br>";
+			echo "Dia de la rutina: ".$fila['num_dia']." </div> </div> </div>";
 			
 		}
 	}
+
 ?>

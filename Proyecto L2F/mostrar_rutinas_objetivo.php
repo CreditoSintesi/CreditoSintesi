@@ -45,17 +45,20 @@ INNER JOIN `tbl_usuario`
 			<input type='hidden' name='duracion_rutina' value='<?php echo $fila['duracion_rutina']; ?>'>
 			<input type='hidden' name='id_rutina' value='<?php echo $fila['id_rutina'];?>'>
 	<?php
-			echo "Objetivo Rutina: : ".$fila['nombre_objetivo']."";
+			echo "Objetivo Rutina: : ".$fila['nombre_objetivo'].""; 
 			// $id_rutina = $fila['id_rutina'];
 			// $duracion_rutina = $fila['duracion_rutina'];
 			// echo "<a href='asignar_rutina.proc.php?id_rutina=".$id_rutina."'>enviar</a>";
 			
 			?>
 			<!-- <button onclick="alerta()"> <?php //echo $fila['nombre_rutina']; ?> </button> -->
-			<input type="submit" class="btn btn-primary" name="enviar" value="enviar">
+			
+		
+			
+			<br><a href="#"  onclick="$(this).closest('form').submit()" type="submit" class="btn btn-primary text-center" name="enviar" value="Apuntate!">Apuntate!</a>
+			 </div>
+			 </div>
 			 </form> 
-			</div>
-        </div>
      </div> 
 			<?php
 		}
