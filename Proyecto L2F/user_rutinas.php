@@ -96,7 +96,16 @@ if(mysqli_num_rows($resultado)>0){
 <?php			echo "<div id='datos'></div>";
 
 			//aqui vendrá la consulta en la cual se mirará que en la tbl_historial_rutina no esté el id_usuario, id_rutina y la fecha actual para evitar que vuelva a hacer ejercicio hoy. se le mandará un alert o algo... 
+
+			$fecha_actual = date('Y-m-d');
+			$sql = "SELECT * FROM tbl_historial_rutinas WHERE id_usuario = $id_usuario AND id_rutina= $id_rutina AND fecha = '$fecha_actual' ";
+
+			if(mysqli_num_rows($resultado)>0){
+				echo "<div class='panel-primary panel-heading' style='background-color: grey; color: white;'>Empezar rutina</div></div>";
+			
+		}else{
 			echo "<a href='rutina_diaria.php?id_rutina=".$fila['id_rutina']."'> <div class='panel-primary panel-heading' style='background-color: #F00808; color: white;'>Empezar rutina</div></a></div>";
+		}
 
 		}
 	}
