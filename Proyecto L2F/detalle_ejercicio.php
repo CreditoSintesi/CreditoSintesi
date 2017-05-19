@@ -63,7 +63,7 @@ include_once('includes/header_rojo.php')
 			echo "Series : ".$fila['series']."<br>";
 			echo "Repeticiones: ".$fila['repeticiones']."<br>";
 			// echo "Foto Imagen: ".$fila['img_ejercicio']."<br>";
-			echo "Descripción: ".$fila['descripcion_ejercicio']."</div> </div> </div>";
+			echo "Descripción: ".$fila['descripcion_ejercicio']."</div> </div> </div></div>";
 			// echo "Dia de la rutina: ".$fila['num_dia']."<br>";
 			echo " <button onclick='atras();'>Volver atras</button> ";
 		}
