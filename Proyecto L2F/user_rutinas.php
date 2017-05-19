@@ -77,7 +77,7 @@ $resultado = mysqli_query($conexion, $sql) or die (mysqli_error());
 //si el usuario tiene asignada alguna rutina habrá datos
 if(mysqli_num_rows($resultado)>0){
 	// echo "esta el usuario";
-	$sql2 = "SELECT DISTINCT * FROM tbl_rutina_usuario , tbl_rutina, tbl_usuario WHERE tbl_rutina.id_rutina = tbl_rutina_usuario.id_rutina  AND tbl_usuario.id_usuario = tbl_rutina_usuario.id_usuario AND fecha_fin > $fecha_actual GROUP BY tbl_rutina.nombre_rutina ";
+	$sql2 = "SELECT DISTINCT * FROM tbl_rutina_usuario , tbl_rutina, tbl_usuario WHERE tbl_rutina.id_rutina = tbl_rutina_usuario.id_rutina  AND tbl_usuario.id_usuario = tbl_rutina_usuario.id_usuario AND fecha_fin <= '$fecha_actual' GROUP BY tbl_rutina.nombre_rutina ";
 
 	//cho $sql2 ."<br>";
 	$resultado = mysqli_query($conexion, $sql2) or die (mysqli_error());
@@ -114,8 +114,16 @@ if(mysqli_num_rows($resultado)>0){
 				echo "<a href='rutina_diaria.php?id_rutina=".$id_rutina."'> <div class='panel-primary panel-heading' style='background-color: #F00808; color: white;'>Empezar rutina</div></a></div>";
 			}
 
+			echo "<form action='finalizar_rutina.proc.php'>";
+			echo "<input type='hidden' name='id_rutina' value='".$id_rutina."'> ";
+			echo "<input type='submit' class='btn btn-primary' value='Finalizar Rutina'>";
+			echo "</form>";
+		}else{
+			echo"Selecciona una nueva Rutina o cambia tu objetivo desde tu perfil para nuevas rutinas";
+			include('mostrar_rutinas_objetivo.php');
+			//echo $aux;
+			echo '</div>';
 		}
-	
 }else{
 
 //aqui es cuando el usuario no tiene ninguna rutina asignada y tiene que elegir una.
@@ -129,6 +137,7 @@ include('mostrar_rutinas_objetivo.php');
 //echo $aux;
 echo '</div>';
 }
+
 
 include('includes/footer_rojo.php');
 ?>
