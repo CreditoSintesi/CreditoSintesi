@@ -1,48 +1,36 @@
 <?php
 session_start();
 include_once('conexio.php');
+
 $id_usuario = $_SESSION['id_usuario'];
+ $sql = "SELECT * FROM `tbl_usuario` WHERE `id_usuario` = ". $_SESSION['id_usuario'];
+
+    $data_user=mysqli_query($conexion,$sql);
+        while($data = mysqli_fetch_array($data_user))
+             {
+             	if($data['estado_usuario']=="Inactivo")
+             	{
+             		echo "<script type='text/javascript'>alert('¡Ep!¡No has rellenado el cuestionario, nos hacen falta los datos para poder ayudarte a conseguir tus objetivos!');
+					location.href='cuestionario.php?err=2';</script>";
+             		
+             	}
+             	else if($data['estado_usuario']=="Dado de baja")
+             	{echo "<script type='text/javascript'>alert('¡Ep!¡Nos habías abandonado anteriormente!');
+					location.href='index.php?err=2';</script>";
+             	}
+             	 
+                $user_name = $data['nombre_usuario'] ." ". $data['apellidos_usuario'];
+             }
+      require_once("includes/header_rojo.php");
+
 extract($_REQUEST);
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>registro usuarios</title>
-</head>
-<style type="text/css">
-	#boton{
-  font-size: 1.5em;
-  padding: 20px;
-  border-width: thin medium thick 30px;
-  border-color: blue;
-  border-style: solid;
-  color: black;
-  width: 15%;
-  }
-  #flecha{
-  font-size: 1.5em;
-  padding: 1px;
-  border-color: blue;
-   border-style: solid;
-  color: black;
-  width: 5%;
-  }
-  #empezar{
-  	 font-size: 1.5em;
-	  padding: 20px;
-	  border-width: thin medium thick 30px;
-	  border-color: blue;
-	  border-style: solid;
-	  color: black;
-	  width: 15%;
-  }
-
-
-</style>
 
 <script type="text/javascript">
 	
 function mostrarInfo(id_rutina){
+
+    
 
 if (window.XMLHttpRequest)
 {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -67,6 +55,7 @@ xmlhttp.open("POST","ajax_ejer_rutinas.php",true);
 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 xmlhttp.send("$id_rutina="+id_rutina);
 
+
 }
 
 function esconder(){
@@ -78,6 +67,7 @@ function esconder(){
 
 
 <body>
+<div class="container">
 <h1>MIS RUTINAS</h1>
 <?php
 $fecha_actual = date('Y-m-d');
@@ -93,14 +83,21 @@ if(mysqli_num_rows($resultado)>0){
 	if(mysqli_num_rows($resultado)>0){
 
 		while($fila = mysqli_fetch_array($resultado)){
-			echo "Esta es tu rutina: ";
-			echo $fila['nombre_rutina']."<br><br>";	
+?>
 
-			echo " <div id=boton onclick='mostrarInfo(".$fila['id_rutina'].")'> Detalle rutina </div> <div id='flecha' onclick='esconder()'>↑</div>";
-			echo "<p id='datos'></p>";
+      <div class="col-sm-11">
+        <div class="panel panel-primary">
+<?php
+			echo "<h4>".$fila['nombre_rutina']."</h4>";	
+
+			echo " <div class='panel-primary panel-heading' onclick='mostrarInfo(".$fila['id_rutina'].")'> Detalle rutina </div>";
+            ?>
+                 <div class="panel-primary alert-danger text-center" id='flecha' onclick='esconder()'><img id='up' src='media/img/icon/up.png' height="50" width="50" ></div>
+<?php			echo "<div id='datos'></div>";
 
 			//aqui vendrá la consulta en la cual se mirará que en la tbl_historial_rutina no esté el id_usuario, id_rutina y la fecha actual para evitar que vuelva a hacer ejercicio hoy. se le mandará un alert o algo... 
-			echo "<div  id='empezar' ><a href='rutina_diaria.php?id_rutina=".$fila['id_rutina']."'> Empezar rutina </a></div>";
+			echo "<a href='rutina_diaria.php?id_rutina=".$fila['id_rutina']."'> <div class='panel-primary panel-heading' style='background-color: #F00808; color: white;'>Empezar rutina</div></a></div>";
+
 		}
 	}
 }else{
@@ -111,11 +108,13 @@ if(mysqli_num_rows($resultado)>0){
 
 <h1>Rutinas disponibles para: <?php echo $_SESSION['nombre_usuario']?> </h1>
 <?php
+
 include('mostrar_rutinas_objetivo.php');
-echo $aux;
+//echo $aux;
+echo '</div>';
 }
+
+include('includes/footer_rojo.php');
 ?>
 
 
-</body>
-</html>
