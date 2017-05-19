@@ -38,25 +38,21 @@ $sql = "SELECT * FROM tbl_historial_rutinas WHERE id_usuario = $id_usuario AND i
 	if(mysqli_num_rows($resultado)>0){
 		//echo "hay datos";
 		//primero se comprueba que la sesion 
-
+		while($res = mysqli_fetch_array($resultado)){
 		//aqui se mostrará los ejercicios de la rutina en la sesiòn +1 
-		$consulta= "SELECT * 
-      FROM `tbl_rutina_ejer`
-INNER JOIN `tbl_ejercicio`
-        ON `tbl_ejercicio`.`id_ejercicio` = `tbl_ejercicio`.`id_ejercicio`
-INNER JOIN `tbl_rutina`
-        ON `tbl_rutina_ejer`.`id_rutina` = `tbl_rutina`.`id_rutina`
-INNER JOIN `tbl_historial_rutinas`
-        ON `tbl_rutina_ejer`.`id_rutina` = `tbl_historial_rutinas`.`id_rutina`
-     WHERE `id_rutina` = '$id_rutina'";
+		echo "ejercicios de la sesion 1+1 <br>";
+		$consulta= "SELECT * FROM tbl_historial_rutinas, tbl_rutina, tbl_ejercicio, tbl_rutina_ejer WHERE tbl_historial_rutinas.id_rutina = tbl_rutina.id_rutina AND tbl_rutina_ejer.id_ejercicio= tbl_ejercicio.id_ejercicio AND tbl_rutina_ejer.id_rutina=tbl_historial_rutinas.id_rutina AND tbl_rutina_ejer.num_dia = (tbl_historial_rutinas.sesion_rutina+1) AND tbl_rutina.id_rutina = $id_rutina";
 
 		 echo $consulta ."<br><br><br><br>";
 
 		$resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());	
 		if(mysqli_num_rows($resultado)>0){
-				echo "Ejercicios sesion 1";
+				$num = $res['sesion_rutina'] + 1;
+				echo "<h1>Ejercicios sesion  ".$num."</h1>";
+				
 		
 			while($fila = mysqli_fetch_array($resultado)){
+				// echo ($fila['tbl_rutina_ejer.num_dia'] + 1);
 				echo "<div id='rutina'>";
 				echo " Ejercicio ".$cont." : ".$fila['nombre_ejercicio']."<br>";
 				echo "Series : ".$fila['series']."<br>";
@@ -67,6 +63,7 @@ INNER JOIN `tbl_historial_rutinas`
 				echo "</div><br><br><br>";
 
 			}
+		}
 		}
 
 
@@ -80,7 +77,7 @@ INNER JOIN `tbl_historial_rutinas`
 		$sql2 = "SELECT  * FROM tbl_rutina, tbl_rutina_ejer, tbl_ejercicio WHERE tbl_rutina.id_rutina= $id_rutina AND tbl_rutina.id_rutina = tbl_rutina_ejer.id_rutina AND tbl_rutina_ejer.id_ejercicio = tbl_ejercicio.id_ejercicio AND tbl_rutina_ejer.num_dia = '1'";
 
 		// echo $sql2 ."<br><br><br><br>";
-
+		$cont = 1;
 		$resultado = mysqli_query($conexion, $sql2) or die (mysqli_error());	
 		if(mysqli_num_rows($resultado)>0){
 				echo "Ejercicios sesion 1";
@@ -94,7 +91,7 @@ INNER JOIN `tbl_historial_rutinas`
 				echo "<input type='hidden' name='id_rutina' value=".$fila['id_rutina'].">";
 				echo "<input type='hidden' name='sesion_rutina' value=1>";
 				echo "</div><br><br><br>";
-
+				$cont++;
 			}
 		}
 
