@@ -77,7 +77,7 @@ $sql = "SELECT * FROM tbl_historial_rutinas WHERE id_usuario = $id_usuario AND i
 		$sql2 = "SELECT  * FROM tbl_rutina, tbl_rutina_ejer, tbl_ejercicio WHERE tbl_rutina.id_rutina= $id_rutina AND tbl_rutina.id_rutina = tbl_rutina_ejer.id_rutina AND tbl_rutina_ejer.id_ejercicio = tbl_ejercicio.id_ejercicio AND tbl_rutina_ejer.num_dia = '1'";
 
 		// echo $sql2 ."<br><br><br><br>";
-
+		$cont = 1;
 		$resultado = mysqli_query($conexion, $sql2) or die (mysqli_error());	
 		if(mysqli_num_rows($resultado)>0){
 				echo "Ejercicios sesion 1";
@@ -91,7 +91,7 @@ $sql = "SELECT * FROM tbl_historial_rutinas WHERE id_usuario = $id_usuario AND i
 				echo "<input type='hidden' name='id_rutina' value=".$fila['id_rutina'].">";
 				echo "<input type='hidden' name='sesion_rutina' value=1>";
 				echo "</div><br><br><br>";
-
+				$cont++;
 			}
 		}
 

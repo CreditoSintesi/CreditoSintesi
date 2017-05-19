@@ -111,7 +111,7 @@ if(mysqli_num_rows($resultado)>0){
 				echo "<div class='panel-primary panel-heading' style='background-color: grey; color: white;'>Empezar rutina</div></div>";
 				
 			}else{
-				echo "<a href='rutina_diaria.php?id_rutina=".$fila['id_rutina']."'> <div class='panel-primary panel-heading' style='background-color: #F00808; color: white;'>Empezar rutina</div></a></div>";
+				echo "<a href='rutina_diaria.php?id_rutina=".$id_rutina."'> <div class='panel-primary panel-heading' style='background-color: #F00808; color: white;'>Empezar rutina</div></a></div>";
 			}
 
 		}
