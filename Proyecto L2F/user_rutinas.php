@@ -93,9 +93,9 @@ if(mysqli_num_rows($resultado)>0){
 <?php
 			//echo "rutinas";
 			$id_rutina = $fila['id_rutina'];
-			echo "<h4>".$fila['nombre_rutina']."</h4>";	
+			// echo "<h4>".."</h4>";	
 
-			echo " <div class='panel-primary panel-heading' onclick='mostrarInfo(".$fila['id_rutina'].")'> Detalle rutina </div>";
+			echo " <div class='panel-primary panel-heading' onclick='mostrarInfo(".$fila['id_rutina'].")'> Ejercicios : ".$fila['nombre_rutina']."  </div>";
             ?>
                  <div class="panel-primary alert-danger text-center" id='flecha' onclick='esconder()'><img id='up' src='media/img/icon/up.png' height="50" width="50" ></div>
 <?php			echo "<div id='datos'></div>";
