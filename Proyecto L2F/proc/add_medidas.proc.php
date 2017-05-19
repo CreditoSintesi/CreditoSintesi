@@ -54,3 +54,6 @@
 		$query_his_cadera=mysqli_query($conexion,$sql_his_cadera);
 		$query_his_cuadricep=mysqli_query($conexion,$sql_his_cuadricep);
 		$query_his_gemelo=mysqli_query($conexion,$sql_his_gemelo);
+	//Return
+		echo "<script type='text/javascript'>alert('¡Medidas insertadas correctamente! ¡Sigue entrenando!');
+			location.href='../perfilusuario.php'</script>";

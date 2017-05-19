@@ -3,6 +3,7 @@
 	require_once("../conexio.php");
 	extract($_POST);
 	$fecha_actual=date('Y/m/d');
+	//$fecha_actual="2017/05/16";
 	$insert_height_sql= "INSERT INTO `tbl_historial_peso` ( `id_usuario`, `fecha_his_pes`, `peso`) VALUES ('".$_SESSION['id_usuario']."', '".$fecha_actual."', '".$height."');";
 		//Creamos una consulta para coger el último peso, el nombre del objetivo y la fecha del peso
 	$last_height_sql = "SELECT tbl_usuario.id_usuario, peso,nombre_objetivo, fecha_his_pes

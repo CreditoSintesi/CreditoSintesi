@@ -149,7 +149,7 @@
                 <div class="col-sm-2">
                   <div class="panel panel-primary">
                       <div class="panel-heading">
-                        <h3 class="panel-title">Panel title</h3>
+                        <h3 class="panel-title" onclick="display_element('sh_medidas')">¡Mídete!</h3>
                       </div>
                   </div>
                 </div>
@@ -298,6 +298,7 @@
                   $control = 0;
                   $fecha = 0;
                     $his_medidas_sql = "SELECT * FROM `tbl_parte_cuerpo` RIGHT JOIN `tbl_historial_medidas` ON `tbl_parte_cuerpo`.`id_parte_cuerpo` = `tbl_historial_medidas`.`id_parte_cuerpo` WHERE `id_usuario`= ".$_SESSION['id_usuario'];
+                    //echo $his_medidas_sql;die;
                     $his_medidas_query = mysqli_query($conexion,$his_medidas_sql);
 
                     while($data_his_medidas = mysqli_fetch_array($his_medidas_query))
@@ -466,6 +467,8 @@
       document.getElementById('pr_cuerpo').style.display='none';
       document.getElementById('pr_peso').style.display='none';
       document.getElementById('sh_peso').style.display='none';
+      document.getElementById('sh_medidas').style.display='none';
+      
       }
     function display_element(table_id){
       if(document.getElementById(table_id).style.display=='none')
