@@ -26,9 +26,21 @@ extract($_REQUEST);
 include_once('includes/header_rojo.php')
 ?>
 <script type="text/javascript">
-	function atras(){
-		history.back();
-	}
+
+function ejercicio(){
+document.getElementById("imagen").style.display = "none";
+document.getElementById("info").style.display = "block";
+document.getElementById("img").style.src = "Media/img/icon/ntxt.png";
+}
+
+function txt(){
+document.getElementById("imagen").style.display = "block";
+document.getElementById("info").style.display = "none";
+document.getElementById("txto").style.src = "Media/img/icon/nimg.png";
+
+}
+
+</script>
 	
 </script>
 
@@ -54,18 +66,29 @@ include_once('includes/header_rojo.php')
 
 			?>
 
-	      <div class="col-md-8">
+	      <div class="col-md-4">
            <div class="panel panel-danger">
-            
+           
             <div class='panel-body'>
 			<?php
-			echo"<img src='".$fila['img_ejercicio']."' alt='".$fila['nombre_ejercicio']."' style='width:304px;height:228px;'><br>";
-			echo "Series : ".$fila['series']."<br>";
+			echo"<img class='featurette-image img-responsive center-block' id='imagen' src='".$fila['img_ejercicio']."' alt='".$fila['nombre_ejercicio']."' style='width:250px;height:250px;'><br>";
+			echo "<div id='info' style='display:none;'> Series : ".$fila['series']."<br>";
 			echo "Repeticiones: ".$fila['repeticiones']."<br>";
 			// echo "Foto Imagen: ".$fila['img_ejercicio']."<br>";
-			echo "Descripción: ".$fila['descripcion_ejercicio']."</div> </div> </div></div>";
+			echo "Descripción: ".$fila['descripcion_ejercicio']."</div>";
+?>	
+			<div class="container">
+				<div class="col-md-2  col-xs-8 img-responsive center-block">
+					<img id='img' onclick='txt()' src="Media\img\icon\img.png" width='32px' height='32px' >
+				</div>
+				<div class="col-md-2  col-xs-4 img-responsive center-block">
+					<img id='txto' onclick='ejercicio ()' src="Media\img\icon\txt.png" width='32px' height='32px' >
+				</div>
+			</div>
+			</div> </div> </div></div>
+<?php
 			// echo "Dia de la rutina: ".$fila['num_dia']."<br>";
-			echo " <button onclick='atras();'>Volver atras</button> ";
+			
 		}
 	}
 
