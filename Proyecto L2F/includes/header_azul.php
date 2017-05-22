@@ -1,3 +1,15 @@
+<?php
+  
+  session_start();
+  //Consulta para obtener el nombre de la BD
+  $select_name_sql = "SELECT * FROM `tbl_usuario` WHERE id_usuario = ".$_SESSION['id_usuario'];
+  $select_name_query = mysqli_query($conexion,$select_name_sql);
+  while($select_name = mysqli_fetch_array($select_name_query))
+  {
+   $user_name = $select_name['nombre_usuario']. " " . $select_name['apellidos_usuario'];
+  }
+  //echo $user_name;die;
+  ?>
 <!DOCTYPE html>
 <html lang="es">
   <head>

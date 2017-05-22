@@ -125,7 +125,7 @@
                <div class="col-sm-2">
                   <div class="panel panel-primary">
                       <div class="panel-heading">
-                        <h3 class="panel-title" onclick="display_element('pr_peso')">Historial peso</h3>
+                       <h3 class="panel-title" onclick="display_element('pr_peso')" style="cursor: pointer;">Historial peso</h3>
                       </div>
                      
                   </div>
@@ -273,8 +273,9 @@
                   
                 </td>
                 <td>--</td>
-  
               </tr>
+              <tr>
+                <td colspan="3"><a href="weight.php"><button class="btn btn-info">Ver más</button></a></td>
             </tbody>
           </table>
           </div>
