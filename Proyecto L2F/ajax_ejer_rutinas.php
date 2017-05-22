@@ -2,7 +2,7 @@
 
 include_once('conexio.php');
 extract($_REQUEST);
-$id_rutina = 6;
+
 $consulta = "SELECT DISTINCT * FROM tbl_rutina, tbl_objetivo WHERE tbl_rutina.id_rutina= $id_rutina AND tbl_rutina.id_objetivo = tbl_objetivo.id_objetivo";
 
 	$resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());	
@@ -34,6 +34,7 @@ $sql = "SELECT DISTINCT * FROM tbl_rutina, tbl_objetivo, tbl_rutina_ejer, tbl_ej
             <div class="panel-heading">
               <h3 class="panel-title">
 			<?php
+
 			echo $fila['nombre_ejercicio']."</h3> </div>
             <div class='panel-body'>";
 			echo "Series : ".$fila['series']."<br>";
