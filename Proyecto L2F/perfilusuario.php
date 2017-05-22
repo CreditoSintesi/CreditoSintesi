@@ -1,6 +1,7 @@
 <?php 
   require_once("conexio.php");
-  session_start();
+  //session_start();
+  require_once("includes/header_azul.php");
   //Revisar consulta integridad datos
   $sql = "SELECT * 
           FROM `tbl_usuario` 
@@ -66,8 +67,71 @@
               }
                $control++;
             }
-  
-  require_once("includes/header_azul.php");          
+  //Obtenemos las medidas de usuario 
+      //SQL
+        //brazo
+            $select_brazo_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=2 ORDER BY `fecha_his_med` DESC LIMIT 0,1";
+            //echo $select_brazo_sql;die;
+        //Antebrazo
+             $select_antebrazo_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=3 ORDER BY `fecha_his_med` DESC LIMIT 0,1";
+        //Pectoral
+             $select_pectoral_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=4 ORDER BY `fecha_his_med` DESC LIMIT 0,1";
+        //Cintura
+             $select_cintura_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=5 ORDER BY `fecha_his_med` DESC LIMIT 0,1";
+        //Cadera
+              $select_cadera_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=6 ORDER BY `fecha_his_med` DESC LIMIT 0,1";
+        //Cuadricep
+               $select_cuadricep_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=7 ORDER BY `fecha_his_med` DESC LIMIT 0,1";
+        //Gemela
+               $select_gemelo_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=8 ORDER BY `fecha_his_med` DESC LIMIT 0,1";
+      //Querys
+        $select_brazo_query=mysqli_query($conexion,$select_brazo_sql);
+        $select_antebrazo_query=mysqli_query($conexion,$select_antebrazo_sql);
+        $select_pectoral_query=mysqli_query($conexion,$select_pectoral_sql);
+        $select_cintura_query=mysqli_query($conexion,$select_cintura_sql);
+        $select_cadera_query=mysqli_query($conexion,$select_cadera_sql);
+        $select_cuadricep_query=mysqli_query($conexion,$select_cuadricep_sql);
+        $select_gemelo_query = mysqli_query($conexion,$select_gemelo_sql);
+      //Seleccionamos los datos de la BD
+        while($data_brazo = mysqli_fetch_array($select_brazo_query))
+        {
+          $brazo_cm = $data_brazo['cm'];
+          $brazo_date = date("d-m-Y", strtotime($data_brazo['fecha_his_med']));
+        }
+        while($data_antebrazo = mysqli_fetch_array($select_antebrazo_query))
+        {
+          $antebrazo_cm = $data_antebrazo['cm'];
+          $antebrazo_date = date("d-m-Y", strtotime($data_antebrazo['fecha_his_med']));
+        }
+        while($data_pectoral = mysqli_fetch_array($select_pectoral_query))
+        {
+          $pectoral_cm = $data_pectoral['cm'];
+          $pectoral_date = date("d-m-Y", strtotime($data_pectoral['fecha_his_med']));
+        }
+        while($data_cintura = mysqli_fetch_array($select_cintura_query))
+        {
+          $cintura_cm = $data_cintura['cm'];
+          $cintura_date = date("d-m-Y", strtotime($data_cintura['fecha_his_med']));
+        }
+        while($data_cadera= mysqli_fetch_array($select_cadera_query))
+        {
+          $cadera_cm = $data_cadera['cm'];
+          $cadera_date = date("d-m-Y", strtotime($data_cadera['fecha_his_med']));
+        
+        }
+        while($data_cuadricep= mysqli_fetch_array($select_cuadricep_query))
+        {
+          $cuadricep_cm = $data_cuadricep['cm'];
+          $cuadricep_date = date("d-m-Y", strtotime($data_cuadricep['fecha_his_med']));
+        }
+        while($data_gemelo= mysqli_fetch_array($select_gemelo_query))
+        {
+          $gemelo_cm = $data_gemelo['cm'];
+          $gemelo_date = date("d-m-Y", strtotime($data_gemelo['fecha_his_med']));
+        }
+      //End obtener datos de usuario
+        //Funcion que devuelve una fecha a formato europeo
+       
 ?>
 
 
@@ -280,7 +344,7 @@
           </table>
           </div>
 
-          <!-- PARTE CUERPO -->
+          <!-- PARTE CUERPO 
             <div class="col-sm-8" id ="pr_cuerpo">  
              <table class="table table-striped">
               <thead>
@@ -295,7 +359,8 @@
                   <th>Gemelo</th>
                 </tr>
                 <tr>
-                  <?php 
+                  <?php
+                  /** Sacar registros globales de las medidas
                   $control = 0;
                   $fecha = 0;
                     $his_medidas_sql = "SELECT * FROM `tbl_parte_cuerpo` RIGHT JOIN `tbl_historial_medidas` ON `tbl_parte_cuerpo`.`id_parte_cuerpo` = `tbl_historial_medidas`.`id_parte_cuerpo` WHERE `id_usuario`= ".$_SESSION['id_usuario'];
@@ -316,12 +381,67 @@
                       echo "<td>".$data_his_medidas['cm']."</td>";
                     }
 
-                  ?>
+                  */?>
                 </tr>
               </thead>
 
             </table>
-            </div>
+            </div>-->
+            <div class="col-sm-8" id ="pr_cuerpo">  
+             <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Grupo muscular</th>
+                  <th>Fecha</th>
+                  <th>Medida (cm)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Brazo</td>
+                  <td><?php 
+                  echo $brazo_date;?></td>
+                  <td><?php echo $brazo_cm;?></td>
+                </tr>
+                <tr>
+                  <td>Antebrazo</td>
+                  <td><?php 
+                  echo $antebrazo_date;?></td>
+                  <td><?php echo $antebrazo_cm;?></td>
+                </tr>
+                 <tr>
+                  <td>Brazo</td>
+                  <td><?php 
+                  echo $brazo_date;?></td>
+                  <td><?php echo $brazo_cm;?></td>
+                </tr>
+                <tr>
+                  <td>Pectoral</td>
+                  <td><?php echo $pectoral_date; ?></td>
+                  <td><?php echo $pectoral_cm; ?></td>
+                </tr>
+                <tr>
+                  <td>Cintura</td>
+                  <td><?php echo $cintura_date;?></td>
+                  <td><?php echo $cintura_cm; ?></td>
+                </tr>
+                <tr>
+                 <td>Cadera</td>
+                 <td><?php echo $cadera_date; ?></td>
+                 <td><?php echo $cadera_cm; ?></td>
+                </tr>
+                <tr>
+                  <td>Cuadricep</td>
+                  <td><?php echo $cuadricep_date; ?></td>
+                  <td><?php echo $cuadricep_cm; ?></td>
+                </tr>
+                <tr>
+                  <td>Gemelo</td>
+                  <td><?php echo $gemelo_date;?></td>
+                  <td><?php echo $gemelo_cm;?></td>
+                </tr>
+              </tbody>
+            </table>
             <!--AÑADIR PESO-->
             <div class="col-sm-8" id ="sh_peso" name="sh_peso">
             <form action="proc/add_peso.proc.php" method="POST">
@@ -360,43 +480,44 @@
                 </thead>
                   <tr>
                     <td>Brazo</td>
-                    <td><input type="number" class="form-control" id="cm_brazo" name="cm_brazo" required></td>
+                    <td><?php echo  "<input type='number' class='form-control' id='cm_brazo' name='cm_brazo' value=".$brazo_cm." required>"; ?></td>
                     <td>+</td>
                     <td>-</td>
                   </tr>
                   <tr>
                     <td>Antebrazo</td>
-                    <td><input type="number" class="form-control" id="cm_antebrazo" name="cm_antebrazo" required></td>
+                    <td><?php echo  "<input type='number' class='form-control' id='cm_antebrazo' name='cm_antebrazo' value=".$antebrazo_cm." required>"; ?></td>
                     <td>+</td>
                     <td>-</td>
                   </tr>
                   <tr>
                     <td>Pectoral</td>
-                    <td><input type="number" class="form-control" id="cm_pectoral" name="cm_pectoral" required></td>
+                    <td><?php echo  "<input type='number' class='form-control' id='cm_pectoral' name='cm_pectoral' value=".$pectoral_cm." required>"; ?></td>
                     <td>+</td>
                     <td>-</td>
                   </tr>
                   <tr>
                     <td>Cintura</td>
-                    <td><input type="number" class="form-control" id="cm_cintura" name="cm_cintura" required></td>
+                    <td><?php echo  "<input type='number' class='form-control' id='cm_cintura' name='cm_cintura' value=".$cintura_cm." required>"; ?></td>
                     <td>+</td>
                     <td>-</td>
                   </tr>
                    <tr>
                     <td>Cadera</td>
-                    <td><input type="number" class="form-control" id="cm_cadera" name="cm_cadera" required></td>
+                    <td><?php echo  "<input type='number' class='form-control' id='cm_cadera' name='cm_cadera' value=".$cadera_cm." required>"; ?></td>
                     <td>+</td>
                     <td>-</td>
                   </tr>
                    <tr>
                     <td>Cuadricep</td>
-                    <td><input type="number" class="form-control" id="cm_cuadricep" name="cm_cuadricep" required></td>
+                     <td><?php echo  "<input type='number' class='form-control' id='cm_cuadricep' name='cm_cuadricep' value=".$cuadricep_cm." required>"; ?></td>
                     <td>+</td>
                     <td>-</td>
                   </tr>
                    <tr>
                     <td>Gemelo</td>
-                    <td><input type="number" class="form-control" id="cm_gemelo" name="cm_gemelo" required></td>
+                    <td><?php echo  "<input type='number' class='form-control' id='cm_gemelo' name='cm_gemelo' value=".$gemelo_cm." required>"; ?></td>
+                    
                     <td>+</td>
                     <td>-</td>
                   </tr>

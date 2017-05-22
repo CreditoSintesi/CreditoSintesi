@@ -16,4 +16,10 @@
   echo "</table>";
   echo "</div>";
 ?>
+<div class='col-md-6'>
+	<br/>
+	<br/>
 	<img src="proc/weight_grafic.proc.php"> 
+</div>
+<br/>
+<a href="perfilusuario.php"><button>Volver</button></a>
