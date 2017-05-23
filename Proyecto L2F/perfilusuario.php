@@ -26,6 +26,7 @@
              $date = date_create($actual_date); //traducimos la fecha actual
              $user_edad = date_diff($user_old,$date); //Comparamos las fechas
              $years = $user_edad->format('%y%'); //Cogemos la diferencia en años
+             round($user_tall,2);
       //End edad
       //Para calcular el tiempo que el usuario lleva registrado
              $user_init_date = date_create($user_init_date);//Cogemos la fecha en la que el usuario se registró
@@ -406,6 +407,7 @@
                 </tr>
               </tbody>
             </table>
+          </div>
             <!--AÑADIR PESO-->
             <div class="col-sm-8" id ="sh_peso" name="sh_peso">
             <form action="proc/add_peso.proc.php" method="POST">
