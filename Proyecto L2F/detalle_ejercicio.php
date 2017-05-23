@@ -49,13 +49,14 @@ document.getElementById("txto").style.src = "Media/img/icon/nimg.png";
            
             <div class='panel-body'>
 			<?php
-			echo"<img class='featurette-image img-responsive center-block' id='imagen' src='".$fila['img_ejercicio']."' alt='".$fila['nombre_ejercicio']."' style='width:250px;height:250px;'> <br>";
+			echo"<img class='featurette-image img-responsive center-block' id='imagen' src='".$fila['img_ejercicio']."' alt='".$fila['nombre_ejercicio']."' style='width:250px;height:250px;'><br>";
 			echo "<div id='info' style='display:none;'><b>Series : </b> ".$fila['series']."<br>";
 			echo "<b>Repeticiones : </b> ".$fila['repeticiones']."<br>";
 			// echo "Foto Imagen: ".$fila['img_ejercicio']."<br>";
 			echo "<b>Descripción : </b> ".$fila['descripcion_ejercicio']."<br><br></div>";
 ?>	
 			<div class="container">
+			<div class="col-md-4 col-xs"> <br> </div>
 				<div class="col-md-2  col-xs-8 img-responsive center-block">
 					<img id='img' onclick='txt()' src="Media\img\icon\img.png" width='32px' height='32px' >
 				</div>
