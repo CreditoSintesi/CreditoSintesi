@@ -129,9 +129,7 @@
           $gemelo_cm = $data_gemelo['cm'];
           $gemelo_date = date("d-m-Y", strtotime($data_gemelo['fecha_his_med']));
         }
-      //End obtener datos de usuario
-        //Funcion que devuelve una fecha a formato europeo
-       
+      //End obtener datos de usuario       
 ?>
 
 
@@ -344,49 +342,8 @@
           </table>
           </div>
 
-          <!-- PARTE CUERPO 
-            <div class="col-sm-8" id ="pr_cuerpo">  
-             <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Día</th>
-                  <th>Brazo</th>
-                  <th>Antebrazo</th>
-                  <th>Pectoral</th>
-                  <th>Cintura</th>
-                  <th>Cadera</th>
-                  <th>Cuadricep</th>
-                  <th>Gemelo</th>
-                </tr>
-                <tr>
-                  <?php
-                  /** Sacar registros globales de las medidas
-                  $control = 0;
-                  $fecha = 0;
-                    $his_medidas_sql = "SELECT * FROM `tbl_parte_cuerpo` RIGHT JOIN `tbl_historial_medidas` ON `tbl_parte_cuerpo`.`id_parte_cuerpo` = `tbl_historial_medidas`.`id_parte_cuerpo` WHERE `id_usuario`= ".$_SESSION['id_usuario'];
-                    //echo $his_medidas_sql;die;
-                    $his_medidas_query = mysqli_query($conexion,$his_medidas_sql);
-
-                    while($data_his_medidas = mysqli_fetch_array($his_medidas_query))
-                    {
-                      if($fecha !=$data_his_medidas['fecha_his_med'])
-                      {
-                        if($fecha!=0)
-                        {
-                          echo "</tr><tr>";
-                        }
-                        echo "<td>".$data_his_medidas['fecha_his_med']."</td>";
-                        $fecha = $data_his_medidas['fecha_his_med'];
-                      }
-                      echo "<td>".$data_his_medidas['cm']."</td>";
-                    }
-
-                  */?>
-                </tr>
-              </thead>
-
-            </table>
-            </div>-->
+          <!-- PARTE CUERPO -->
+          
             <div class="col-sm-8" id ="pr_cuerpo">  
              <table class="table table-striped">
               <thead>
@@ -439,6 +396,13 @@
                   <td>Gemelo</td>
                   <td><?php echo $gemelo_date;?></td>
                   <td><?php echo $gemelo_cm;?></td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <a href="body_history.php">
+                      <button class="btn btn-info">Ver más</button>
+                    </a>
+                  </td>
                 </tr>
               </tbody>
             </table>

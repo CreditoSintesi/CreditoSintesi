@@ -19,7 +19,7 @@
 <div class='col-md-6'>
 	<br/>
 	<br/>
-	<img src="proc/weight_grafic.proc.php"> 
+	<img src="proc/weight_grafic.proc.php" style="width:100%"> 
 </div>
 <br/>
 <a href="perfilusuario.php"><button>Volver</button></a>

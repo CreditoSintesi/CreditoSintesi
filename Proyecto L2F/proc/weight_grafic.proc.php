@@ -19,7 +19,7 @@
 	require_once ('../libs/jpgraph/src/jpgraph_line.php');
 		
 		// Creamos el grafico
-		$grafico = new Graph(500,250);
+		$grafico = new Graph(500,250,"auto");
 		$grafico->SetScale('textlin');
 		$grafico->img->SetAntiAliasing();
 		$grafico->xgrid->Show(); 
@@ -32,7 +32,6 @@
 		$lineplot=new LinePlot($data_array);
 		$lineplot->SetColor("black");
 		$lineplot->SetWeight(2);
-		$lineplot->SetLegend("Fecha"); 
 		// Configuramos color de las barras 
 		$bplot->SetColor('#479CC9');
 
