@@ -68,6 +68,8 @@
               }
                $control++;
             }
+           $imc = $height1/pow(1.79,2);
+           //echo round($imc,"2");die;
   //Obtenemos las medidas de usuario 
       //SQL
         //brazo
@@ -161,7 +163,18 @@
                           </tr>
                           <tr>
                             <td>Altura</td>
-                            <td><?php echo ($user_tall/100)."m"; ?></td>
+                            <td><?php $user_tall_m = $user_tall/100; echo round($user_tall_m,"2")." m"; ?></td>
+                          </tr>
+                          <tr>
+                            <td>IMC</td>
+                            <td><?php 
+                                  if(isset($height1)){
+                                    echo round($imc,"2");
+                                  }
+                                  else{
+                                    echo "NA";
+                                  }
+                             ?></td>
                           </tr>
                           <tr>
                             <td>Tipo cuerpo</td>
