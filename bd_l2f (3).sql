@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2017 at 06:26 PM
+-- Generation Time: May 23, 2017 at 03:36 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -133,7 +133,10 @@ CREATE TABLE `tbl_historial_peso` (
 INSERT INTO `tbl_historial_peso` (`id_historial_peso`, `id_usuario`, `fecha_his_pes`, `peso`) VALUES
 (1, 2, '0000-00-00', 70),
 (2, 2, '2017-05-11', 70),
-(3, 2, '2017-05-11', 70);
+(3, 2, '2017-05-11', 70),
+(4, 0, '2017-05-19', 65),
+(5, 0, '2017-05-19', 67),
+(6, 0, '2017-05-19', 71);
 
 -- --------------------------------------------------------
 
@@ -148,6 +151,16 @@ CREATE TABLE `tbl_historial_rutinas` (
   `id_usuario` int(11) NOT NULL,
   `id_rutina` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_historial_rutinas`
+--
+
+INSERT INTO `tbl_historial_rutinas` (`id_historial_rutinas`, `sesion_rutina`, `fecha`, `id_usuario`, `id_rutina`) VALUES
+(4, 1, '2017-05-17', 2, 6),
+(5, 1, '2017-05-18', 2, 6),
+(6, 1, '2017-05-20', 0, 6),
+(9, 2, '2017-05-21', 2, 6);
 
 -- --------------------------------------------------------
 
@@ -283,10 +296,10 @@ CREATE TABLE `tbl_rutina_ejer` (
 INSERT INTO `tbl_rutina_ejer` (`id_rutina_ejer`, `id_rutina`, `id_ejercicio`, `series`, `repeticiones`, `num_dia`) VALUES
 (1, 6, 1, 4, 5, '1'),
 (2, 6, 2, 4, 6, '2'),
-(3, 6, 3, 3, 5, '3'),
-(4, 6, 4, 6, 5, '4'),
+(3, 6, 3, 3, 5, '1'),
+(4, 6, 4, 6, 5, '2'),
 (5, 6, 2, 3, 5, '1'),
-(6, 6, 3, 4, 6, '1');
+(9, 6, 5, 5, 3, '2');
 
 -- --------------------------------------------------------
 
@@ -298,6 +311,7 @@ CREATE TABLE `tbl_rutina_usuario` (
   `id_rutina_usuario` int(11) NOT NULL,
   `fecha_inicio` text NOT NULL,
   `fecha_fin` text NOT NULL,
+  `rutina_finalizada` varchar(2) NOT NULL DEFAULT 'no' COMMENT 'finalizada : si/no',
   `id_rutina` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -306,8 +320,9 @@ CREATE TABLE `tbl_rutina_usuario` (
 -- Dumping data for table `tbl_rutina_usuario`
 --
 
-INSERT INTO `tbl_rutina_usuario` (`id_rutina_usuario`, `fecha_inicio`, `fecha_fin`, `id_rutina`, `id_usuario`) VALUES
-(2, '2017-05-15', '2017-08-15', 6, 2);
+INSERT INTO `tbl_rutina_usuario` (`id_rutina_usuario`, `fecha_inicio`, `fecha_fin`, `rutina_finalizada`, `id_rutina`, `id_usuario`) VALUES
+(19, '2017-05-22', '2017-05-22', 'si', 6, 2),
+(20, '2017-05-22', '2017-05-22', 'no', 6, 2);
 
 -- --------------------------------------------------------
 
@@ -385,6 +400,7 @@ CREATE TABLE `tbl_usuario` (
 --
 
 INSERT INTO `tbl_usuario` (`id_usuario`, `nombre_usuario`, `pass_usuario`, `email_usuario`, `sexo_usuario`, `apellidos_usuario`, `fecha_registro`, `altura_usuario`, `fecha_nacimiento`, `estado_usuario`, `id_objetivo`, `id_tipo_cuerpo`) VALUES
+(0, 'sergi', '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2', 'sergi@email.com', 'Hombre', 'sergi sergi', '2017-05-19', 170, '1996-02-06', 'Activo', 3, NULL),
 (1, 'marc', '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2', 'mpetit@gmail.com', NULL, NULL, '2017-05-09', NULL, NULL, 'Inactivo', NULL, NULL),
 (2, 'admin', 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec', 'admin@gmail.com', 'Hombre', 'petit fernandez', '2017-05-11', 173, '1992-09-16', 'Activo', 3, NULL);
 
@@ -565,12 +581,12 @@ ALTER TABLE `tbl_historial_medidas`
 -- AUTO_INCREMENT for table `tbl_historial_peso`
 --
 ALTER TABLE `tbl_historial_peso`
-  MODIFY `id_historial_peso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_historial_peso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `tbl_historial_rutinas`
 --
 ALTER TABLE `tbl_historial_rutinas`
-  MODIFY `id_historial_rutinas` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_historial_rutinas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `tbl_objetivo`
 --
@@ -595,12 +611,12 @@ ALTER TABLE `tbl_plato`
 -- AUTO_INCREMENT for table `tbl_rutina_ejer`
 --
 ALTER TABLE `tbl_rutina_ejer`
-  MODIFY `id_rutina_ejer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_rutina_ejer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `tbl_rutina_usuario`
 --
 ALTER TABLE `tbl_rutina_usuario`
-  MODIFY `id_rutina_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_rutina_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `tbl_tipo_cuerpo`
 --
@@ -616,6 +632,11 @@ ALTER TABLE `tbl_tipo_ejercicio`
 --
 ALTER TABLE `tbl_tipo_especialista`
   MODIFY `id_tipo_especialista` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_usuario`
+--
+ALTER TABLE `tbl_usuario`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
