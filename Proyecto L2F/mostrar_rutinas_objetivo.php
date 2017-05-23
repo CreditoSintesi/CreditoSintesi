@@ -55,7 +55,8 @@ INNER JOIN `tbl_usuario`
 			
 		
 			
-			<br> <a href= <?php echo'"asignar_rutina.proc.php?id_rutina='.$id_rutina.'"'; ?>  onclick="$(this).closest('form').submit()" type="submit" class="btn btn-primary text-center" name="enviar" value="Apuntate!">Apuntate!</a>
+			<br>
+<div class="text-center panel-body"> <a href= <?php echo'"asignar_rutina.proc.php?id_rutina='.$id_rutina.'"'; ?>  onclick="$(this).closest('form').submit()" type="submit" class="btn btn-primary text-center" name="enviar" value="Apuntate!">Apuntate!</a></div>
 			 </div>
 			 </div>
 			 </form> 

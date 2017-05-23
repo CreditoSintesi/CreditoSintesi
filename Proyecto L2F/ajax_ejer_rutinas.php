@@ -41,7 +41,7 @@ $sql = "SELECT DISTINCT * FROM tbl_rutina, tbl_objetivo, tbl_rutina_ejer, tbl_ej
 			echo "repeticiones: ".$fila['repeticiones']."<br>";
 			echo "Dia de la rutina: ".$fila['num_dia']."<br>";
 
-			echo "<a class='btn-sm btn-primary' href='detalle_ejercicio.php?id_ejercicio=".$fila['id_ejercicio']."&id_rutina_ejer=".$fila['id_rutina_ejer']."'> Ver + detalles </a></div> </div> </div>";
+			echo "<div class='text-center col-md-12 panel-body' ><a class='btn btn-primary' href='detalle_ejercicio.php?id_ejercicio=".$fila['id_ejercicio']."&id_rutina_ejer=".$fila['id_rutina_ejer']."'> Ver más detalles </a></div> </div> </div> </div>";
 				
 			
 		}

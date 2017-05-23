@@ -1,27 +1,9 @@
 <?php
-session_start();
-include_once('conexio.php');
-$id_usuario = $_SESSION['id_usuario'];
+require_once("includes/header_rojo.php");
+
 extract($_REQUEST);
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<style type="text/css">
-	#rutina{
-  font-size: 1.5em;
-  padding: 20px;
-  border-width: thin medium thick 30px;
-  border-color: blue;
-  border-style: solid;
-  color: black;
-  width: 25%;
-  }
-</style>
-<body>
-
+<div class="container">
 <h1>Rutina del día</h1>
 	<form action="sesion_finalizada.proc.php">
 <?php
@@ -63,7 +45,12 @@ $resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());
 	
 					
 						while($fila = mysqli_fetch_array($resultado)){
-							echo "<h1>Ejercicios sesion  ".$sesion_rutina."</h1>";
+
+							?>
+							<div class="col-sm-11">
+        					<div class="panel panel-primary">
+							<?php
+							echo "<div class='panel-primary panel-heading> Ejercicios sesion  ".$sesion_rutina."";
 							echo "<div id='rutina'>";
 							echo " Ejercicio ".$cont." : ".$fila['nombre_ejercicio']."<br>";
 							echo "Series : ".$fila['series']."<br>";
@@ -119,18 +106,17 @@ $resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());
 					$resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());	
 					if(mysqli_num_rows($resultado)>0){
 
-						echo "<h1>Ejercicios sesion  ".$sesion_rutina."</h1>";
+						echo "<div class='panel-primary panel-heading'><h4>Ejercicios sesion  ".$sesion_rutina."</h4></div></div><br>";
 							
 					
 						while($fila = mysqli_fetch_array($resultado)){
-	
-							echo "<div id='rutina'>";
-							echo " Ejercicio ".$cont." : ".$fila['nombre_ejercicio']."<br>";
-							echo "Series : ".$fila['series']."<br>";
-							echo "repeticiones: ".$fila['repeticiones']."<br>";
+
+							echo "<div class='col-sm-3'> <div class='panel panel-primary'> <div class='panel-heading'>  Ejercicio ".$cont." : ".$fila['nombre_ejercicio']."</div>";
+							echo "<div class='panel-body'> Series : ".$fila['series']."<br>";
+							echo "Repeticiones: ".$fila['repeticiones'];
 							echo "<input type='hidden' name='id_rutina' value=".$id_rutina.">";
 							echo "<input type='hidden' name='sesion_rutina' value=".$sesion_rutina.">";
-							echo "</div><br><br><br>";
+							echo "</div></div></div>";
 							$cont++;
 						}
 					}
@@ -154,11 +140,19 @@ $resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());
 		$cont = 1;
 		$resultado = mysqli_query($conexion, $sql2) or die (mysqli_error());	
 		if(mysqli_num_rows($resultado)>0){
-				echo "Ejercicios sesion 1";
-		
+
+			?>
+
+			<div class="col-sm-11">
+        	<div class="panel panel-primary">
+			<?php
+				echo "<div class='panel-primary panel-heading> Ejercicios sesion 1 </div>";		
 			while($fila = mysqli_fetch_array($resultado)){
-				echo "<div id='rutina'>";
-				echo " Ejercicio ".$cont." : ".$fila['nombre_ejercicio']."<br>";
+
+
+
+			
+				echo "<div class='col-sm-3'> <div class='panel panel-primary'> <div class='panel-heading'>  Ejercicio ".$cont." : ".$fila['nombre_ejercicio']."</div>";
 				echo "Series : ".$fila['series']."<br>";
 				echo "repeticiones: ".$fila['repeticiones']."<br>";
 				echo "<input type='checkbox' name='vehicle1'>";
@@ -195,8 +189,10 @@ $resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());
 // 		}
 // 	}
 ?>
-<br>
-<input type="submit" value="Acabar ejercicios">
+</div>
+<div class="text-center col-md-12 panel-body">
+<input class="btn btn-primary text-center" type="submit" value="Acabar ejercicios"></div>
 </form>
-</body>
-</html>
+<?php
+include('includes/footer_rojo.php');
+?>

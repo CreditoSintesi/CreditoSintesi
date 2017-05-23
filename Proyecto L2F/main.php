@@ -11,7 +11,7 @@
             <div class="col-lg-12">
                 <h2 class="page-header">Services Panels</h2>
             </div>
-            <?php echo "<a href='perfilusuario.php?id=".$_SESSION['id_usuario']."'>"; ?>
+            <a href='perfilusuario.php'>
             <div class="col-md-3 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
@@ -20,12 +20,12 @@
                     <div class="panel-body">
                         <h4>Perfil</h4>
                         <p>Accede a tu historial de pesos y medidas o modifica tus datos de registro.</p><br>
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <a href="perfilusuario.php" class="btn btn-primary">¡Consúltalos!</a>
                     </div>
                 </div>
             </div>
             </a>
-            <?php echo "<a href='user_rutinas.php?id=".$_SESSION['id_usuario']."'>"; ?>
+            <a href='user_rutinas.php'>
             <div class="col-md-3 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
@@ -38,12 +38,12 @@
                         <p>¡Accede a tu rutina, selecciona una nueva rutina, rellena días o cambia la rutina!.
                         <br/>
                         ¡Tú puedes!</p>
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <a href='user_rutinas.php' class="btn btn-primary">¡Entrena!</a>
                     </div>
                 </div>
             </div>
             </a>
-            <?php echo "<a href='user_dieta?id=".$_SESSION['id_usuario']."'>"; ?>
+           <a href='user_dieta.php'>
             <div class="col-md-3 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
@@ -56,7 +56,7 @@
                         <p>!Observa tu dieta actual, cambiala, revisa los nuevos platos¡.
                         <br/>
                         ¡La dieta también es importante!</p>
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <a href="user_dieta.php" class="btn btn-primary">¡Come!</a>
                     </div>
                 </div>
             </div>
@@ -72,8 +72,8 @@
                     <div class="panel-body">
                         <h4>Servicios</h4>
                         <p>La personalización acelera los resultados<br/>
-                        ¡Contrata a nuestros especialistas!</p>
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        ¡Contrata a nuestros especialistas!</p><br/>
+                        <a href="#" class="btn btn-primary">¡Acelera tu progeso!</a>
                     </div>
                 </div>
             </div>
