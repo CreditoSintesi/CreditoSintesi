@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2017 at 03:36 PM
+-- Generation Time: May 23, 2017 at 05:19 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -33,6 +33,18 @@ CREATE TABLE `tbl_comida_dieta` (
   `id_plato` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_comida_dieta`
+--
+
+INSERT INTO `tbl_comida_dieta` (`id_comidieta`, `id_dieta`, `momento_comida_comidieta`, `id_plato`) VALUES
+(1, 1, 'desayuno', 1),
+(2, 1, 'mediamañana', 2),
+(3, 1, 'comida mediodia', 3),
+(4, 1, 'post entreno', 4),
+(5, 1, 'cena', 5),
+(6, 1, 'antes de dormir', 6);
+
 -- --------------------------------------------------------
 
 --
@@ -42,11 +54,18 @@ CREATE TABLE `tbl_comida_dieta` (
 CREATE TABLE `tbl_dieta` (
   `id_dieta` int(11) NOT NULL,
   `nombre_dieta` varchar(25) NOT NULL,
-  `fecha_inicio_dieta` date DEFAULT NULL,
-  `fecha_final_dieta` date DEFAULT NULL,
-  `id_especialista` int(11) NOT NULL,
-  `v_energetico_dieta` varchar(6) NOT NULL
+  `id_especialista` int(11) DEFAULT NULL,
+  `v_energetico_dieta` varchar(6) NOT NULL,
+  `id_objetivo` int(11) NOT NULL,
+  `duracion_dieta` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_dieta`
+--
+
+INSERT INTO `tbl_dieta` (`id_dieta`, `nombre_dieta`, `id_especialista`, `v_energetico_dieta`, `id_objetivo`, `duracion_dieta`) VALUES
+(1, 'Dieta ganar músculo', NULL, '3136 ', 5, 3);
 
 -- --------------------------------------------------------
 
@@ -57,8 +76,18 @@ CREATE TABLE `tbl_dieta` (
 CREATE TABLE `tbl_dieta_usuario` (
   `id_dieta_usuario` int(11) NOT NULL,
   `id_dieta` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL
+  `id_usuario` int(11) NOT NULL,
+  `fecha_fin_dieta` date NOT NULL,
+  `fecha_inicio_dieta` date NOT NULL,
+  `dieta_finalizada` varchar(2) NOT NULL DEFAULT 'no' COMMENT 'si/no'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_dieta_usuario`
+--
+
+INSERT INTO `tbl_dieta_usuario` (`id_dieta_usuario`, `id_dieta`, `id_usuario`, `fecha_fin_dieta`, `fecha_inicio_dieta`, `dieta_finalizada`) VALUES
+(1, 1, 1, '1970-01-01', '2017-05-23', 'no');
 
 -- --------------------------------------------------------
 
@@ -136,7 +165,8 @@ INSERT INTO `tbl_historial_peso` (`id_historial_peso`, `id_usuario`, `fecha_his_
 (3, 2, '2017-05-11', 70),
 (4, 0, '2017-05-19', 65),
 (5, 0, '2017-05-19', 67),
-(6, 0, '2017-05-19', 71);
+(6, 0, '2017-05-19', 71),
+(7, 1, '2017-05-23', 70);
 
 -- --------------------------------------------------------
 
@@ -244,6 +274,18 @@ CREATE TABLE `tbl_plato` (
   `descripcion_plato` text NOT NULL,
   `tipo_plato` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_plato`
+--
+
+INSERT INTO `tbl_plato` (`id_plato`, `nombre_plato`, `preparacion_plato`, `descripcion_plato`, `tipo_plato`) VALUES
+(1, 'Brécoles + Pechuga de pollo', '2 huevos + 4 claras de huevo\r\n30 g.de leche desgrasada\r\n1 taza de brécoles troceados. al vapor.\r\n60 g. de pechuga de pollo cocido.\r\nSal. pimienta o ajo en polvo para sabor.\r\nAceite de oliva.', 'Bate los huevos y la leche. Cocina los brécoles y el pollo. Añádeles luego la mezcla de huevos, tápalo y cocínalo a fuego lento durante aproximadamente 10 minutos.\r\n\r\n1 rebanada de pan integral.\r\n30 g. de queso desgrasado.\r\n1 vaso de jugo vegetal.', 'Desayuno'),
+(2, 'Manzana + Yogur desnatado', '1 manzana grande\r\n1 Yogur desnatado', '1 manzana grande\r\n1 Yogur desnatado', 'mediamañana'),
+(3, 'Bocadillo de carne', '85 g. de carne magra cortada en trozo\r\n2 rebanadas de pan de centeno\r\n1 tomate mediano, troceado\r\n60 g. de queso desgrasado\r\nMostaza o especias según nuestro gusto\r\n1 vaso de leche desgrasada', '85 g. de carne magra cortada en trozo\r\n2 rebanadas de pan de centeno\r\n1 tomate mediano, troceado\r\n60 g. de queso desgrasado\r\nMostaza o especias según nuestro gusto\r\n1 vaso de leche desgrasada', 'Mediodía Comida'),
+(4, 'Bebida + Barrita energética', '1/2 litro de bebida post entrenamiento (unas 380 calorías. 35 g. de proteína y 60 g. de carbohidratos)\r\n1 barrita energética.', 'Después del entrenamiento a casi nadie le apetece cocinar, por lo que somos realistas y utilizamos un suplemento post entrenamiento. Puedes pasar esta comida a otra parte del día si entrenas a una hora diferente. Si pesas poco o no necesitas las 620 calorías de aquí, no tomes la barrita energética (240 calorías, selecciona una con un elevado índice glucémico).', 'post-entrenar'),
+(5, 'Salmón y pasta', '85 g. de salmón cocido.\r\n225 g. de tomates. cortados o aplastados con espátula mientras los cocinamos.\r\n1/2 taza de champiñones, troceados.\r\nEspecias para sazonar.\r\nCocedlo durante 3 a 4 m.\r\n1 taza pequeña de pasta cocida.\r\n1 taza pequeña de vegetales mezclados.\r\n1 batata, cocida.', 'Esta comida será algo más contundente ya que es muy importante para el entrenamiento que hemos realizado unas horas antes. De echo se podría decir que la comida postentrenamiento recupera y esta pone en marcha el mecanismo de crecimiento muscular.', 'cena'),
+(6, '225 gramos de yogur desnatado.', '225 gramos de yogur desnatado.', '10’30 de la noche: Antes de acostarse', 'Antes de dormir');
 
 -- --------------------------------------------------------
 
@@ -401,7 +443,7 @@ CREATE TABLE `tbl_usuario` (
 
 INSERT INTO `tbl_usuario` (`id_usuario`, `nombre_usuario`, `pass_usuario`, `email_usuario`, `sexo_usuario`, `apellidos_usuario`, `fecha_registro`, `altura_usuario`, `fecha_nacimiento`, `estado_usuario`, `id_objetivo`, `id_tipo_cuerpo`) VALUES
 (0, 'sergi', '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2', 'sergi@email.com', 'Hombre', 'sergi sergi', '2017-05-19', 170, '1996-02-06', 'Activo', 3, NULL),
-(1, 'marc', '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2', 'mpetit@gmail.com', NULL, NULL, '2017-05-09', NULL, NULL, 'Inactivo', NULL, NULL),
+(1, 'marc', '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2', 'mpetit@gmail.com', 'Hombre', 'petit fernandez', '2017-05-09', 173, '1992-06-09', 'Activo', 5, NULL),
 (2, 'admin', 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec', 'admin@gmail.com', 'Hombre', 'petit fernandez', '2017-05-11', 173, '1992-09-16', 'Activo', 3, NULL);
 
 --
@@ -421,7 +463,8 @@ ALTER TABLE `tbl_comida_dieta`
 --
 ALTER TABLE `tbl_dieta`
   ADD PRIMARY KEY (`id_dieta`),
-  ADD KEY `FK_diet_espec` (`id_especialista`);
+  ADD KEY `FK_diet_espec` (`id_especialista`),
+  ADD KEY `FK_diet_objet` (`id_objetivo`);
 
 --
 -- Indexes for table `tbl_dieta_usuario`
@@ -551,17 +594,17 @@ ALTER TABLE `tbl_usuario`
 -- AUTO_INCREMENT for table `tbl_comida_dieta`
 --
 ALTER TABLE `tbl_comida_dieta`
-  MODIFY `id_comidieta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_comidieta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `tbl_dieta`
 --
 ALTER TABLE `tbl_dieta`
-  MODIFY `id_dieta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_dieta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tbl_dieta_usuario`
 --
 ALTER TABLE `tbl_dieta_usuario`
-  MODIFY `id_dieta_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_dieta_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tbl_ejercicio`
 --
@@ -581,7 +624,7 @@ ALTER TABLE `tbl_historial_medidas`
 -- AUTO_INCREMENT for table `tbl_historial_peso`
 --
 ALTER TABLE `tbl_historial_peso`
-  MODIFY `id_historial_peso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_historial_peso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tbl_historial_rutinas`
 --
@@ -606,7 +649,7 @@ ALTER TABLE `tbl_parte_cuerpo_ejerc`
 -- AUTO_INCREMENT for table `tbl_plato`
 --
 ALTER TABLE `tbl_plato`
-  MODIFY `id_plato` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_plato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `tbl_rutina_ejer`
 --
@@ -652,7 +695,8 @@ ALTER TABLE `tbl_comida_dieta`
 -- Constraints for table `tbl_dieta`
 --
 ALTER TABLE `tbl_dieta`
-  ADD CONSTRAINT `FK_diet_espec` FOREIGN KEY (`id_especialista`) REFERENCES `tbl_especialista` (`id_especialista`);
+  ADD CONSTRAINT `FK_diet_espec` FOREIGN KEY (`id_especialista`) REFERENCES `tbl_especialista` (`id_especialista`),
+  ADD CONSTRAINT `FK_diet_objet` FOREIGN KEY (`id_objetivo`) REFERENCES `tbl_objetivo` (`id_objetivo`);
 
 --
 -- Constraints for table `tbl_dieta_usuario`
