@@ -1,3 +1,32 @@
+<?php
+session_start();
+include_once('conexio.php');
+
+$id_usuario = $_SESSION['id_usuario'];
+ $sql = "SELECT * FROM `tbl_usuario` WHERE `id_usuario` = ". $_SESSION['id_usuario'];
+
+    $data_user=mysqli_query($conexion,$sql);
+        while($data = mysqli_fetch_array($data_user))
+             {
+              if($data['estado_usuario']=="Inactivo")
+              {
+                echo "<script type='text/javascript'>alert('¡Ep!¡No has rellenado el cuestionario, nos hacen falta los datos para poder ayudarte a conseguir tus objetivos!');
+          location.href='cuestionario.php?err=2';</script>";
+                
+              }
+              else if($data['estado_usuario']=="Dado de baja")
+              {echo "<script type='text/javascript'>alert('¡Ep!¡Nos habías abandonado anteriormente!');
+          location.href='index.php?err=2';</script>";
+              }
+               
+                $user_name = $data['nombre_usuario'] ." ". $data['apellidos_usuario'];
+             }
+
+
+extract($_REQUEST);
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -46,7 +75,7 @@
             <span class="icon-bar"></span>
           </button>
 
-          <a class="navbar-brand-left" href="#" ><img src="media/logo/logoVerde.png" width="42px" height="42px"' style="margin: 5px 5px 5px 5px;" ></a>
+          <a class="navbar-brand-left" href="main.php" ><img src="media/logo/logoVerde.png" width="42px" height="42px"' style="margin: 5px 5px 5px 5px;" ></a>
         </div>       
         <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -54,13 +83,13 @@
                         <a href="main.php">Bienvenido, <?php echo $user_name; ?></a>
                     </li>
                     <li>
-                        <a href="#">Perfil</a>
+                        <a href="perfilusuario.php">Perfil</a>
                     </li>
                     <li>
-                        <a href="#">Rutinas</a>
+                        <a href="user_rutina.php">Rutinas</a>
                     </li>
                     <li>
-                        <a href="#">Dietas</a>
+                        <a href="user_dieta.php">Dietas</a>
                     </li>
                     <li>
                         <a href="logout.proc.php">Cerrar Sesion  <img src="media/img/icon/logout.png" width="20px" height="20px" onmouseover="this.src='media/img/icon/logout4.png';" onmouseout="this.src='media/img/icon/logout.png';"></a>

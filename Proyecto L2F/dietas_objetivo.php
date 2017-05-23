@@ -9,11 +9,11 @@
 	include("conexio.php");
 
 	$consulta = "SELECT *
-      FROM `tbl_rutina`
+      FROM `tbl_dieta`
 INNER JOIN `tbl_objetivo`
-        ON `tbl_rutina`.`id_objetivo` = `tbl_objetivo`.`id_objetivo`
+        ON `tbl_dieta`.`id_objetivo` = `tbl_objetivo`.`id_objetivo`
 INNER JOIN `tbl_usuario`
-        ON `tbl_objetivo`.`id_objetivo` = `tbl_usuario`.`id_objetivo`
+        ON `tbl_dieta`.`id_objetivo` = `tbl_usuario`.`id_objetivo`
      WHERE `id_usuario` = '$id_usuario';" ; 
 	//echo $consulta;
 	$resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());
@@ -23,8 +23,9 @@ INNER JOIN `tbl_usuario`
 
 	while($fila = mysqli_fetch_array($resultado)){
 			
-
+		echo "<h1>Dietas disponibles para : ".$fila['nombre_objetivo']."</h1>";
 			?>
+
 	 <form name='form' action='asignar_rutina.proc.php' method="POST" >
 
 
@@ -33,20 +34,21 @@ INNER JOIN `tbl_usuario`
 	 <div class="col-sm-3">
         <div class="panel panel-primary">
             <div class="panel-heading">
-              <h3 class="panel-title"><?php echo $fila['nombre_rutina']; ?></h3>
+              <h3 class="panel-title"><?php echo $fila['nombre_dieta']; ?></h3>
              </div>
              <div class="panel-body">
                           
 <?php 
 			
-			echo "Duración Rutina : ".$fila['duracion_rutina']." meses<br>";
+			echo "Duración Dieta : ".$fila['duracion_dieta']." <br>";
+			echo "Valor energético diário : ".$fila['v_energetico_dieta']."Calorías <br>";
 	?>
 
-			<input type='hidden' name='duracion_rutina' value='<?php echo $fila['duracion_rutina']; ?>'>
-			<input type='hidden' name='id_rutina' value='<?php echo $fila['id_rutina'];?>'>
+			
+			<input type='hidden' name='id_dieta' value='<?php echo $fila['id_dieta'];?>'>
 	<?php
-			echo "Objetivo Rutina: : ".$fila['nombre_objetivo'].""; 
-			 $id_rutina = $fila['id_rutina'];
+			echo "Objetivo Dieta:  ".$fila['nombre_objetivo'].""; 
+			 $id_dieta = $fila['id_dieta'];
 			// $duracion_rutina = $fila['duracion_rutina'];
 			// echo "<a href='asignar_rutina.proc.php?id_rutina=".$id_rutina."'>enviar</a>";
 			
@@ -55,8 +57,7 @@ INNER JOIN `tbl_usuario`
 			
 		
 			
-			<br>
-<div class="text-center panel-body"> <a href= <?php echo'"asignar_rutina.proc.php?id_rutina='.$id_rutina.'"'; ?>  onclick="$(this).closest('form').submit()" type="submit" class="btn btn-primary text-center" name="enviar" value="Apuntate!">Apuntate!</a></div>
+			<br> <a href= <?php echo'"asignar_dieta.proc.php?id_dieta='.$id_dieta.'"'; ?>  onclick="$(this).closest('form').submit()" type="submit" class="btn btn-primary text-center" name="enviar" value="Empezar la dieta!">Empezar la dieta!</a>
 			 </div>
 			 </div>
 			 </form> 
