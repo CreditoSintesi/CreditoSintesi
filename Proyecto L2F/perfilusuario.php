@@ -460,45 +460,45 @@
                   <tr>
                     <td>Brazo</td>
                     <td><?php echo  "<input type='number' class='form-control' id='cm_brazo' name='cm_brazo' value=".$brazo_cm." required>"; ?></td>
-                    <td>+</td>
-                    <td>-</td>
+                    <td><label onclick="plus_cm('cm_brazo');">+</label></td>
+                    <td><label onclick="rest_cm('cm_brazo');">-</label></td>
                   </tr>
                   <tr>
                     <td>Antebrazo</td>
                     <td><?php echo  "<input type='number' class='form-control' id='cm_antebrazo' name='cm_antebrazo' value=".$antebrazo_cm." required>"; ?></td>
-                    <td>+</td>
-                    <td>-</td>
+                    <td><label onclick="plus_cm('cm_antebrazo');">+</label></td>
+                    <td><label onclick="rest_cm('cm_antebrazo');">-</label></td>
                   </tr>
                   <tr>
                     <td>Pectoral</td>
                     <td><?php echo  "<input type='number' class='form-control' id='cm_pectoral' name='cm_pectoral' value=".$pectoral_cm." required>"; ?></td>
-                    <td>+</td>
-                    <td>-</td>
+                    <td><label onclick="plus_cm('cm_pectoral');">+</label></td>
+                    <td><label onclick="rest_cm('cm_pectoral');">-</label></td>
                   </tr>
                   <tr>
                     <td>Cintura</td>
                     <td><?php echo  "<input type='number' class='form-control' id='cm_cintura' name='cm_cintura' value=".$cintura_cm." required>"; ?></td>
-                    <td>+</td>
-                    <td>-</td>
+                   <td><label onclick="plus_cm('cm_cintura');">+</label></td>
+                    <td><label onclick="rest_cm('cm_cintura');">-</label></td>
                   </tr>
                    <tr>
                     <td>Cadera</td>
                     <td><?php echo  "<input type='number' class='form-control' id='cm_cadera' name='cm_cadera' value=".$cadera_cm." required>"; ?></td>
-                    <td>+</td>
-                    <td>-</td>
+                    <td><label onclick="plus_cm('cm_cadera');">+</label></td>
+                    <td><label onclick="rest_cm('cm_cadera');">-</label></td>
                   </tr>
                    <tr>
                     <td>Cuadricep</td>
                      <td><?php echo  "<input type='number' class='form-control' id='cm_cuadricep' name='cm_cuadricep' value=".$cuadricep_cm." required>"; ?></td>
-                    <td>+</td>
-                    <td>-</td>
+                    <td><label onclick="plus_cm('cm_cuadricep');">+</label></td>
+                    <td><label onclick="rest_cm('cm_cuadricep');">-</label></td>
                   </tr>
                    <tr>
                     <td>Gemelo</td>
                     <td><?php echo  "<input type='number' class='form-control' id='cm_gemelo' name='cm_gemelo' value=".$gemelo_cm." required>"; ?></td>
                     
-                    <td>+</td>
-                    <td>-</td>
+                    <td><label onclick="plus_cm('cm_gemelo');">+</label></td>
+                    <td><label onclick="rest_cm('cm_gemelo');">-</label></td>
                   </tr>
                   <tr>
                     <td colspan="4"><input type="submit" class="btn btn-default" value="Enviar"/></td>
@@ -601,6 +601,26 @@
       {
         document.getElementById('height').value=0;
       }
+      
+    }
+    function plus_cm(id)
+    {
+      var cm = document.getElementById(id).value;
+        cm++;
+        document.getElementById(id).value=cm
+    }
+     function rest_cm(id)
+    {
+      var cm = document.getElementById(id).value;
+      cm--;
+      if(cm>0)
+     {
+       document.getElementById(id).value=cm;
+     }
+      else
+     {
+       document.getElementById(id).value.value=0;
+     }
       
     }
     window.onload(hidden_elements());
