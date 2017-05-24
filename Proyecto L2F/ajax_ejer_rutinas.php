@@ -13,7 +13,7 @@ $consulta = "SELECT DISTINCT * FROM tbl_rutina, tbl_objetivo WHERE tbl_rutina.id
 
 		?>	
 		<div class='container'>
-		<div class='col-md-9'><br>
+		<div class='col-md-10'><br>
 		<?php
 			//echo "Duracion rutina   : ".$fila['duracion_rutina']."  --   Objetivo:   ".$fila['nombre_objetivo']."<br><br><br>";
 				
@@ -47,4 +47,9 @@ $sql = "SELECT DISTINCT * FROM tbl_rutina, tbl_objetivo, tbl_rutina_ejer, tbl_ej
 		}
 	}
 
+
+
 ?>
+
+</div>
+</div>
