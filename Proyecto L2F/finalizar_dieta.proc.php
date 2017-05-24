@@ -10,7 +10,7 @@ $sql = "UPDATE tbl_dieta_usuario SET fecha_fin_dieta = '$fecha_actual', dieta_fi
 	//echo $sql ."<br><br><br><br>";
 $resultado = mysqli_query($conexion, $sql) or die (mysqli_error());	
 
-header('location: user_dieta.php');
+//header('location: user_dieta.php');
 	
 
 ?>

@@ -47,7 +47,7 @@ $resultado = mysqli_query($conexion, $sql) or die (mysqli_error());
 if(mysqli_num_rows($resultado)>0){
 
     //REALIZAMOS OTRA CONSULTA PARA VER SI ESE USUARIO TIENE UNA DIETA SIN FINALIZAR
-    $consulta = "SELECT * FROM tbl_dieta_usuario, tbl_dieta, tbl_usuario WHERE tbl_dieta.id_dieta = tbl_dieta_usuario.id_dieta  AND tbl_usuario.id_usuario = tbl_dieta_usuario.id_usuario AND dieta_finalizada = 'no' ";
+    $consulta = "SELECT * FROM tbl_dieta_usuario, tbl_dieta, tbl_usuario WHERE tbl_dieta.id_dieta = tbl_dieta_usuario.id_dieta  AND tbl_usuario.id_usuario = tbl_dieta_usuario.id_usuario AND tbl_dieta_usuario.id_usuario = $id_usuario AND dieta_finalizada = 'no' ";
 
     $resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());
 
@@ -64,13 +64,10 @@ if(mysqli_num_rows($resultado)>0){
 <?php
         
 
-
+            echo "   <div class='panel-primary panel-heading' onclick='mostrarInfo(".$id_dieta.")'> ".$fila['nombre_dieta']." - Descargar PDF  </div>";
             
-            echo " <div class='panel-primary panel-heading' onclick='mostrarInfo(".$id_dieta.")'>  
-                    <a href='descargar_dieta.php?file=Media/pdf/".$id_dieta."'> ".$fila['nombre_dieta']." - Descargar PDF </a> </div>";
-            ?>
-                 <div class="panel-primary alert-danger text-center" id='flecha' onclick='esconder()'><img id='up' src='media/img/icon/down.png' height="50" width="50" ></div>
-<?php           echo "<div id='datos'></div>";
+                 echo" <a href= 'descargar_dieta.php?id=".$id_dieta."'><div class='panel-primary alert-danger text-center' id='flecha' onclick='esconder()'><img id='up' src='media/img/icon/down.png' height='50' width='50'></div></a>";
+                echo "<div id='datos'></div>";
             
         }
             

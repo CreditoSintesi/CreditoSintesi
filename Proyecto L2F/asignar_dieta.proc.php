@@ -15,6 +15,6 @@
 
 	$resultado=mysqli_query($conexion, $sql);
 
-	header('location: user_dietas.php');
+	header('location: user_dieta.php');
 	
 ?>
