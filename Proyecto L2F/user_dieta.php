@@ -21,7 +21,7 @@ $id_usuario = $_SESSION['id_usuario'];
              	 
                 $user_name = $data['nombre_usuario'] ." ". $data['apellidos_usuario'];
              }
-      require_once("includes/header_rojo.php");
+      require_once("includes/header_verde.php");
 
 extract($_REQUEST);
 ?>
@@ -64,9 +64,12 @@ if(mysqli_num_rows($resultado)>0){
 <?php
         
 
-            echo " <div class='panel-primary panel-heading' onclick='mostrarInfo(".$id_dieta.")'>    ".$fila['nombre_dieta']." - Descargar PDF </div>";
+
+            
+            echo " <div class='panel-primary panel-heading' onclick='mostrarInfo(".$id_dieta.")'>  
+                    <a href='descargar_dieta.php?file=Media/pdf/".$id_dieta."'> ".$fila['nombre_dieta']." - Descargar PDF </a> </div>";
             ?>
-                 <div class="panel-primary alert-danger text-center" id='flecha' onclick='esconder()'><img id='up' src='media/img/icon/up.png' height="50" width="50" ></div>
+                 <div class="panel-primary alert-danger text-center" id='flecha' onclick='esconder()'><img id='up' src='media/img/icon/down.png' height="50" width="50" ></div>
 <?php           echo "<div id='datos'></div>";
             
         }
