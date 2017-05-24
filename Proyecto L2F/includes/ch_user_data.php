@@ -56,6 +56,6 @@
 		     
 				 echo "</select></td></tr>";
 				?>
-		      <tr><td colspan="2"><input type="submit" name="Enviar" value="¡Actualizar!">
+		      <tr><td colspan="2"><input class="btn btn-primary" type="submit" name="Enviar" value="¡Actualizar!">
 		</table>
 	</form>

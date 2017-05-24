@@ -351,7 +351,7 @@
                 <td>--</td>
               </tr>
               <tr>
-                <td colspan="3"><a href="weight.php"><button class="btn btn-info">Ver más</button></a></td>
+                <td colspan="3"><a href="weight.php"><button class="btn btn-primary">Ver más</button></a></td>
             </tbody>
           </table>
           </div>
@@ -441,7 +441,7 @@
                     <td colspan="2"><p class="col-form-label" onclick="rest_height()">-</p></td>
                   </tr>
                   <tr>
-                    <td colspan="4"><input type="submit" class="btn btn-default" value="Enviar"/></td>
+                    <td colspan="4"><input type="submit" class="btn btn-primary" value="Enviar"/></td>
                   </tr>
                 </tbody>
               </table>
@@ -501,7 +501,7 @@
                     <td><label onclick="rest_cm('cm_gemelo');">-</label></td>
                   </tr>
                   <tr>
-                    <td colspan="4"><input type="submit" class="btn btn-default" value="Enviar"/></td>
+                    <td colspan="4"><input type="submit" class="btn btn-primary" value="Enviar"/></td>
                   </tr>
                 </tbody>
               </table>
