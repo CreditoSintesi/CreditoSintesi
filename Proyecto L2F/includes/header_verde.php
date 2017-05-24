@@ -86,7 +86,7 @@ extract($_REQUEST);
                         <a href="perfilusuario.php">Perfil</a>
                     </li>
                     <li>
-                        <a href="user_rutina.php">Rutinas</a>
+                        <a href="user_rutinas.php">Rutinas</a>
                     </li>
                     <li>
                         <a href="user_dieta.php">Dietas</a>

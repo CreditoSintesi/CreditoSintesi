@@ -88,7 +88,7 @@ extract($_REQUEST);
                         <a href="user_rutinas.php">Rutinas</a>
                     </li>
                     <li>
-                        <a href="user_dietas.php">Dietas</a>
+                        <a href="user_dieta.php">Dietas</a>
                     </li>
                     <li>
                         <a href="logout.proc.php">Cerrar Sesion  <img src="media/img/icon/logout.png" width="20px" height="20px" onmouseover="this.src='media/img/icon/logout3.png';" onmouseout="this.src='media/img/icon/logout.png';"></a>
