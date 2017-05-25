@@ -62,9 +62,9 @@ if(mysqli_num_rows($resultado)>0){
 
 include('dietas_objetivo.php');
 //echo $aux;
-echo '</div></div></div>';
+echo '</div></div></div></div>';
 }
-
+echo '</div></div></div></div>';
 
 include('includes/footer_verde.php');
 ?>
