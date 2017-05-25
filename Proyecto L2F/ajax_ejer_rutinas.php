@@ -31,7 +31,7 @@ $sql = "SELECT DISTINCT * FROM tbl_rutina, tbl_objetivo, tbl_rutina_ejer, tbl_ej
 
 		while($fila = mysqli_fetch_array($resultado)){
 			?>
-	      <div class="col-md-3">
+	      <div class="col-md-4">
           <div class="panel panel-danger">
             <div class="panel-heading">
               <h3 class="panel-title">
@@ -52,6 +52,5 @@ $sql = "SELECT DISTINCT * FROM tbl_rutina, tbl_objetivo, tbl_rutina_ejer, tbl_ej
 
 
 ?>
-</div>
 </div>
 </div>
