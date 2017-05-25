@@ -27,7 +27,7 @@ $resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());
 			$ultima_fecha = $res['ultima_fecha'];
 			$sesiones_semana_rutina = $res['sesiones_semana_rutina']; //sesiones a la semana//
 			$duracion = $res['duracion_rutina']; //en meses
-			 echo $sesiones_semana_rutina;
+			 //echo $sesiones_semana_rutina;
 			$sql = "SELECT fecha, id_historial_rutinas, sesion_rutina FROM tbl_historial_rutinas WHERE id_usuario = $id_usuario AND id_rutina= $id_rutina AND fecha = '$ultima_fecha'";
 			 // echo $sql."<br><br><br><br>";
 			$resultado = mysqli_query($conexion, $sql) or die (mysqli_error());	
@@ -37,7 +37,7 @@ $resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());
 			while($res = mysqli_fetch_array($resultado)){
 
 				$sesion_rutina = $res['sesion_rutina'];
-				 echo $sesion_rutina;
+				 //echo $sesion_rutina;
 				if ($sesion_rutina == $sesiones_semana_rutina) {
 					
 					//si son iguales entonces hay que empezar con la sesion 1
@@ -50,8 +50,8 @@ $resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());
 							echo " <h4> Ejercicios sesion 1</h4>";
 							while($fila = mysqli_fetch_array($resultado)){
 							
-							echo "<div id='rutina'>";
-							echo "<div class='col-md-3'> <div class='panel panel-primary'> <div class='panel-heading'> Ejercicio ".$cont." : ".$fila['nombre_ejercicio']." </div>";
+						
+							echo "<div class='col-md-4'> <div class='panel panel-primary'> <div class='panel-heading'> Ejercicio ".$cont." : ".$fila['nombre_ejercicio']." </div>";
 							echo "<div class='panel-body'>  Series : ".$fila['series']."<br>";
 							echo "Repeticiones: ".$fila['repeticiones']."<br>";
 							
@@ -76,13 +76,12 @@ $resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());
 					$resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());	
 					if(mysqli_num_rows($resultado)>0){
 
-						echo "<div class='panel-primary panel-heading'> <h4>Ejercicios sesion  ".$sesion_rutina."</h4></div>";
+						echo "<div class='panel-primary panel-heading'> <h4>Ejercicios sesion  ".$sesion_rutina."</h4></div><br>";
 							
 					
 						while($fila = mysqli_fetch_array($resultado)){
 	
-							echo "<div id='rutina'>";
-							echo "<div class='col-sm-3'> <div class='panel panel-primary'> <div class='panel-heading'> Ejercicio ".$cont." : ".$fila['nombre_ejercicio']."</div>";
+							echo "<div class='col-md-4'> <div class='panel panel-primary'> <div class='panel-heading'> Ejercicio ".$cont." : ".$fila['nombre_ejercicio']."</div>";
 							echo "<div class='panel-body'> Series : ".$fila['series']."<br>";
 							echo "Repeticiones: ".$fila['repeticiones']."<br>";
 							echo "<input type='hidden' name='id_rutina' value=".$id_rutina.">";
@@ -105,12 +104,12 @@ $resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());
 					$resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());	
 					if(mysqli_num_rows($resultado)>0){
 						$cont = 1;
-						echo "<div class='panel-primary panel-heading'><h4>Ejercicios sesion  ".$sesion_rutina."</h4></div></div><br>";
+						echo "<h4>Ejercicios sesion  ".$sesion_rutina."</h4><br>";
 							
 					
 						while($fila = mysqli_fetch_array($resultado)){
 
-							echo "<div class='col-sm-3'> <div class='panel panel-primary'> <div class='panel-heading'>  Ejercicio ".$cont." : ".$fila['nombre_ejercicio']."</div>";
+							echo "<div class='col-md-4'> <div class='panel panel-primary'> <div class='panel-heading'>  Ejercicio ".$cont." : ".$fila['nombre_ejercicio']."</div>";
 							echo "<div class='panel-body'> Series : ".$fila['series']."<br>";
 							echo "Repeticiones: ".$fila['repeticiones'];
 							echo "<input type='hidden' name='id_rutina' value=".$id_rutina.">";
