@@ -3,6 +3,12 @@
 include_once('conexio.php');
 extract($_REQUEST);
 
+
+		?>	
+		<div class='container'>
+		<div class='col-md-10'><br>
+		<?php
+
 $consulta = "SELECT DISTINCT * FROM tbl_rutina, tbl_objetivo WHERE tbl_rutina.id_rutina= $id_rutina AND tbl_rutina.id_objetivo = tbl_objetivo.id_objetivo";
 
 	$resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());	
@@ -11,10 +17,6 @@ $consulta = "SELECT DISTINCT * FROM tbl_rutina, tbl_objetivo WHERE tbl_rutina.id
 		while($fila = mysqli_fetch_array($resultado)){
 		
 
-		?>	
-		<div class='container'>
-		<div class='col-md-10'><br>
-		<?php
 			//echo "Duracion rutina   : ".$fila['duracion_rutina']."  --   Objetivo:   ".$fila['nombre_objetivo']."<br><br><br>";
 				
 		}
@@ -50,6 +52,6 @@ $sql = "SELECT DISTINCT * FROM tbl_rutina, tbl_objetivo, tbl_rutina_ejer, tbl_ej
 
 
 ?>
-
+</div>
 </div>
 </div>

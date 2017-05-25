@@ -5,17 +5,6 @@ require_once("includes/header_verde.php");
 
 extract($_REQUEST);
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-
-
-
-
 <div class="container">
 <h1>MI DIETA</h1>
 <?php
@@ -46,15 +35,16 @@ if(mysqli_num_rows($resultado)>0){
 
             echo "   <div class='panel-primary panel-heading' onclick='mostrarInfo(".$id_dieta.")'> ".$fila['nombre_dieta']." - Descargar PDF  </div>";
             
-                 echo" <a href= 'descargar_dieta.php?id=".$id_dieta."'><div class='panel-primary alert-danger text-center' id='flecha' onclick='esconder()'><img id='up' src='media/img/icon/down.png' height='50' width='50'></div></a>";
-                echo "<div id='datos'></div>";
+                 echo" <a href= 'descargar_dieta.php?id=".$id_dieta."'><div class='panel-primary alert-success text-center' id='flecha' onclick='esconder()'><img id='up' src='media/img/icon/down.png' height='50' width='50'></div></a>";
+                echo "<div id='datos'></div></div>";
             
         }
             
-            echo "<form action='finalizar_dieta.proc.php'>";
+            echo "<div class='text-center panel-body'> <form action='finalizar_dieta.proc.php'>";
             echo "<input type='hidden' name='id_dieta' value='".$id_dieta."'> ";
             echo "<input type='submit' class='btn btn-primary' value='Finalizar Dieta'>";
-            echo "</form>";
+            echo "</form>
+            </div> </div>";
 
 
         //SI EL USUARIO SI  QUE ESTA PERO TIENE UNA RUTINA FINALIZADA ENTONCES SE LE INDICA SI QUIERE HACER UNA NUEVA O BIEN PUEDE IR A SU PERFIL PARA CAMBIAR EL OBJETIVO  
@@ -72,7 +62,7 @@ if(mysqli_num_rows($resultado)>0){
 
 include('dietas_objetivo.php');
 //echo $aux;
-echo '</div>';
+echo '</div></div></div>';
 }
 
 
