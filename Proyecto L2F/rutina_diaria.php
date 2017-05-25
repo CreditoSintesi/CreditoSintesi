@@ -8,6 +8,7 @@ $id_usuario = $_SESSION['id_usuario'];
 ?>
 <div class="container">
 <h1>Rutina del día</h1>
+<div class="col-md-12">
 	<form action="sesion_finalizada.proc.php">
 <?php
 //MOSTRAR EJERCICIOS QUE TOCAN
@@ -15,6 +16,7 @@ $id_usuario = $_SESSION['id_usuario'];
 //si el usuario no está entonces se muestran los ejercicios de la primera sesion
 
 $consulta = "SELECT * FROM tbl_historial_rutinas WHERE tbl_historial_rutinas.id_rutina= $id_rutina AND tbl_historial_rutinas.id_usuario = $id_usuario";
+ 
  echo $consulta."<br><br><br><br>";
 $resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());	
 	if(mysqli_num_rows($resultado)>0){
@@ -54,9 +56,9 @@ $resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());
 							<?php
 							echo "<div class='panel-primary panel-heading> <h4> Ejercicios sesion   ".$sesion_rutina."</h4></div>";
 							echo "<div id='rutina'>";
-							echo "<div class='col-sm-3'> <div class='panel panel-primary'> <div class='panel-heading'> Ejercicio ".$cont." : ".$fila['nombre_ejercicio']." </div>";
+							echo "<div class='col-md-3'> <div class='panel panel-primary'> <div class='panel-heading'> Ejercicio ".$cont." : ".$fila['nombre_ejercicio']." </div>";
 							echo "<div class='panel-body'>  Series : ".$fila['series']."<br>";
-							echo "repeticiones: ".$fila['repeticiones']."<br>";
+							echo "Repeticiones: ".$fila['repeticiones']."<br>";
 							echo "<input type='checkbox' name='vehicle1'>";
 							echo "<input type='hidden' name='id_rutina' value=".$fila['id_rutina'].">";
 							echo "<input type='hidden' name='sesion_rutina' value=1>";
@@ -87,7 +89,7 @@ $resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());
 							echo "<div id='rutina'>";
 							echo "<div class='col-sm-3'> <div class='panel panel-primary'> <div class='panel-heading'> Ejercicio ".$cont." : ".$fila['nombre_ejercicio']."</div>";
 							echo "<div class='panel-body'> Series : ".$fila['series']."<br>";
-							echo "repeticiones: ".$fila['repeticiones']."<br>";
+							echo "Repeticiones: ".$fila['repeticiones']."<br>";
 							echo "<input type='hidden' name='id_rutina' value=".$id_rutina.">";
 							echo "<input type='hidden' name='sesion_rutina' value=".$sesion_rutina.">";
 							echo "</div></div></div>";
@@ -136,26 +138,22 @@ $resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());
 
 		$sql2 = "SELECT  * FROM tbl_rutina, tbl_rutina_ejer, tbl_ejercicio WHERE tbl_rutina.id_rutina= $id_rutina AND tbl_rutina.id_rutina = tbl_rutina_ejer.id_rutina AND tbl_rutina_ejer.id_ejercicio = tbl_ejercicio.id_ejercicio AND tbl_rutina_ejer.num_dia = '1'";
 
-		echo $sql2 ."<br><br><br><br>";
+		//echo $sql2 ."<br><br><br><br>";
 		$cont = 1;
 		$resultado = mysqli_query($conexion, $sql2) or die (mysqli_error());	
 		if(mysqli_num_rows($resultado)>0){
 
-			?>
+				echo "<h4>Ejercicios sesion 1:</h4>";
 
-			<div class="col-sm-11">
-        	<div class="panel panel-primary">
-			<?php
-				echo "<div class='panel-primary panel-heading> Ejercicios sesion 1 </div>";		
 			while($fila = mysqli_fetch_array($resultado)){
 		
-				echo "<div class='col-sm-3'> <div class='panel panel-primary'> <div class='panel-heading'>  Ejercicio ".$cont." : ".$fila['nombre_ejercicio']."</div>";
-				echo "Series : ".$fila['series']."<br>";
-				echo "repeticiones: ".$fila['repeticiones']."<br>";
+				echo "<div class='col-md-4'> <div class='panel panel-primary'> <div class='panel-heading'>  Ejercicio ".$cont." : ".$fila['nombre_ejercicio']."</div>";
+				echo "<div class='panel-body'> Series : ".$fila['series']."<br>";
+				echo "Repeticiones: ".$fila['repeticiones']."<br>";
 				echo "<input type='checkbox' name='vehicle1'>";
 				echo "<input type='hidden' name='id_rutina' value=".$fila['id_rutina'].">";
 				echo "<input type='hidden' name='sesion_rutina' value=1>";
-				echo "</div><br><br><br>";
+				echo "</div></div></div>";
 				$cont++;
 			}
 		}
@@ -164,6 +162,8 @@ $resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());
 
 
 ?>
+</div>
+</div>
 </div>
 <div class="text-center col-md-12 panel-body">
 <input class="btn btn-primary text-center" type="submit" value="Acabar ejercicios"></div>
