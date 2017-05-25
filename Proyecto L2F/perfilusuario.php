@@ -68,8 +68,15 @@
               }
                $control++;
             }
-           $imc = $height1/pow(1.79,2);
-           //echo round($imc,"2");die;
+            if(!isset($height1))
+            {
+              $imc = "No disponible";
+            }
+            else
+            {
+               $imc = $height1/pow(1.79,2);
+            }
+           
   //Obtenemos las medidas de usuario 
       //SQL
         //brazo
@@ -88,6 +95,7 @@
         //Gemela
                $select_gemelo_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=8 ORDER BY `fecha_his_med` DESC LIMIT 0,1";
       //Querys
+
         $select_brazo_query=mysqli_query($conexion,$select_brazo_sql);
         $select_antebrazo_query=mysqli_query($conexion,$select_antebrazo_sql);
         $select_pectoral_query=mysqli_query($conexion,$select_pectoral_sql);
@@ -96,41 +104,97 @@
         $select_cuadricep_query=mysqli_query($conexion,$select_cuadricep_sql);
         $select_gemelo_query = mysqli_query($conexion,$select_gemelo_sql);
       //Seleccionamos los datos de la BD
+        //Controlamos que nos devuelva algo
+        if(mysqli_num_rows($select_brazo_query)>0){
         while($data_brazo = mysqli_fetch_array($select_brazo_query))
+         {
+           $brazo_cm = $data_brazo['cm'];
+           $brazo_date = date("d-m-Y", strtotime($data_brazo['fecha_his_med']));
+          }
+         }
+         else 
+         {
+          $brazo_cm = 0;
+          $brazo_date = "No disponible";
+         }
+         if(mysqli_num_rows($select_antebrazo_query)>0)
+         {
+            while($data_antebrazo = mysqli_fetch_array($select_antebrazo_query))
+            {
+              $antebrazo_cm = $data_antebrazo['cm'];
+              $antebrazo_date = date("d-m-Y", strtotime($data_antebrazo['fecha_his_med']));
+            }
+         }
+         else 
+         {
+           $antebrazo_cm = 0;
+           $antebrazo_date = "No disponible";
+         }
+        if(mysqli_num_rows($select_pectoral_query)>0)
         {
-          $brazo_cm = $data_brazo['cm'];
-          $brazo_date = date("d-m-Y", strtotime($data_brazo['fecha_his_med']));
+          while($data_pectoral = mysqli_fetch_array($select_pectoral_query))
+          {
+            $pectoral_cm = $data_pectoral['cm'];
+            $pectoral_date = date("d-m-Y", strtotime($data_pectoral['fecha_his_med']));
+          }
         }
-        while($data_antebrazo = mysqli_fetch_array($select_antebrazo_query))
+        else
         {
-          $antebrazo_cm = $data_antebrazo['cm'];
-          $antebrazo_date = date("d-m-Y", strtotime($data_antebrazo['fecha_his_med']));
+           $pectoral_cm = 0;
+           $pectoral_date = "No disponible";
         }
-        while($data_pectoral = mysqli_fetch_array($select_pectoral_query))
+        if(mysqli_num_rows($select_cintura_query)>0)
         {
-          $pectoral_cm = $data_pectoral['cm'];
-          $pectoral_date = date("d-m-Y", strtotime($data_pectoral['fecha_his_med']));
+          while($data_cintura = mysqli_fetch_array($select_cintura_query))
+          {
+            $cintura_cm = $data_cintura['cm'];
+            $cintura_date = date("d-m-Y", strtotime($data_cintura['fecha_his_med']));
+          }
         }
-        while($data_cintura = mysqli_fetch_array($select_cintura_query))
+        else 
         {
-          $cintura_cm = $data_cintura['cm'];
-          $cintura_date = date("d-m-Y", strtotime($data_cintura['fecha_his_med']));
+           $cintura_cm = 0;
+           $cintura_date = "No disponible";
         }
-        while($data_cadera= mysqli_fetch_array($select_cadera_query))
+        if(mysqli_num_rows($select_cadera_query)>0)
         {
-          $cadera_cm = $data_cadera['cm'];
-          $cadera_date = date("d-m-Y", strtotime($data_cadera['fecha_his_med']));
-        
+          while($data_cadera= mysqli_fetch_array($select_cadera_query))
+          {
+            $cadera_cm = $data_cadera['cm'];
+            $cadera_date = date("d-m-Y", strtotime($data_cadera['fecha_his_med']));
+          
+          }
         }
-        while($data_cuadricep= mysqli_fetch_array($select_cuadricep_query))
+        else 
         {
-          $cuadricep_cm = $data_cuadricep['cm'];
-          $cuadricep_date = date("d-m-Y", strtotime($data_cuadricep['fecha_his_med']));
+           $cadera_cm = 0;
+           $cadera_date = "No disponible";
         }
-        while($data_gemelo= mysqli_fetch_array($select_gemelo_query))
+        if(mysqli_num_rows($select_cuadricep_query)>0)
         {
-          $gemelo_cm = $data_gemelo['cm'];
-          $gemelo_date = date("d-m-Y", strtotime($data_gemelo['fecha_his_med']));
+          while($data_cuadricep= mysqli_fetch_array($select_cuadricep_query))
+          {
+            $cuadricep_cm = $data_cuadricep['cm'];
+            $cuadricep_date = date("d-m-Y", strtotime($data_cuadricep['fecha_his_med']));
+          }
+        }
+        else 
+        {
+           $cuadricep_cm = 0;
+           $cuadricep_date = "No disponible";
+        }
+        if(mysqli_num_rows($select_gemelo_query)>0)
+        {
+          while($data_gemelo= mysqli_fetch_array($select_gemelo_query))
+          {
+            $gemelo_cm = $data_gemelo['cm'];
+            $gemelo_date = date("d-m-Y", strtotime($data_gemelo['fecha_his_med']));
+          }
+        }
+        else 
+        {
+          $gemelo_cm = 0;
+          $gemelo_date = "No disponible";
         }
       //End obtener datos de usuario       
 ?>
@@ -209,7 +273,7 @@
                <div class="col-sm-2">
                   <div class="panel panel-primary">
                       <div class="panel-heading">
-                        <h3 class="panel-title" onclick="display_element('pr_cuerpo')">Historial medidas</h3>
+                        <h3 class="panel-title" onclick="display_element('pr_cuerpo')" style="cursor: pointer;">Historial medidas</h3>
                       </div>
                       
                   </div>
@@ -217,7 +281,7 @@
                   <div class="col-sm-2">
                   <div class="panel panel-primary">
                       <div class="panel-heading">
-                        <h3 class="panel-title" onclick="display_element('sh_peso')">¡Pésate!</h3>
+                        <h3 class="panel-title" onclick="display_element('sh_peso')" style="cursor: pointer;">¡Pésate!</h3>
                       </div>
                   </div>
                </div>
@@ -225,7 +289,7 @@
                 <div class="col-sm-2">
                   <div class="panel panel-primary">
                       <div class="panel-heading">
-                        <h3 class="panel-title" onclick="display_element('sh_medidas')">¡Mídete!</h3>
+                        <h3 class="panel-title" onclick="display_element('sh_medidas')" style="cursor: pointer;">¡Mídete!</h3>
                       </div>
                   </div>
                 </div>
@@ -249,7 +313,7 @@
                         }
                         else 
                         {
-                          echo "N/A";
+                          echo "--";
                         }
                   ?>
                 </td>
@@ -261,7 +325,7 @@
                         }
                         else 
                         {
-                          echo "N/A";
+                          echo "--";
                         }
                   ?>
                   
@@ -275,7 +339,7 @@
                         }
                         else 
                         {
-                          echo "N/A";
+                          echo "--";
                         }
                   ?>
                   
@@ -290,7 +354,7 @@
                         }
                         else 
                         {
-                          echo "N/A";
+                          echo "--";
                         }
                   ?>
                 </td>
@@ -302,7 +366,7 @@
                         }
                         else 
                         {
-                          echo "N/A";
+                          echo "--";
                         }
                   ?>
                   
@@ -316,7 +380,7 @@
                         }
                         else 
                         {
-                          echo "N/A";
+                          echo "--";
                         }
                   ?>
                   
@@ -331,7 +395,7 @@
                         }
                         else 
                         {
-                          echo "N/A";
+                          echo "--";
                         }
                   ?>
                 </td>
@@ -343,7 +407,7 @@
                         }
                         else 
                         {
-                          echo "N/A";
+                          echo "--";
                         }
                   ?>
                   
@@ -351,7 +415,13 @@
                 <td>--</td>
               </tr>
               <tr>
-                <td colspan="3"><a href="weight.php"><button class="btn btn-primary">Ver más</button></a></td>
+                <?php 
+                if (isset($height3))
+                {
+                  echo  "<td colspan='3'><a href='weight.php'><button class='btn btn-primary'>Ver más</button></a></td>";
+                } 
+                ?>
+               
             </tbody>
           </table>
           </div>
@@ -411,13 +481,20 @@
                   <td><?php echo $gemelo_date;?></td>
                   <td><?php echo $gemelo_cm;?></td>
                 </tr>
-                <tr>
-                  <td colspan="3">
-                    <a href="body_history.php">
-                      <button class="btn btn-info">Ver más</button>
-                    </a>
-                  </td>
-                </tr>
+                
+                    <?php
+                      //Preparamos una consulta para obtener TODAS las mediciones de una parte del cuerpo
+                       $count_medidas_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=2";
+                       $count_medidas_query = mysqli_query($conexion,$count_medidas_sql);
+                       if(mysqli_num_rows($count_medidas_query)>=3)
+                       {
+                        echo "<tr> <td colspan='3'> <a href='body_history.php'>";
+                        echo " <button class='btn btn-info'>Ver más</button>";
+                        echo "</a> </td> </tr>";
+                       }
+                   ?>
+                     
+                    
               </tbody>
             </table>
           </div>
@@ -433,7 +510,17 @@
                 <tbody>
                   <tr>
                     <td >Peso</td>
-                    <td colspan="2"><input type="number" class="form-control" id="height" name="height" value="<?php echo $height1; ?>"></td>
+                    <td colspan="2">
+                    <?php
+                        if(!isset($height1))
+                        {
+                          echo "<input type='number' class='form-control' id='height' name='height'></td>";
+                        }
+                        else 
+                        {
+                          echo "<input type='number' class='form-control' id='height' name='height' value=".$height1.">";
+                        }
+                    ?></td>
                     <td>KG</td>
                   </tr>
                   <tr>
@@ -459,7 +546,7 @@
                 </thead>
                   <tr>
                     <td>Brazo</td>
-                    <td><?php echo  "<input type='number' class='form-control' id='cm_brazo' name='cm_brazo' value=".$brazo_cm." required>"; ?></td>
+                    <td><?php echo"<input type='number' class='form-control' id='cm_brazo' name='cm_brazo' value=".$brazo_cm." required>"; ?></td>
                     <td><label onclick="plus_cm('cm_brazo');">+</label></td>
                     <td><label onclick="rest_cm('cm_brazo');">-</label></td>
                   </tr>
@@ -501,7 +588,8 @@
                     <td><label onclick="rest_cm('cm_gemelo');">-</label></td>
                   </tr>
                   <tr>
-                    <td colspan="4"><input type="submit" class="btn btn-primary" value="Enviar"/></td>
+
+                    <td colspan='4'><input type='submit' class='btn btn-primary' value='Enviar'/></td>
                   </tr>
                 </tbody>
               </table>
@@ -534,6 +622,7 @@
 
                     </div>
                   </div>
+              <!-- END VENTANA MODAL -->
              
 
    <footer>
@@ -613,7 +702,7 @@
     {
       var cm = document.getElementById(id).value;
       cm--;
-      if(cm>0)
+      if(cm>=0)
      {
        document.getElementById(id).value=cm;
      }
