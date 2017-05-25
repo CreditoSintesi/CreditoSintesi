@@ -8,7 +8,7 @@ include 'includes/header_index.php';
       <div class="container">
         <h1>Bienvenido a L2F,</h1>
         <p>El sitio web que te ayudara a cumplir tus objetivos. Comienza ahora tu rutina o dieta personalizada. A que esperar únete a nosotros, es gratis.</p>
-        <h5><a class="btn btn-primary btn-lg" href="registro.php" role="button">Registrate</a> o si ya tienes cuenta haz <a href="login.php">login</a></h5>
+        <h5><a class="btn btn-primary btn-lg" href="registro.php" role="button">Registrate</a> o si ya tienes cuenta haz <a href="login.php">login.</a></h5> 
       </div>
     </div>
 
