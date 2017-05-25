@@ -68,8 +68,15 @@
               }
                $control++;
             }
-           $imc = $height1/pow(1.79,2);
-           //echo round($imc,"2");die;
+            if(!exist($height1))
+            {
+              $imc = "No disponible"
+            }
+            else
+            {
+               $imc = $height1/pow(1.79,2);
+            }
+           
   //Obtenemos las medidas de usuario 
       //SQL
         //brazo
@@ -360,6 +367,62 @@
           
             <div class="col-sm-8" id ="pr_cuerpo">  
              <table class="table table-striped">
+             <?php
+              if (!isset($brazo_cm))
+              {
+                ?>
+                <tr>
+                  <th>Grupo muscular</th>
+                  <th>Fecha</th>
+                  <th>Medida (cm)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Brazo</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>Antebrazo</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                 <tr>
+                  <td>Brazo</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>Pectoral</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>Cintura</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                 <td>Cadera</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>Cuadricep</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>Gemelo</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <?php 
+
+              }
+              else {
+             ?>
               <thead>
                 <tr>
                   <th>Grupo muscular</th>
@@ -418,6 +481,9 @@
                     </a>
                   </td>
                 </tr>
+                <?php 
+                    }//end ELSE
+                ?>
               </tbody>
             </table>
           </div>
