@@ -65,6 +65,8 @@ INNER JOIN `tbl_usuario`
 			<?php
 		}
 
+	}else{
+		echo "No hay dietas para tu objetivo, asciende tu cuenta a premium para obtener más dietas.";
 	}
 
 	

@@ -121,7 +121,7 @@ include('mostrar_rutinas_objetivo.php');
 echo '</div>';
 }
 
-
+echo '</div></div>';
 include('includes/footer_rojo.php');
 ?>
 
