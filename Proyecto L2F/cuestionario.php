@@ -29,6 +29,50 @@
             }
 
         }
+     function val_cuestionario()
+     {
+     	var msg = "";
+     	if(document.getElementById('inputApellidos').value=="")
+     	{
+     		msg+="Error los apellidos son obligatorio \n";
+     		document.getElementById('inputApellidos').style.borderColor="red";
+     	}
+     	if(document.getElementById('inputFecha').value=="")
+     	{
+     		msg+="Error introduzca una fecha \n";
+     		document.getElementById('inputFecha').style.borderColor="red";
+     	}
+     	if(document.getElementById('inputPeso').value=="")
+     	{
+     			msg+="Error introduzca un peso \n";
+     			document.getElementById('inputPeso').style.borderColor="red";
+     	}
+     	if(document.getElementById('inputAltura').value=="")
+     	{
+     			msg+="Error introduzca una altura \n";
+     			document.getElementById('inputAltura').style.borderColor="red";
+     	}
+     	if(document.getElementById('sexo_usuario').value=="")
+     	{
+     			msg+="Porfavor, especifique un sexo \n";
+     			document.getElementById('sexo_usuario').style.borderColor="red";
+     	}
+
+     	if(document.getElementById('id_objetivo').value=="")
+     	{
+     			msg+="Porfavor, diganos su objetivo \n";
+     			document.getElementById('id_objetivo').style.borderColor="red";
+     	}
+     		if(msg!="")
+     		{
+     			alert(msg);
+     			return false;
+     		}
+     		else
+     		{
+     			return true;
+     		}
+     }
         
 </script>
 <body>	
@@ -42,7 +86,7 @@
 			echo "para continuar debes primero contestar el cuestionario obligatorio";
 		}
 		?>
-	   <form class="form-signin" action="cuestionario.proc.php" method="POST" action="login.proc.php">
+	   <form class="form-signin" action="cuestionario.proc.php" method="POST" action="login.proc.php" onclick="return val_cuestionario()">
 		<h2 class="form-signin-heading">Porfavor rellena el siguiente formulario</h2>
 
 		
@@ -57,7 +101,7 @@
 				
 		<!--<input type="select" id="inputAltura" class="form-control"  name="altura_usuario" placeholder="Sexo" required> -->
 
-		<select class="form-control" name="sexo_usuario">
+		<select class="form-control" name="sexo_usuario" id="sexo_usuario">
 					<option value="">Selecciona Sexo</option>
 					<option value="Mujer">Mujer</option>
 					<option value="Hombre">Hombre</option>
@@ -66,7 +110,7 @@
 
 				
 
-				<select class="form-control" name="id_objetivo">
+				<select class="form-control" name="id_objetivo" id="id_objetivo">
 				<option value="">Cual es tu objetivo ?</option>
 				<?php include('select_dinamico_bd.php') ?>	
 				</select>
