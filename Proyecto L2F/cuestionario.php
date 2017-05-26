@@ -34,7 +34,7 @@
 <body>	
 
 	<div class="container">
-		<h1><?php echo "Hola ".$_SESSION['nombre_usuario']."!"; ?></h1><br>
+		<h1><?php echo "Hola ".$_SESSION['nombre_usuario']."!"; ?></h1>
 		  
 		
 		<?php
