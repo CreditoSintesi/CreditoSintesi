@@ -537,7 +537,7 @@
           <!-- END AÑADIR PESO -->
           <!--AÑADIR MEDIDAS-->
            <div class="col-sm-8" id ="sh_medidas" name="sh_medidas">
-            <form action="proc/add_medidas.proc.php" method="POST">
+            <form action="proc/add_medidas.proc.php" method="POST" onsubmit="return val_medidas()">
                <table class="table table-striped" border>
                <thead>
                   <tr>
@@ -547,45 +547,45 @@
                   <tr>
                     <td>Brazo</td>
                     <td><?php echo"<input type='number' class='form-control' id='cm_brazo' name='cm_brazo' value=".$brazo_cm." required>"; ?></td>
-                    <td><label onclick="plus_cm('cm_brazo');">+</label></td>
-                    <td><label onclick="rest_cm('cm_brazo');">-</label></td>
+                    <td><label class="btn btn-default" onclick="plus_cm('cm_brazo');">+</label></td>
+                    <td><label class="btn btn-default" onclick="rest_cm('cm_brazo');">-</label></td>
                   </tr>
                   <tr>
                     <td>Antebrazo</td>
                     <td><?php echo  "<input type='number' class='form-control' id='cm_antebrazo' name='cm_antebrazo' value=".$antebrazo_cm." required>"; ?></td>
-                    <td><label onclick="plus_cm('cm_antebrazo');">+</label></td>
-                    <td><label onclick="rest_cm('cm_antebrazo');">-</label></td>
+                    <td><label class="btn btn-default" onclick="plus_cm('cm_antebrazo');">+</label></td>
+                    <td><label class="btn btn-default" onclick="rest_cm('cm_antebrazo');">-</label></td>
                   </tr>
                   <tr>
                     <td>Pectoral</td>
                     <td><?php echo  "<input type='number' class='form-control' id='cm_pectoral' name='cm_pectoral' value=".$pectoral_cm." required>"; ?></td>
-                    <td><label onclick="plus_cm('cm_pectoral');">+</label></td>
-                    <td><label onclick="rest_cm('cm_pectoral');">-</label></td>
+                    <td><label class="btn btn-default" onclick="plus_cm('cm_pectoral');">+</label></td>
+                    <td><label class="btn btn-default" onclick="rest_cm('cm_pectoral');">-</label></td>
                   </tr>
                   <tr>
                     <td>Cintura</td>
                     <td><?php echo  "<input type='number' class='form-control' id='cm_cintura' name='cm_cintura' value=".$cintura_cm." required>"; ?></td>
-                   <td><label onclick="plus_cm('cm_cintura');">+</label></td>
-                    <td><label onclick="rest_cm('cm_cintura');">-</label></td>
+                   <td><label class="btn btn-default" onclick="plus_cm('cm_cintura');">+</label></td>
+                    <td><label class="btn btn-default" onclick="rest_cm('cm_cintura');">-</label></td>
                   </tr>
                    <tr>
                     <td>Cadera</td>
                     <td><?php echo  "<input type='number' class='form-control' id='cm_cadera' name='cm_cadera' value=".$cadera_cm." required>"; ?></td>
-                    <td><label onclick="plus_cm('cm_cadera');">+</label></td>
-                    <td><label onclick="rest_cm('cm_cadera');">-</label></td>
+                    <td><label class="btn btn-default" onclick="plus_cm('cm_cadera');">+</label></td>
+                    <td><label class="btn btn-default" onclick="rest_cm('cm_cadera');">-</label></td>
                   </tr>
                    <tr>
                     <td>Cuadricep</td>
                      <td><?php echo  "<input type='number' class='form-control' id='cm_cuadricep' name='cm_cuadricep' value=".$cuadricep_cm." required>"; ?></td>
-                    <td><label onclick="plus_cm('cm_cuadricep');">+</label></td>
-                    <td><label onclick="rest_cm('cm_cuadricep');">-</label></td>
+                    <td><label class="btn btn-default" onclick="plus_cm('cm_cuadricep');">+</label></td>
+                    <td><label class="btn btn-default" onclick="rest_cm('cm_cuadricep');">-</label></td>
                   </tr>
                    <tr>
                     <td>Gemelo</td>
                     <td><?php echo  "<input type='number' class='form-control' id='cm_gemelo' name='cm_gemelo' value=".$gemelo_cm." required>"; ?></td>
                     
-                    <td><label onclick="plus_cm('cm_gemelo');">+</label></td>
-                    <td><label onclick="rest_cm('cm_gemelo');">-</label></td>
+                    <td><label class="btn btn-default" onclick="plus_cm('cm_gemelo');">+</label></td>
+                    <td><label class="btn btn-default" onclick="rest_cm('cm_gemelo');">-</label></td>
                   </tr>
                   <tr>
 
@@ -711,6 +711,85 @@
        document.getElementById(id).value.value=0;
      }
       
+    }
+    function val_medidas()
+    {
+      var msg ="";
+      if(!isNaN(document.getElementById('cm_brazo'))==true)
+      {
+        msg+="¡ep! la medida del bicep en números \n";
+        document.getElementById('cm_brazo').style.borderColor="red";
+      }
+      if(document.getElementById('cm_brazo').value>=100)
+      {
+         msg+="Revisa la medida del bicep \n";
+         document.getElementById('cm_brazo').style.borderColor="red";
+      }
+       if(!isNaN(document.getElementById('cm_antebrazo'))==true)
+      {
+        msg+="¡ep! la medida del antebrazo en números \n";
+        document.getElementById('cm_brazo').style.borderColor="red";
+      }
+      if(document.getElementById('cm_antebrazo').value>=100)
+      {
+         msg+="Revisa la medida del antebrazo \n";
+         document.getElementById('cm_antebrazo').style.borderColor="red";
+      }
+       if(!isNaN(document.getElementById('cm_pectoral'))==true)
+      {
+        msg+="¡ep! la medida del pectoral en números \n";
+        document.getElementById('cm_pectoral').style.borderColor="red";
+      }
+      if(document.getElementById('cm_pectoral').value>=200)
+      {
+         msg+="Revisa la medida del pectoral \n";
+         document.getElementById('cm_pectoral').style.borderColor="red";
+      }
+       if(!isNaN(document.getElementById('cm_cintura'))==true)
+      {
+        msg+="¡ep! la medida de la cintura  en números \n";
+        document.getElementById('cm_cintura').style.borderColor="red";
+      }
+      if(document.getElementById('cm_cintura').value>=150)
+      {
+         msg+="Revisa la medida de la cintura \n";
+         document.getElementById('cm_cintura').style.borderColor="red";
+      }
+      if(!isNaN(document.getElementById('cm_cadera'))==true)
+      {
+        msg+="¡ep! la medida de la cadera en números \n";
+        document.getElementById('cm_cadera').style.borderColor="red";
+      }
+      if(document.getElementById('cm_cadera').value>=150)
+      {
+         msg+="Revisa la medida de la cadera \n";
+         document.getElementById('cm_cadera').style.borderColor="red";
+      }
+      if(!isNaN(document.getElementById('cm_cuadricep'))==true)
+      {
+        msg+="¡ep! la medida del cuadricep en números \n";
+        document.getElementById('cm_cuadricep').style.borderColor="red";
+      }
+      if(document.getElementById('cm_cuadricep').value>=100)
+      {
+         msg+="Revisa la medida del cuadricep \n";
+         document.getElementById('cm_cuadricep').style.borderColor="red";
+      }
+       if(!isNaN(document.getElementById('cm_gemelo'))==true)
+      {
+        msg+="¡ep! la medida del gemelo en números \n";
+        document.getElementById('cm_gemelo').style.borderColor="red";
+      }
+      if(document.getElementById('cm_gemelo').value>=100)
+      {
+         msg+="Revisa la medida del gemelo \n";
+         document.getElementById('cm_gemelo').style.borderColor="red";
+      }
+      if(msg!="")
+      {
+        alert(msg);
+        return false;
+      }
     }
     window.onload(hidden_elements());
     </script>

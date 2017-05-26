@@ -31,6 +31,42 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script type="text/javascript">
+    	
+        function index_val()
+        {
+        	var mail = document.getElementById('email_usuario').value;
+        	//var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    		
+            var msg = ""
+            if(document.getElementById('email_usuario').value=="")
+            {
+                msg+="Introduzca un email \n";
+                document.getElementById('email_usuario').style.borderColor="red";
+            
+	            /*if(expr.test(mail))
+	            {
+	            	msg+="Correo no valido";
+	            	mail.style.borderColor="red";
+	            }*/
+            }
+            if(document.getElementById('pass_usuario').value=="")
+            {
+                msg+="Introduzca una contraseña \n";
+                document.getElementById('pass_usuario').style.borderColor="red";
+            }
+            if(msg!="")
+            {
+                
+                return false;
+            }
+            else
+            {
+            	 alert(msg);
+                return true;
+            }
+ 		}
+    </script>
   </head>
 
   <body>
@@ -48,12 +84,12 @@
           <a class="navbar-brand-left" href="#" ><img src="media/logo/logoAzul.png" width="42px" height="42px"' style="margin: 5px 5px 5px 5px;" ></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" action="login.proc.php" method="POST">
+          <form class="navbar-form navbar-right" action="login.proc.php" method="POST" onsubmit="return index_val();">
             <div class="form-group">
-              <input type="text" placeholder="Email" name="email_usuario" class="form-control">
+              <input type="text" placeholder="Email" name="email_usuario" id = "email_usuario" class="form-control">
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Contraseña" name="pass_usuario" class="form-control">
+              <input type="password" placeholder="Contraseña" name="pass_usuario" id="pass_usuario" class="form-control">
             </div>
             <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
           </form>
