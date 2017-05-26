@@ -55,8 +55,8 @@ $resultado = mysqli_query($conexion, $sql) or die (mysqli_error());
 if(mysqli_num_rows($resultado)>0){
 
 	//REALIZAMOS OTRA CONSULTA PARA VER SI ESE USUARIO TIENE UNA RUTINA SIN FINALIZAR
-	$consulta = "SELECT * FROM tbl_rutina_usuario, tbl_rutina, tbl_usuario WHERE tbl_rutina.id_rutina = tbl_rutina_usuario.id_rutina  AND tbl_usuario.id_usuario = tbl_rutina_usuario.id_usuario AND rutina_finalizada = 'no' ";
-
+	$consulta = "SELECT * FROM tbl_rutina_usuario, tbl_rutina, tbl_usuario WHERE tbl_rutina.id_rutina = tbl_rutina_usuario.id_rutina  AND tbl_usuario.id_usuario = tbl_rutina_usuario.id_usuario AND rutina_finalizada = 'no' AND  tbl_rutina_usuario.id_usuario = $id_usuario ";
+	echo $consulta;
 	$resultado = mysqli_query($conexion, $consulta) or die (mysqli_error());
 
 	//SI ES ASI, ENTONCES LE MOSTRAREMOS LOS DETALLES DE LA RUTINA O EMPEZAR A HACER EJERCICIO
