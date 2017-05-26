@@ -23,7 +23,7 @@
 				if($last_height_data['peso']<$height)
 				{
 					echo "<script type='text/javascript'>
-							alert('¡Vaya! Parece ser que has engordado desde la última vez, no te preocupes, piensa en que has podido fallar y ¡solucionalo! si ves que no puedes, recuerda, si necesitas ayuda tenemos técnicos que te pueden ayudar');
+							alert('¡Vaya! Parece ser que has engordado desde la última vez, no te preocupes, piensa en que has podido fallar y ¡solucionalo! si ves que no puedes, recuerda!,tenemos técnicos especialistas que te pueden ayudar');
 						</script>";
 				}
 			}
@@ -32,7 +32,7 @@
 		if($insert_height_query)
 		{
 			echo "<script type='text/javascript'>alert('¡Peso insertado correctamente ya puedes acceder a él!');
-					location.href='../main.php';</script>";
+					location.href='../perfilusuario.php';</script>";
 		}
 	
 		else 

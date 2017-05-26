@@ -42,8 +42,8 @@
 		$grafico->Add($bplot);
 		$grafico->Add($lineplot);
 		// Configuracion de los titulos
-		$grafico->title->Set('Evolución de peso');
-		$grafico->xaxis->title->Set('Fecha');
+		$grafico->title->Set('Evolucion de peso');
+		$grafico->xaxis->title->Set('Mediciones');
 		//$grafico->xaxis->hide();
 		$grafico->yaxis->title->Set('Peso');
 		 

@@ -32,173 +32,193 @@
 
 ?>
   <br>
-  <table class="table">
-    <tr>
-      <td><button class="btn btn-info" onclick="sh_table('bicep');">Ver medidas bicep</button></td>
-      <td><button class="btn btn-info" onclick="sh_table('antebrazo');">Ver medidas antebrazo</button></td>
-      <td><button class="btn btn-info" onclick="sh_table('pectoral');">Ver medidas pectoral</button></td>
-      <td><button class="btn btn-info" onclick="sh_table('cintura');">Ver medidas cintura</button></td>
-      <td><button class="btn btn-info" onclick="sh_table('cadera');">Ver medidas cadera</button></td>
-      <td><button class="btn btn-info" onclick="sh_table('cuadricep');">Ver medidas cuadricep</button></td>
-      <td><button class="btn btn-info" onclick="sh_table('gemelo');">Ver medidas gemelo</button></td>
-    </tr>
-  </table>
-  <div class="col-md-10">
-    <?php 
-        echo "<div class='panel panel-default col-md-5' id='bicep'>
-               <div class='panel-heading'>Bicep</div>
-                <div class='panel-body'>
-                <table class='table'>
-                  <thead>
-                    <th>Fecha</th>
-                    <th>Medida</th>
-                </thead>
-               <tbody>";
-                while($brazo_data = mysqli_fetch_array($select_brazo_query))
-                {
-                  echo "<tr><td>".date("d-m-Y", strtotime($brazo_data['fecha_his_med']))."</td>";
-                  echo "<td>".$brazo_data['cm']."</td></tr>"; 
-                }
-              echo "</tbdoy>
-               </table>
-               </div>
-           </div>
-           ";
-          //End tabla Brazo
-         echo "
-         <div class='panel panel-default col-md-5' id='antebrazo'>
-               <div class='panel-heading'>Antebrazo</div>
-                <div class='panel-body'>
-                   <table class='table'>
+  <div class="contrainer">
+    <div class="row">
+    <div class="col-xs-12">
+      <div class="col-xs-3">
+        <button class="btn btn-info" onclick="sh_table('bicep');">Bicep</button>
+      </div>
+        <div class="col-xs-3">
+          <button class="btn btn-primary" onclick="sh_table('antebrazo');">Antebrazo</button> 
+        </div>
+        <div class="col-xs-3">
+         <button class="btn btn-primary" onclick="sh_table('pectoral');">Pectoral</button>
+        </div>
+        <div class="col-xs-3">
+            <button class="btn btn-primary" onclick="sh_table('cintura');">Cintura</button>
+         </div>
+         <div class="col-xs-3">
+          <button class="btn btn-primary" onclick="sh_table('cadera');">Cadera</button>  
+        </div>
+        <div class="col-xs-3">
+          <button class="btn btn-primary" onclick="sh_table('cuadricep');">Cuadricep</button>  
+        </div>
+        <div class="col-xs-3">
+           <button class="btn btn-primary" onclick="sh_table('gemelo');">Gemelo</button>
+       </div>
+      </tr>
+    </table>
+    <div class="col-md-10">
+      <?php 
+          echo "<div class='panel panel-default col-md-5' id='bicep'>
+                 <div class='panel-heading'>Bicep</div>
+                  <div class='panel-body'>
+                  <table class='table'>
+                    <thead>
+                      <th>Fecha</th>
+                      <th>Medida</th>
+                  </thead>
+                 <tbody>";
+                  while($brazo_data = mysqli_fetch_array($select_brazo_query))
+                  {
+                    echo "<tr><td>".date("d-m-Y", strtotime($brazo_data['fecha_his_med']))."</td>";
+                    echo "<td>".$brazo_data['cm']."</td></tr>"; 
+                  }
+                echo "</tbdoy>
+                 </table>
+                 </div>
+             </div>
+             ";
+            //End tabla Brazo
+           echo "
+           <div class='panel panel-default col-md-5' id='antebrazo'>
+                 <div class='panel-heading'>Antebrazo</div>
+                  <div class='panel-body'>
+                     <table class='table'>
+                      <thead>
+                        <th>Fecha</th>
+                        <th>Medida</th>
+                      </thead>
+                      <tbody>";
+                        while($antebrazo_data = mysqli_fetch_array($select_antebrazo_query))
+                        {
+                          echo "<tr><td>".date("d-m-Y", strtotime($antebrazo_data['fecha_his_med']))."</td>";
+                          echo "<td>".$antebrazo_data['cm']."</td></tr>"; 
+                        }
+                      echo "</tbdoy>
+                      </table>
+                  </div>
+                </div>
+                ";
+            //End AnteBrazo
+            echo "
+              <div class='panel panel-default col-md-5' id='pectoral'name='pectoral'>
+                 <div class='panel-heading'>Pectoral</div>
+                 <div class='panel-body'>
+                    <table class='table'>
                     <thead>
                       <th>Fecha</th>
                       <th>Medida</th>
                     </thead>
                     <tbody>";
-                      while($antebrazo_data = mysqli_fetch_array($select_antebrazo_query))
+                      while($pectoral_data = mysqli_fetch_array($select_pectoral_query))
                       {
-                        echo "<tr><td>".date("d-m-Y", strtotime($antebrazo_data['fecha_his_med']))."</td>";
-                        echo "<td>".$antebrazo_data['cm']."</td></tr>"; 
+                        echo "<tr><td>".date("d-m-Y", strtotime($pectoral_data['fecha_his_med']))."</td>";
+                        echo "<td>".$pectoral_data['cm']."</td></tr>"; 
                       }
-                    echo "</tbdoy>
-                    </table>
-                </div>
+              echo "</tbdoy>
+                </table>
+              </div>
               </div>
               ";
-          //End AnteBrazo
-          echo "
-            <div class='panel panel-default col-md-5' id='pectoral'name='pectoral'>
-               <div class='panel-heading'>Pectoral</div>
-               <div class='panel-body'>
+            //End Pectoral
+               echo "
+              <div class='panel panel-default col-md-5' id='cintura' name='cintura'>
+                 <div class='panel-heading'>Cintura</div>
+                 <div class='panel-body'>
                   <table class='table'>
                   <thead>
                     <th>Fecha</th>
                     <th>Medida</th>
                   </thead>
                   <tbody>";
-                    while($pectoral_data = mysqli_fetch_array($select_pectoral_query))
+                    while($cintura_data = mysqli_fetch_array($select_cintura_query))
                     {
-                      echo "<tr><td>".date("d-m-Y", strtotime($pectoral_data['fecha_his_med']))."</td>";
-                      echo "<td>".$pectoral_data['cm']."</td></tr>"; 
+                      echo "<tr><td>".date("d-m-Y", strtotime($cintura_data['fecha_his_med']))."</td>";
+                      echo "<td>".$cintura_data['cm']."</td></tr>"; 
                     }
-            echo "</tbdoy>
-              </table>
-            </div>
-            </div>
-            ";
-          //End Pectoral
-             echo "
-            <div class='panel panel-default col-md-5' id='cintura' name='cintura'>
-               <div class='panel-heading'>Cintura</div>
-               <div class='panel-body'>
-                <table class='table'>
-                <thead>
-                  <th>Fecha</th>
-                  <th>Medida</th>
-                </thead>
-                <tbody>";
-                  while($cintura_data = mysqli_fetch_array($select_cintura_query))
-                  {
-                    echo "<tr><td>".date("d-m-Y", strtotime($cintura_data['fecha_his_med']))."</td>";
-                    echo "<td>".$cintura_data['cm']."</td></tr>"; 
-                  }
-                echo "</tbdoy>
-                </table>
+                  echo "</tbdoy>
+                  </table>
+                </div>
               </div>
-            </div>
-          ";
+            ";
 
-          //End Cintura
-          echo " 
-            <div class='panel panel-default col-md-5' id='cadera' name='cadera'>
-               <div class='panel-heading'>Cadera</div>
-                 <div class='panel-body'>  
-                  <table class='table' id='cadera' name='cadera'>
-                    <thead>
-                      <th>Fecha</th>
-                      <th>Medida</th>
-                    </thead>
-                    <tbody>";
-                      while($cadera_data = mysqli_fetch_array($select_cadera_query))
-                      {
-                        echo "<tr><td>".date("d-m-Y", strtotime($cadera_data['fecha_his_med']))."</td>";
-                        echo "<td>".$cadera_data['cm']."</td></tr>"; 
-                      }
-                    echo "</tbdoy>
-                  </table>
-                </div>
-              </div>
-              ";
-          //End Cadera
-          echo "
-          <div class='panel panel-default col-md-5' id='cuadricep'name='cadera'>
-               <div class='panel-heading'>Cuadricep</div>
-                 <div class='panel-body'>  
-                  <table class='table'>
-                    <thead>
-                      <th>Fecha</th>
-                      <th>Medida</th>
-                    </thead>
-                    <tbody>";
-                      while($cuadricep_data = mysqli_fetch_array($select_cuadricep_query))
-                      {
-                        echo "<tr><td>".date("d-m-Y", strtotime($cuadricep_data['fecha_his_med']))."</td>";
-                        echo "<td>".$cuadricep_data['cm']."</td></tr>"; 
-                      }
-                    echo "</tbdoy>
-                  </table>
-                </div>
-              </div>
-            ";
-          //End Cuadricep
-          echo "
-          <div class='panel panel-default col-md-5' id='gemelo'name='gemelo'>
-               <div class='panel-heading'>Gemelo</div>
-                 <div class='panel-body'>  
-                    <table class='table' id='gemelo' name='gemelo'>
-                    <thead>
-                      <th>Fecha</th>
-                      <th>Medida</th>
-                    </thead>
-                    <tbody>";
-                      while($gemelo_data = mysqli_fetch_array($select_gemelo_query))
-                      {
-                        echo "<tr><td>".date("d-m-Y", strtotime($gemelo_data['fecha_his_med']))."</td>";
-                        echo "<td>".$gemelo_data['cm']."</td></tr>"; 
-                      }
-                    echo "</tbdoy>
+            //End Cintura
+            echo " 
+              <div class='panel panel-default col-md-5' id='cadera' name='cadera'>
+                 <div class='panel-heading'>Cadera</div>
+                   <div class='panel-body'>  
+                    <table class='table' id='cadera' name='cadera'>
+                      <thead>
+                        <th>Fecha</th>
+                        <th>Medida</th>
+                      </thead>
+                      <tbody>";
+                        while($cadera_data = mysqli_fetch_array($select_cadera_query))
+                        {
+                          echo "<tr><td>".date("d-m-Y", strtotime($cadera_data['fecha_his_med']))."</td>";
+                          echo "<td>".$cadera_data['cm']."</td></tr>"; 
+                        }
+                      echo "</tbdoy>
                     </table>
+                  </div>
                 </div>
-              </div>
-            ";
-          //End Gemelos
-     ?>
-   </div>
-    <div class='col-md-10'>
-    	<img src="proc/history_body_grafic.proc.php" style="width:100%"> 
-    </div>
-<br/>
-<a href="perfilusuario.php"><button>Volver</button></a>
+                ";
+            //End Cadera
+            echo "
+            <div class='panel panel-default col-md-5' id='cuadricep'name='cadera'>
+                 <div class='panel-heading'>Cuadricep</div>
+                   <div class='panel-body'>  
+                    <table class='table'>
+                      <thead>
+                        <th>Fecha</th>
+                        <th>Medida</th>
+                      </thead>
+                      <tbody>";
+                        while($cuadricep_data = mysqli_fetch_array($select_cuadricep_query))
+                        {
+                          echo "<tr><td>".date("d-m-Y", strtotime($cuadricep_data['fecha_his_med']))."</td>";
+                          echo "<td>".$cuadricep_data['cm']."</td></tr>"; 
+                        }
+                      echo "</tbdoy>
+                    </table>
+                  </div>
+                </div>
+              ";
+            //End Cuadricep
+            echo "
+            <div class='panel panel-default col-md-5' id='gemelo'name='gemelo'>
+                 <div class='panel-heading'>Gemelo</div>
+                   <div class='panel-body'>  
+                      <table class='table' id='gemelo' name='gemelo'>
+                      <thead>
+                        <th>Fecha</th>
+                        <th>Medida</th>
+                      </thead>
+                      <tbody>";
+                        while($gemelo_data = mysqli_fetch_array($select_gemelo_query))
+                        {
+                          echo "<tr><td>".date("d-m-Y", strtotime($gemelo_data['fecha_his_med']))."</td>";
+                          echo "<td>".$gemelo_data['cm']."</td></tr>"; 
+                        }
+                      echo "</tbdoy>
+                      </table>
+                  </div>
+                </div>
+              ";
+            //End Gemelos
+       ?>
+     </div>
+      <div class='col-md-10'>
+      	<img src="proc/history_body_grafic.proc.php" style="width:100%"> 
+      </div>
+  <br/>
+  <a href="perfilusuario.php"><button>Volver</button></a>
+</div>
+</div>
+</div>
+<?php 
+include("includes/footer_azul.php") ?>
 <script type="text/javascript">
   function disable_table(){
     document.getElementById("bicep").style.display='none';

@@ -489,7 +489,7 @@
                        if(mysqli_num_rows($count_medidas_query)>=3)
                        {
                         echo "<tr> <td colspan='3'> <a href='body_history.php'>";
-                        echo " <button class='btn btn-info'>Ver más</button>";
+                        echo " <button class='btn btn-primary'>Ver más</button>";
                         echo "</a> </td> </tr>";
                        }
                    ?>
@@ -524,8 +524,8 @@
                     <td>KG</td>
                   </tr>
                   <tr>
-                    <td colspan="2"><p class="col-form-label" onclick="add_height()" >+</p></td>
-                    <td colspan="2"><p class="col-form-label" onclick="rest_height()">-</p></td>
+                    <td colspan="2"><center><label class="col-form-label btn btn-default" onclick="add_height()" >+</label></center></td>
+                    <td colspan="2"><center><label class="col-form-label btn btn-default" onclick="rest_height()">-</label></center></td>
                   </tr>
                   <tr>
                     <td colspan="4"><input type="submit" class="btn btn-primary" value="Enviar"/></td>

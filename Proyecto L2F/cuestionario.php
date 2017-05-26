@@ -86,7 +86,7 @@
 			echo "para continuar debes primero contestar el cuestionario obligatorio";
 		}
 		?>
-	   <form class="form-signin" action="cuestionario.proc.php" method="POST" action="login.proc.php" onclick="return val_cuestionario()">
+	   <form class="form-signin" action="cuestionario.proc.php" method="POST" action="login.proc.php" onsubmit="return val_cuestionario()">
 		<h2 class="form-signin-heading">Porfavor rellena el siguiente formulario</h2>
 
 		
