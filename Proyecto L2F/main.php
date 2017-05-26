@@ -9,7 +9,7 @@
  ?>
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="page-header">Services Panels</h2>
+                <h2 class="page-header">Página Principal</h2>
             </div>
             <a href='perfilusuario.php'>
             <div class="col-md-3 col-sm-6">
