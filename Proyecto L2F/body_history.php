@@ -35,29 +35,25 @@
   <div class="contrainer">
     <div class="row">
     <div class="col-xs-12">
-      <div class="col-xs-3">
-        <button class="btn btn-info" onclick="sh_table('bicep');">Bicep</button>
-      </div>
-        <div class="col-xs-3">
-          <button class="btn btn-primary" onclick="sh_table('antebrazo');">Antebrazo</button> 
-        </div>
-        <div class="col-xs-3">
+      <ul>
+        <li><button class="btn btn-primary" onclick="sh_table('bicep');">Bicep</button></li>
+        <li><button class="btn btn-primary" onclick="sh_table('antebrazo');">Antebrazo</button></li>
+        <li>
          <button class="btn btn-primary" onclick="sh_table('pectoral');">Pectoral</button>
-        </div>
-        <div class="col-xs-3">
+        </li>
+        <li>
             <button class="btn btn-primary" onclick="sh_table('cintura');">Cintura</button>
-         </div>
-         <div class="col-xs-3">
+         </li>
+         <li>
           <button class="btn btn-primary" onclick="sh_table('cadera');">Cadera</button>  
-        </div>
-        <div class="col-xs-3">
+        </li>
+        <li>
           <button class="btn btn-primary" onclick="sh_table('cuadricep');">Cuadricep</button>  
-        </div>
-        <div class="col-xs-3">
+        </li>
+        <li>
            <button class="btn btn-primary" onclick="sh_table('gemelo');">Gemelo</button>
-       </div>
-      </tr>
-    </table>
+       </li>
+    </ul>
     <div class="col-md-10">
       <?php 
           echo "<div class='panel panel-default col-md-5' id='bicep'>
@@ -211,9 +207,10 @@
      </div>
       <div class='col-md-10'>
       	<img src="proc/history_body_grafic.proc.php" style="width:100%"> 
+          <a href="perfilusuario.php"><button class="btn btn-primary">Volver</button></a>
       </div>
-  <br/>
-  <a href="perfilusuario.php"><button>Volver</button></a>
+  
+
 </div>
 </div>
 </div>
