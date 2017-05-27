@@ -34,26 +34,38 @@
   <br>
   <div class="contrainer">
     <div class="row">
-    <div class="col-xs-12">
-      <ul>
-        <li><button class="btn btn-primary" onclick="sh_table('bicep');">Bicep</button></li>
-        <li><button class="btn btn-primary" onclick="sh_table('antebrazo');">Antebrazo</button></li>
-        <li>
-         <button class="btn btn-primary" onclick="sh_table('pectoral');">Pectoral</button>
-        </li>
-        <li>
-            <button class="btn btn-primary" onclick="sh_table('cintura');">Cintura</button>
-         </li>
-         <li>
-          <button class="btn btn-primary" onclick="sh_table('cadera');">Cadera</button>  
-        </li>
-        <li>
-          <button class="btn btn-primary" onclick="sh_table('cuadricep');">Cuadricep</button>  
-        </li>
-        <li>
-           <button class="btn btn-primary" onclick="sh_table('gemelo');">Gemelo</button>
-       </li>
-    </ul>
+    <div class="col-xs-18">
+      
+      <div class="col-xs-4">
+        <button class="btn btn-primary" onclick="sh_table('bicep');">Bicep</button>
+      </div>
+      <div class="col-xs-4">
+        <button class="btn btn-primary" onclick="sh_table('antebrazo');">Antebrazo</button>
+      </div>
+      <div class="col-xs-4"> 
+        <button class="btn btn-primary" onclick="sh_table('pectoral');">Pectoral</button>
+      </div>
+      <br>
+      <br>
+      <div class="col-xs-4">
+        <button class="btn btn-primary" onclick="sh_table('cintura');">Cintura</button>
+       </div>
+      <div class="col-xs-4"> 
+        <button class="btn btn-primary" onclick="sh_table('cadera');">Cadera</button>  
+       </div>
+      <div class="col-xs-4"> 
+        <button class="btn btn-primary" onclick="sh_table('cuadricep');">Cuadricep</button>  
+      </div>
+      <br>
+      <br>
+      <div class="col-xs-4">  
+        <button class="btn btn-primary" onclick="sh_table('gemelo');">Gemelo</button>
+      </div>
+        <br>
+        <br>
+     </div>   
+    </div>
+    <div class="row">  
     <div class="col-md-10">
       <?php 
           echo "<div class='panel panel-default col-md-5' id='bicep'>
@@ -210,7 +222,7 @@
           <a href="perfilusuario.php"><button class="btn btn-primary">Volver</button></a>
       </div>
   
-
+</div>
 </div>
 </div>
 </div>

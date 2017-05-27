@@ -70,9 +70,9 @@
                         </span>
                     </div>
                     <div class="panel-body">
-                        <h4>Servicios</h4>
+                        <h4>Servicios Plus</h4>
                         <p>La personalización acelera los resultados<br/>
-                        ¡Contrata a nuestros especialistas!</p><br/>
+                        ¡Contrata a nuestros especialistas!</p>
                         <a href="#" class="btn btn-primary">¡Acelera tu progeso!</a>
                     </div>
                 </div>
