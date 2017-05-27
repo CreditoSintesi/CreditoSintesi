@@ -6,7 +6,7 @@ require_once("includes/header_verde.php");
 extract($_REQUEST);
 ?>
 <div class="container">
-<h1>MI DIETA</h1>
+<h1>Mis dietas</h1>
 <?php
 $fecha_actual = date('Y-m-d');
 

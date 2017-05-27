@@ -61,7 +61,7 @@
                 </div>
             </div>
             </a>
-            <?php echo "<a href='user_add_service?id=".$_SESSION['id_usuario']."'>"; ?>
+            <?php echo "<a href='user_servicio.php'>"; ?>
             <div class="col-md-3 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
@@ -73,7 +73,7 @@
                         <h4>Servicios Plus</h4>
                         <p>La personalización acelera los resultados<br/>
                         ¡Contrata a nuestros especialistas!</p>
-                        <a href="#" class="btn btn-primary">¡Acelera tu progeso!</a>
+                        <a href="user_servicio.php" class="btn btn-primary">¡Acelera tu progeso!</a>
                     </div>
                 </div>
             </div>

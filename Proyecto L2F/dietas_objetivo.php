@@ -23,7 +23,7 @@ INNER JOIN `tbl_usuario`
 
 	while($fila = mysqli_fetch_array($resultado)){
 			
-		echo "<h1>Dietas disponibles para : ".$fila['nombre_objetivo']."</h1>";
+		echo "<h1>Dietas disponibles para : ".$_SESSION['nombre_usuario']."</h1>";
 			?>
 
 	 <form name='form' action='asignar_rutina.proc.php' method="POST" >
@@ -57,7 +57,7 @@ INNER JOIN `tbl_usuario`
 			
 		
 			
-			<br> <a href= <?php echo'"asignar_dieta.proc.php?id_dieta='.$id_dieta.'"'; ?>  onclick="$(this).closest('form').submit()" type="submit" class="btn btn-primary text-center" name="enviar" value="Empezar la dieta!">Empezar la dieta!</a>
+			<br> <a href= <?php echo'"asignar_dieta.proc.php?id_dieta='.$id_dieta.'"'; ?>  onclick="$(this).closest('form').submit()" type="submit" class="btn btn-primary text-center" name="enviar" value="¡Empezar la dieta!">¡Empezar la dieta!</a>
 			 </div>
 			 </div>
 			 </form> 
