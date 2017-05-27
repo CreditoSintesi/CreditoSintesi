@@ -715,7 +715,7 @@
     function val_medidas()
     {
       var msg ="";
-      if(!/^([0-9])*$/.test(document.getElementById('cm_brazo'))==true)
+      if(!/^([0-9])*$/.test(document.getElementById('cm_brazo').value))
       {
         msg+="¡ep! la medida del bicep en números \n";
         document.getElementById('cm_brazo').style.borderColor="red";
@@ -725,7 +725,7 @@
          msg+="Revisa la medida del bicep \n";
          document.getElementById('cm_brazo').style.borderColor="red";
       }
-       if(!/^([0-9])*$/.test(document.getElementById('cm_antebrazo'))==true)
+       if(!/^([0-9])*$/.test(document.getElementById('cm_antebrazo').value)==true)
       {
         msg+="¡ep! la medida del antebrazo en números \n";
         document.getElementById('cm_brazo').style.borderColor="red";
@@ -735,7 +735,7 @@
          msg+="Revisa la medida del antebrazo \n";
          document.getElementById('cm_antebrazo').style.borderColor="red";
       }
-       if(!/^([0-9])*$/.test(document.getElementById('cm_pectoral'))==true)
+       if(!/^([0-9])*$/.test(document.getElementById('cm_pectoral').value))
       {
         msg+="¡ep! la medida del pectoral en números \n";
         document.getElementById('cm_pectoral').style.borderColor="red";
@@ -745,7 +745,7 @@
          msg+="Revisa la medida del pectoral \n";
          document.getElementById('cm_pectoral').style.borderColor="red";
       }
-       if(!/^([0-9])*$/.test(document.getElementById('cm_cintura'))==true)
+       if(!/^([0-9])*$/.test(document.getElementById('cm_cintura').value))
       {
         msg+="¡ep! la medida de la cintura  en números \n";
         document.getElementById('cm_cintura').style.borderColor="red";
@@ -755,7 +755,7 @@
          msg+="Revisa la medida de la cintura \n";
          document.getElementById('cm_cintura').style.borderColor="red";
       }
-      if(!/^([0-9])*$/.test(document.getElementById('cm_cadera'))==true)
+      if(!/^([0-9])*$/.test(document.getElementById('cm_cadera').value))
       {
         msg+="¡ep! la medida de la cadera en números \n";
         document.getElementById('cm_cadera').style.borderColor="red";
@@ -765,7 +765,7 @@
          msg+="Revisa la medida de la cadera \n";
          document.getElementById('cm_cadera').style.borderColor="red";
       }
-      if(!/^([0-9])*$/.test(document.getElementById('cm_cuadricep'))==true)
+      if(!/^([0-9])*$/.test(document.getElementById('cm_cuadricep').value))
       {
         msg+="¡ep! la medida del cuadricep en números \n";
         document.getElementById('cm_cuadricep').style.borderColor="red";
@@ -775,7 +775,7 @@
          msg+="Revisa la medida del cuadricep \n";
          document.getElementById('cm_cuadricep').style.borderColor="red";
       }
-       if(!/^([0-9])*$/.test(document.getElementById('cm_gemelo'))==true)
+       if(!/^([0-9])*$/.test(document.getElementById('cm_gemelo').value))
       {
         msg+="¡ep! la medida del gemelo en números \n";
         document.getElementById('cm_gemelo').style.borderColor="red";
@@ -800,9 +800,10 @@
           document.getElementById('ch_tall').style.borderColor="red";
        }
        
-         if (!/^([0-9])*$/.test(document.getElementById('ch_tall')))
+         if (!/^([0-9])*$/.test(document.getElementById('ch_tall').value))
          {
            msg+="¡ep! la altura en números \n";
+
            document.getElementById('ch_tall').style.borderColor="red";
          }
        
