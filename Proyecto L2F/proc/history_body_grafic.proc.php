@@ -1,27 +1,64 @@
 <?php
 	session_start();
 	//require_once("../conexio.php");
-	//Incluimos la libreria de graficos
+
 	
+
 		$conexion = mysqli_connect('localhost', 'root', '', 'bd_l2f');
 		$acentos = mysqli_query($conexion, "SET NAMES 'utf8'");
 		//Consultas
+		//ID CUERPO
+		//Obtenemos los ID de la part del cuerpo
+		  $part_body_id_sql = "SELECT * FROM tbl_parte_cuerpo";
+		  $part_body_id_query = mysqli_query($conexion, $part_body_id_sql);
+		  while($part_body_id = mysqli_fetch_array($part_body_id_query))
+		  {
+		    //Segun el valor del nombre, le asignaremos el id correspondiente 
+		    switch ($part_body_id['nombre_parte_cuerpo']) {
+		      case 'Brazo':
+		        $id_brazo = $part_body_id['id_parte_cuerpo'];
+		        break;
+		      case 'Antebrazo':
+		        $id_antebrazo = $part_body_id['id_parte_cuerpo'];
+		        break;
+		      case 'Pectoral':
+		        $id_pectoral = $part_body_id['id_parte_cuerpo'];
+		        break;
+		      case 'Cintura':
+		        $id_cintura = $part_body_id['id_parte_cuerpo'];
+		        break;
+		      case 'Cadera':
+		        $id_cadera = $part_body_id['id_parte_cuerpo'];
+		        break;
+		      case 'Cuadricep':
+		        $id_cuadricep = $part_body_id['id_parte_cuerpo'];
+		        break;
+		      case 'Gemelo':
+		        $id_gemelo = $part_body_id['id_parte_cuerpo'];
+		        break;
+		      default:
+		        # code...
+		        break;
+		    }
+		  }
+    //END ID parte cuerpo         
+		//END ID CUERPO
 		//Querys
 		 //brazo
-            $select_brazo_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=2";
+            $select_brazo_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=".$id_brazo;
             //echo $select_brazo_sql;die;
         //Antebrazo
-             $select_antebrazo_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=3";
+             $select_antebrazo_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=".$id_antebrazo;
         //Pectoral
-             $select_pectoral_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=4";
+             $select_pectoral_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=".$id_pectoral;
         //Cintura
-             $select_cintura_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=5";
+             $select_cintura_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=".$id_cintura;
         //Cadera
-              $select_cadera_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=6";
+              $select_cadera_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=".$id_cadera;
         //Cuadricep
-               $select_cuadricep_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=7";
+               $select_cuadricep_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=".$id_cuadricep;
         //Gemela
-               $select_gemelo_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=8";
+               $select_gemelo_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=".$id_gemelo;
         //Querys
                $select_brazo_query=mysqli_query($conexion,$select_brazo_sql);
                $select_antebrazo_query=mysqli_query($conexion,$select_antebrazo_sql);
@@ -67,6 +104,7 @@
 			    {
 			     array_push($gemelo_array,$gemelo_data['cm']);
 			    }
+	//Incluimos la libreria de graficos
 	require_once ('../libs/jpgraph/src/jpgraph.php');
 	require_once ('../libs/jpgraph/src/jpgraph_line.php');
 		

@@ -5,6 +5,7 @@
 	$fecha_actual=date('Y/m/d');
 	//Cogemos todos los ID de las partes del cuerpo
 	$part_body_id_sql = "SELECT * FROM tbl_parte_cuerpo";
+
 	$part_body_id_query = mysqli_query($conexion, $part_body_id_sql);
 	while($part_body_id = mysqli_fetch_array($part_body_id_query))
 	{
@@ -46,6 +47,9 @@
 		$sql_his_cadera = "INSERT INTO `tbl_historial_medidas` (`id_usuario`, `fecha_his_med`, `id_parte_cuerpo`, `cm`) VALUES ('".$_SESSION['id_usuario']."', '".$fecha_actual."', '".$id_cadera."', '".$cm_cadera."');";
 		$sql_his_cuadricep = "INSERT INTO `tbl_historial_medidas` (`id_usuario`, `fecha_his_med`, `id_parte_cuerpo`, `cm`) VALUES ('".$_SESSION['id_usuario']."', '".$fecha_actual."', '".$id_cuadricep."', '".$cm_cuadricep."');";
 		$sql_his_gemelo = "INSERT INTO `tbl_historial_medidas` (`id_usuario`, `fecha_his_med`, `id_parte_cuerpo`, `cm`) VALUES ('".$_SESSION['id_usuario']."', '".$fecha_actual."', '".$id_gemelo."', '".$cm_gemelo."');";
+
+		
+		//die;
 	//PETICIONES A LA BD
 		$query_his_brazo=mysqli_query($conexion,$sql_his_brazo);
 		$query_his_antebrazo=mysqli_query($conexion,$sql_his_antebrazo);

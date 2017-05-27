@@ -76,24 +76,59 @@
             {
                $imc = $height1/pow(1.79,2);
             }
-           
+  //Obtenemos los ID de la part del cuerpo
+  $part_body_id_sql = "SELECT * FROM tbl_parte_cuerpo";
+
+  $part_body_id_query = mysqli_query($conexion, $part_body_id_sql);
+  while($part_body_id = mysqli_fetch_array($part_body_id_query))
+  {
+
+    //Segun el valor del nombre, le asignaremos el id correspondiente 
+    switch ($part_body_id['nombre_parte_cuerpo']) {
+      case 'Brazo':
+        $id_brazo = $part_body_id['id_parte_cuerpo'];
+        break;
+      case 'Antebrazo':
+        $id_antebrazo = $part_body_id['id_parte_cuerpo'];
+        break;
+      case 'Pectoral':
+        $id_pectoral = $part_body_id['id_parte_cuerpo'];
+        break;
+      case 'Cintura':
+        $id_cintura = $part_body_id['id_parte_cuerpo'];
+        break;
+      case 'Cadera':
+        $id_cadera = $part_body_id['id_parte_cuerpo'];
+        break;
+      case 'Cuadricep':
+        $id_cuadricep = $part_body_id['id_parte_cuerpo'];
+        break;
+      case 'Gemelo':
+        $id_gemelo = $part_body_id['id_parte_cuerpo'];
+        break;
+      default:
+        # code...
+        break;
+    }
+  }
+    //END ID parte cuerpo         
   //Obtenemos las medidas de usuario 
       //SQL
         //brazo
-            $select_brazo_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=2 ORDER BY `fecha_his_med` DESC LIMIT 0,1";
+            $select_brazo_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=".$id_brazo." ORDER BY `fecha_his_med` DESC LIMIT 0,1";
             //echo $select_brazo_sql;die;
         //Antebrazo
-             $select_antebrazo_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=3 ORDER BY `fecha_his_med` DESC LIMIT 0,1";
+             $select_antebrazo_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=".$id_antebrazo." ORDER BY `fecha_his_med` DESC LIMIT 0,1";
         //Pectoral
-             $select_pectoral_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=4 ORDER BY `fecha_his_med` DESC LIMIT 0,1";
+             $select_pectoral_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=".$id_pectoral." ORDER BY `fecha_his_med` DESC LIMIT 0,1";
         //Cintura
-             $select_cintura_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=5 ORDER BY `fecha_his_med` DESC LIMIT 0,1";
+             $select_cintura_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=".$id_cintura." ORDER BY `fecha_his_med` DESC LIMIT 0,1";
         //Cadera
-              $select_cadera_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=6 ORDER BY `fecha_his_med` DESC LIMIT 0,1";
+              $select_cadera_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=".$id_cadera." ORDER BY `fecha_his_med` DESC LIMIT 0,1";
         //Cuadricep
-               $select_cuadricep_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=7 ORDER BY `fecha_his_med` DESC LIMIT 0,1";
+               $select_cuadricep_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=".$id_cuadricep." ORDER BY `fecha_his_med` DESC LIMIT 0,1";
         //Gemela
-               $select_gemelo_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=8 ORDER BY `fecha_his_med` DESC LIMIT 0,1";
+               $select_gemelo_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=".$id_gemelo." ORDER BY `fecha_his_med` DESC LIMIT 0,1";
       //Querys
 
         $select_brazo_query=mysqli_query($conexion,$select_brazo_sql);
@@ -484,7 +519,7 @@
                 
                     <?php
                       //Preparamos una consulta para obtener TODAS las mediciones de una parte del cuerpo
-                       $count_medidas_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=2";
+                       $count_medidas_sql = "SELECT * FROM `tbl_historial_medidas` WHERE `id_usuario`=".$_SESSION['id_usuario']." AND `id_parte_cuerpo`=".$id_brazo."";
                        $count_medidas_query = mysqli_query($conexion,$count_medidas_sql);
                        if(mysqli_num_rows($count_medidas_query)>=3)
                        {
@@ -500,7 +535,7 @@
           </div>
             <!--AÑADIR PESO-->
             <div class="col-sm-8" id ="sh_peso" name="sh_peso">
-            <form action="proc/add_peso.proc.php" method="POST">
+            <form action="proc/add_peso.proc.php" method="POST" onsubmit="return val_weight();">
                <table class="table table-striped" border>
                 <thead>
                   <tr>
@@ -712,6 +747,29 @@
      }
       
     }
+    function val_weight()
+    {
+      var msg ="";
+      if(!/^([0-9])*$/.test(document.getElementById('height').value))
+      {
+        msg+="¡ep! la medida del bicep en números \n";
+        document.getElementById('height').style.borderColor="red";
+      }
+      if(document.getElementById('height').value<=0)
+      {
+         msg+="Por mas que adelgaces, este peso es imposible! \n";
+         document.getElementById('height').style.borderColor="red";
+      }
+      if(msg!="")
+      {
+      	alert(msg);
+      	return false;
+      }
+      else
+      {
+      	return true;
+      }
+     }
     function val_medidas()
     {
       var msg ="";
