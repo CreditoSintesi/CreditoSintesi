@@ -558,7 +558,7 @@
                   </tr>
                   <tr>
                     <td>Pectoral</td>
-                    <td><?php echo  "<input type='number' class='form-control' id='cm_pectoral' name='cm_pectoral' value=".$pectoral_cm." required>"; ?></td>
+                    <td><?php echo  "<input  class='form-control' id='cm_pectoral' name='cm_pectoral' value=".$pectoral_cm." required>"; ?></td>
                     <td><label class="btn btn-default" onclick="plus_cm('cm_pectoral');">+</label></td>
                     <td><label class="btn btn-default" onclick="rest_cm('cm_pectoral');">-</label></td>
                   </tr>
@@ -790,6 +790,46 @@
         alert(msg);
         return false;
       }
+    }
+    function val_ch_user()
+    {
+       var msg ="";
+       if(document.getElementById('ch_tall').value=="")
+       {
+          msg+="El campo altura es obligatorio";
+          document.getElementById('ch_tall').style.borderColor="red";
+       }
+       
+         if (!/^([0-9])*$/.test(document.getElementById('ch_tall')))
+         {
+           msg+="¡ep! la altura en números \n";
+           document.getElementById('ch_tall').style.borderColor="red";
+         }
+       
+       if(document.getElementById('ch_name').value=="")
+       {
+         msg+="Introduzca un nombre \n";
+          document.getElementById('ch_name').style.borderColor="red";
+       }
+      if(document.getElementById('ch_lastname').value=="")
+       {
+         msg+="Introduzca un nombre \n";
+          document.getElementById('ch_lastname').style.borderColor="red";
+       }
+      if(document.getElementById('ch_mail').value=="")
+       {
+          msg+="Introduzca un correo valido \n";
+          document.getElementById('ch_mail').style.borderColor="red";
+       }
+       if(msg!="")
+       {
+        alert(msg);
+        return false;
+       }
+       else 
+       {
+        return true;
+       }
     }
     window.onload(hidden_elements());
     </script>

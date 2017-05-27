@@ -1,5 +1,5 @@
 <table>
-	<form action="proc/ch_user_data.proc.php" method="POST">
+	<form action="proc/ch_user_data.proc.php" method="POST" onsubmit="return val_ch_user()">
 		<table class="table table-bordered">
 	         <?php
 	         //Seleccionamos los datos del usuario
