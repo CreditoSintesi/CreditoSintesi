@@ -128,10 +128,10 @@
 					</div>
 				</div>
 					<div class="col-xs-4 text-center">
-						<input type="radio" name="id_tipo_cuerpo" value="1" onclick ="seleccionado()"  title="cuerpo mesomorfo" checked="checked"/>
+						<input type="radio" name="id_tipo_cuerpo" value="1"  onclick ="seleccionado()" title="cuerpo mesomorfo" checked="checked"/>
 					</div>
 					<div class="col-xs-4 text-center">
-						<input type="radio" name="id_tipo_cuerpo" value="2" onclick ="seleccionado()" title="cuerpo ectomorfo" />
+						<input type="radio"  name="id_tipo_cuerpo" value="2" onclick ="seleccionado()" title="cuerpo ectomorfo" />
 					</div>
 
 					<div class="col-xs-4 text-center">

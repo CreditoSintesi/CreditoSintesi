@@ -55,7 +55,7 @@
                         <h4>Dieta</h4>
                         <p>!Observa tu dieta actual, cambiala, revisa los nuevos platos¡.
                         <br/>
-                        ¡La dieta también es importante!</p>
+                        ¡La dieta también es importante!</p><br/>
                         <a href="user_dieta.php" class="btn btn-primary">¡Come!</a>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                     <div class="panel-body">
                         <h4>Servicios Plus</h4>
                         <p>La personalización acelera los resultados<br/>
-                        ¡Contrata a nuestros especialistas!</p>
+                        ¡Contrata a nuestros especialistas!</p><br/>
                         <a href="user_servicio.php" class="btn btn-primary">¡Acelera tu progeso!</a>
                     </div>
                 </div>
